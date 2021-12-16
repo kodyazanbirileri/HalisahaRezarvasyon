@@ -25,16 +25,12 @@ public class Pitch {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "start_hour")
-    private int startHour;
 
-    @Column(name = "end_hour")
-    private int endHour;
 
     //TODO: Şehir - halı saha
     //TODO: İlçe - halı saha
     //TODO: Property - halı saha
-
+    //TODO: Owner - halı saha
 
 
 }
