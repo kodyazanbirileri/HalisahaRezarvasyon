@@ -7,17 +7,19 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@NoArgsConstructor
+@Table(name = "rating_photos")
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "properties")
-public class Properties
-{
+public class RatingPhoto {
+
     @Id
     @GeneratedValue
     @Column(name = "id")
     private int id;
 
-    @Column(name = "property_name")
-    private String propertyName;
+    @Column(name = "photo_path")
+    private String photoPath;
+
+    //TODO: Rate - Rate photo bağlantısı
 }

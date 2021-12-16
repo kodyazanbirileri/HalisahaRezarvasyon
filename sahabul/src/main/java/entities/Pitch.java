@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "pitchs")
-public class AstroturfPitch {
+public class Pitch {
 
     @Id
     @GeneratedValue
@@ -24,6 +24,12 @@ public class AstroturfPitch {
 
     @Column(name = "address")
     private String address;
+
+    @Column(name = "start_hour")
+    private int startHour;
+
+    @Column(name = "end_hour")
+    private int endHour;
 
     //TODO: Şehir - halı saha
     //TODO: İlçe - halı saha
