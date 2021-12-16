@@ -20,4 +20,7 @@ public class Property
 
     @Column(name = "property_name")
     private String propertyName;
+
+    @ManyToOne
+    private PitchProperty pitchProperty;
 }

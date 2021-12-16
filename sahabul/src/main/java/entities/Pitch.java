@@ -30,11 +30,16 @@ public class Pitch {
     @OneToMany(mappedBy = "pitch")
     private List<Reservation> reservations;
 
+    @ManyToMany(mappedBy = "pitch")
+    private List<PitchProperty> pitchProperties;
 
-    //TODO: Şehir - halı saha
-    //TODO: İlçe - halı saha
-    //TODO: Property - halı saha
-    //TODO: Owner - halı saha
+    @OneToOne
+    private City city;
+
+    @OneToOne
+    private District district;
+
+
 
 
 }

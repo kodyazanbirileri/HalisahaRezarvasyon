@@ -20,8 +20,9 @@ public class SystemUser {
     @Column(name = "is_admin")
     private boolean isAdmin;
 
+
     @OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id")
     @MapsId
     private User user;
-}
+
