@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -33,6 +31,8 @@ public class User {
     @Column(name = "state")
     private boolean state;
 
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations;
 
 
 }

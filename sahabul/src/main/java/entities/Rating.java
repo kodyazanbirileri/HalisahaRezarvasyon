@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,6 +24,10 @@ public class Rating {
 
     @Column(name = "rate_detail")
     private String rateDetail;
+
+    @OneToMany(mappedBy = "rating")
+    private List<RatingPhoto> ratingPhotos;
+
 
 
 }

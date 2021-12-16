@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -24,4 +25,6 @@ public class Hour {
     @Column(name = "end_hour")
     private int endHour;
 
+    @OneToMany(mappedBy = "reservationHour")
+    private List<Reservation> reservations;
 }

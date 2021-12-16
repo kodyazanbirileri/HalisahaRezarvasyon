@@ -21,4 +21,9 @@ public class District {
     @Column(name = "district_name")
     private String districtName;
 
+    @OneToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id")
+    @MapsId
+    private City city;
+
 }

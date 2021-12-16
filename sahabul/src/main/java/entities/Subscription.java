@@ -22,8 +22,9 @@ public class Subscription {
     @Column(name = "status")
     private boolean status;
 
-
-    //TODO: Rezervasyon - Abonelik ilişkisi.
-
+    @OneToOne(targetEntity = Reservation.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    @MapsId
+    private Reservation reservation;
 
 }

@@ -1,11 +1,13 @@
 package entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,6 +27,8 @@ public class Pitch {
     @Column(name = "address")
     private String address;
 
+    @OneToMany(mappedBy = "pitch")
+    private List<Reservation> reservations;
 
 
     //TODO: Şehir - halı saha

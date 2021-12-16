@@ -1,5 +1,6 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "reservations")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","reservationHour","pitch","user"})
 public class Reservation {
 
     @Id
@@ -25,9 +27,13 @@ public class Reservation {
     @Column(name = "reservation_note")
     private String note;
 
+    @ManyToOne()
+    private Hour reservationHour;
 
-    //TODO: Saat - rezervasyon ilişkisi.
-    //TODO: Halısaha - rezervasyon ilişkisi.
-    //TODO: Kullanıcı - rezervasyon ilişkisi.
+    @ManyToOne()
+    private Pitch pitch;
+
+    @ManyToOne()
+    private User user;
 
 }
