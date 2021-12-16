@@ -23,5 +23,7 @@ public class SystemUser {
     @Column(name = "is_admin")
     private boolean isAdmin;
 
+
+
     //TODO: Admin - user tablo ilişkisi yapılacak.
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -31,9 +32,19 @@ public class Pitch {
     @Column(name = "end_hour")
     private int endHour;
 
-    //TODO: Şehir - halı saha
-    //TODO: İlçe - halı saha
-    //TODO: Property - halı saha
+    @ManyToMany(mappedBy = "pitch")
+    private List<PitchProperty> pitchProperties;
+
+    @OneToOne
+    private City city;
+
+    @OneToOne
+    private District district;
+
+
+    // Şehir - halı saha
+    // İlçe - halı saha
+    // Property - halı saha
 
 
 
