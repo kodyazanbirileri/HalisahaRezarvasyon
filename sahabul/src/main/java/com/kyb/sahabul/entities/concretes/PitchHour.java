@@ -1,4 +1,4 @@
-package entities;
+package com.kyb.sahabul.entities.concretes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,20 +6,19 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Table(name = "pitch_photos")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "pitch_hours")
 @Entity
-public class PitchPhoto {
+public class PitchHour {
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
+    @GeneratedValue
     private int id;
 
-    @Column(name = "photo_path")
-    private String photoPath;
+    //TODO: Saat - PitchHour bağlantısı.
+    //TODO: pitch - pitchHour bağlantısı.
 
-    //TODO: PitchPhoto - Pitch bağlantısı
 }

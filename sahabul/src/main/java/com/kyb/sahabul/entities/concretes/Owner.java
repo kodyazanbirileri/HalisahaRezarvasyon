@@ -1,4 +1,4 @@
-package entities;
+package com.kyb.sahabul.entities.concretes;
 
 import lombok.Data;
 
