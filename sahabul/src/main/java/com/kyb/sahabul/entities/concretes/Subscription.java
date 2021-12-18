@@ -17,15 +17,14 @@ public class Subscription {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "status")
     private boolean status;
 
     @OneToOne(targetEntity = Reservation.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @MapsId
+    @JoinColumn(name = "reservation_id",referencedColumnName = "id")
     private Reservation reservation;
 
 }

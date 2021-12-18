@@ -14,12 +14,14 @@ import javax.persistence.*;
 public class PitchPhoto {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
     @Column(name = "photo_path")
     private String photoPath;
 
-    //TODO: PitchPhoto - Pitch bağlantısı
+    @ManyToOne(targetEntity = Pitch.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "pitch_id", referencedColumnName = "id")
+    private Pitch pitch;
 }

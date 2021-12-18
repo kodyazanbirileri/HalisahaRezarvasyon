@@ -15,11 +15,12 @@ public class Owner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "owner_id")
+    @Column(name = "id")
     private int id;
 
 
     @OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @JoinColumn(name= "user_id",referencedColumnName = "id")
     private User user;
 
 }

@@ -18,18 +18,16 @@ import java.util.List;
 public class PitchProperty {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @ManyToOne()
-    @JoinColumn(name = "pitch_id")
+    @ManyToOne(targetEntity = Pitch.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "pitch_id", referencedColumnName = "id")
     private Pitch pitch;
 
-    @ManyToOne
-    @JoinColumn(name = "property_id")
+    @ManyToOne(targetEntity = Property.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "property_id", referencedColumnName = "id")
     private Property property;
 
-    // Pitch - pitch property bağlantısı
-    // Property - pitch property bağlantısı
 }

@@ -17,7 +17,7 @@ import java.util.Date;
 public class Reservation {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -27,13 +27,16 @@ public class Reservation {
     @Column(name = "reservation_note")
     private String note;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.MERGE, targetEntity = Hour.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "reservation_id",referencedColumnName = "id")
     private Hour reservationHour;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.MERGE, targetEntity = Pitch.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "pitch_id", referencedColumnName = "id")
     private Pitch pitch;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.MERGE, targetEntity = Pitch.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
 }

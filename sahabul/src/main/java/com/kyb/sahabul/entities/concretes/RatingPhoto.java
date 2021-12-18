@@ -23,6 +23,7 @@ public class RatingPhoto {
     @Column(name = "photo_path")
     private String photoPath;
 
-    @ManyToOne()
+    @ManyToOne(targetEntity = Rating.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "rating_id",referencedColumnName = "id")
     private Rating rating;
 }

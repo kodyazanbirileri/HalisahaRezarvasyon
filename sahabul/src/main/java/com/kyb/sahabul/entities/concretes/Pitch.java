@@ -17,7 +17,7 @@ import java.util.List;
 public class Pitch {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -33,10 +33,18 @@ public class Pitch {
     @OneToMany(mappedBy = "pitch")
     private List<PitchProperty> pitchProperties;
 
-    @OneToOne
+    @OneToMany(mappedBy = "pitch")
+    private List<PitchHour> pitchHours;
+
+    @OneToMany(mappedBy = "pitch")
+    private List<PitchPhoto> pitchPhotos;
+
+    @OneToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "city_id",referencedColumnName = "id")
     private City city;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "district_id", referencedColumnName = "id")
     private District district;
 
 

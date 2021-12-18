@@ -22,6 +22,6 @@ public class Property
     @Column(name = "property_name")
     private String propertyName;
 
-   // @OneToMany()
-   // private List<PitchProperty> pitchProperties;
+    @OneToMany(mappedBy = "property")
+    private List<PitchProperty> pitchProperties;
 }

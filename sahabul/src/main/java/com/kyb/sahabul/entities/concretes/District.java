@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class District {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -23,8 +23,7 @@ public class District {
     private String districtName;
 
     @OneToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id")
-    @MapsId
+    @JoinColumn(name = "city_id",referencedColumnName = "id")
     private City city;
 
 }

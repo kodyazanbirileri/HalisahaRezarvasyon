@@ -15,7 +15,7 @@ import java.util.List;
 public class Hour {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -27,4 +27,7 @@ public class Hour {
 
     @OneToMany(mappedBy = "reservationHour")
     private List<Reservation> reservations;
+
+    @OneToMany(mappedBy = "hour")
+    private List<PitchHour> pitchHours;
 }

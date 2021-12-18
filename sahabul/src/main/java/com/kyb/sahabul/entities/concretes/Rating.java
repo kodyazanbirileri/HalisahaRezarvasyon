@@ -15,7 +15,7 @@ import java.util.List;
 public class Rating {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -28,6 +28,9 @@ public class Rating {
     @OneToMany(mappedBy = "rating")
     private List<RatingPhoto> ratingPhotos;
 
+    @OneToOne(fetch = FetchType.LAZY, targetEntity = Reservation.class, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "reservation_id", referencedColumnName = "id")
+    private Reservation reservation;
 
 
 }
