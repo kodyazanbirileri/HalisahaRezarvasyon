@@ -30,7 +30,7 @@ public class Pitch {
     @OneToMany(mappedBy = "pitch")
     private List<Reservation> reservations;
 
-    @ManyToMany(mappedBy = "pitch")
+    @OneToMany(mappedBy = "pitch")
     private List<PitchProperty> pitchProperties;
 
     @OneToOne

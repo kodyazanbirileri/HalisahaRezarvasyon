@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,6 +22,6 @@ public class Property
     @Column(name = "property_name")
     private String propertyName;
 
-    @ManyToOne
-    private PitchProperty pitchProperty;
+    @OneToMany()
+    private List<PitchProperty> pitchProperties;
 }

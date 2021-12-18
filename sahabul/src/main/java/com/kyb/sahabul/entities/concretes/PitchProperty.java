@@ -22,11 +22,13 @@ public class PitchProperty {
     @Column(name = "id")
     private int id;
 
-    @ManyToMany()
-    private List<Pitch> pitch;
+    @ManyToOne()
+    @JoinColumn(name = "pitch_id")
+    private Pitch pitch;
 
-    @ManyToMany
-    private List<Property> property;
+    @ManyToOne
+    @JoinColumn(name = "property_id")
+    private Property property;
 
     // Pitch - pitch property bağlantısı
     // Property - pitch property bağlantısı
