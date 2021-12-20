@@ -29,8 +29,8 @@ public class User {
     @Column(name = "user_created")
     private Date userCreated;
 
-    @Column(name = "state")
-    private boolean state;
+    @Column(name = "status")
+    private boolean status;
 
     @OneToMany(mappedBy = "user")
     private List<Reservation> reservations;

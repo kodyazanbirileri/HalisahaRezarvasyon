@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "owners")
-public class Owner {
+@Entity
+@Table(name = "complained_rating")
+public class ComplainedRating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +21,9 @@ public class Owner {
     @Column(name = "is_confirmed")
     private boolean isConfirmed;
 
-    @OneToOne(fetch = FetchType.LAZY, targetEntity = User.class, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-    @JoinColumn(name= "user_id",referencedColumnName = "id")
-    private User user;
+    @OneToOne(fetch = FetchType.LAZY, targetEntity = Reservation.class, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "reservation_id", referencedColumnName = "id")
+    private Reservation reservation;
+
 
 }

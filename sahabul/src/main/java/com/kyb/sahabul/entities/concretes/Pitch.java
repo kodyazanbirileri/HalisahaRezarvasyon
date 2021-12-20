@@ -22,7 +22,7 @@ public class Pitch {
     private int id;
 
     @Column(name = "pitch_name")
-    private String astroturfPitchName;
+    private String pitchName;
 
     @Column(name = "address")
     private String address;

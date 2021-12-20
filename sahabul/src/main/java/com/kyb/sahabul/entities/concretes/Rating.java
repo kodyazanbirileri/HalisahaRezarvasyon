@@ -25,6 +25,9 @@ public class Rating {
     @Column(name = "rate_detail")
     private String rateDetail;
 
+    @Column(name = "status")
+    private boolean status;
+
     @OneToMany(mappedBy = "rating")
     private List<RatingPhoto> ratingPhotos;
 

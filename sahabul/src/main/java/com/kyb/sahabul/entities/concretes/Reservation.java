@@ -27,6 +27,9 @@ public class Reservation {
     @Column(name = "reservation_note")
     private String note;
 
+    @Column(name = "status")
+    private boolean status;
+
     @ManyToOne(cascade = CascadeType.MERGE, targetEntity = Hour.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "reservation_id",referencedColumnName = "id")
     private Hour reservationHour;
@@ -35,7 +38,7 @@ public class Reservation {
     @JoinColumn(name = "pitch_id", referencedColumnName = "id")
     private Pitch pitch;
 
-    @ManyToOne(cascade = CascadeType.MERGE, targetEntity = Pitch.class, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, targetEntity = User.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
