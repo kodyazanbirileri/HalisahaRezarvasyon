@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PitchDto {
+public class PitchWithRatingsDto {
 
     private int id;
     private String pitchName;
@@ -18,10 +18,8 @@ public class PitchDto {
     private CityDto city;
     private DistrictForPitchDto district;
     private List<PitchPropertyForPitchDto> pitchProperties;
-    private List<ReservationDto> reservations;
     private List<PitchHourDto> pitchHours;
     private List<PitchPhotoDto> pitchPhotos;
-
-
+    private List<RatingDto> ratings;
 
 }

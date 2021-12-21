@@ -1,38 +1,37 @@
 package com.kyb.sahabul.core.converter;
 
 import com.kyb.sahabul.entities.concretes.Pitch;
-import com.kyb.sahabul.entities.dto.PitchDto;
+import com.kyb.sahabul.entities.dto.PitchWithRatingsDto;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
 @Component
-public class PitchDtoConverter {
+public class PitchWithRatingsDtoConverter {
 
     private final CityDtoConverter cityDtoConverter;
     private final DistrictDtoConverter districtDtoConverter;
     private final PitchPropertyDtoConverter pitchPropertyDtoConverter;
-    private final ReservationDtoConverter reservationDtoConverter;
     private final PitchHourDtoConverter pitchHourDtoConverter;
     private final PitchPhotoDtoConverter pitchPhotoDtoConverter;
+    private final RatingDtoConverter ratingDtoConverter;
 
-    public PitchDtoConverter(CityDtoConverter cityDtoConverter,
-                             DistrictDtoConverter districtDtoConverter,
-                             PitchPropertyDtoConverter pitchPropertyDtoConverter,
-                             ReservationDtoConverter reservationDtoConverter,
-                             PitchHourDtoConverter pitchHourDtoConverter,
-                             PitchPhotoDtoConverter pitchPhotoDtoConverter) {
+    public PitchWithRatingsDtoConverter(CityDtoConverter cityDtoConverter,
+                                        DistrictDtoConverter districtDtoConverter,
+                                        PitchPropertyDtoConverter pitchPropertyDtoConverter,
+                                        PitchHourDtoConverter pitchHourDtoConverter,
+                                        PitchPhotoDtoConverter pitchPhotoDtoConverter,
+                                        RatingDtoConverter ratingDtoConverter) {
         this.cityDtoConverter = cityDtoConverter;
         this.districtDtoConverter = districtDtoConverter;
         this.pitchPropertyDtoConverter = pitchPropertyDtoConverter;
-        this.reservationDtoConverter = reservationDtoConverter;
         this.pitchHourDtoConverter = pitchHourDtoConverter;
         this.pitchPhotoDtoConverter = pitchPhotoDtoConverter;
+        this.ratingDtoConverter = ratingDtoConverter;
     }
 
-
-    public PitchDto convert(Pitch from) {
-        return new PitchDto(
+    public PitchWithRatingsDto convert(Pitch from) {
+        return new PitchWithRatingsDto(
                 from.getId(),
                 from.getPitchName(),
                 from.getAddress(),
@@ -42,15 +41,16 @@ public class PitchDtoConverter {
                 from.getPitchProperties().stream()
                         .map(pitchPropertyDtoConverter::convertToPitchPropertyForPitchDto)
                         .collect(Collectors.toList()),
-                from.getReservations().stream()
-                        .map(reservationDtoConverter::convert)
-                        .collect(Collectors.toList()),
                 from.getPitchHours().stream()
                         .map(pitchHourDtoConverter::convert)
                         .collect(Collectors.toList()),
                 from.getPitchPhotos().stream()
                         .map(pitchPhotoDtoConverter::convert)
+                        .collect(Collectors.toList()),
+                from.getReservations().stream()
+                        .map(r -> ratingDtoConverter.convert(r.getRating()))
                         .collect(Collectors.toList())
         );
     }
+
 }

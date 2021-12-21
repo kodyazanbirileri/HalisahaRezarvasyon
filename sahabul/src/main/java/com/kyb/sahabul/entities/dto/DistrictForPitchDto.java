@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class PitchPhotoDto {
+public class DistrictForPitchDto {
 
     private int id;
-    private String photoPath;
+    private String districtName;
 
 }

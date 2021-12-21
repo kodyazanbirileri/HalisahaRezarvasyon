@@ -5,6 +5,7 @@ import com.kyb.sahabul.entities.dto.UserDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class UserDtoConverter {
@@ -15,13 +16,19 @@ public class UserDtoConverter {
         this.reservationDtoConverter = reservationDtoConverter;
     }
 
-    UserDto convert(User user){
-        return new UserDto(user.getId(),
-                user.getUserName(),
-                user.getEmail(),
-                user.getUserCreated(),
-                user.isStatus(),
-                )
+    UserDto convert(User from){
+        return new UserDto(
+                from.getId(),
+                from.getPassword(),
+                from.getEmail(),
+                from.getUserCreated(),
+                from.isStatus(),
+                from.getPhoneNumber(),
+                from.getReservations().stream()
+                        .map(reservationDtoConverter::convert)
+                        .collect(Collectors.toList())
+
+                );
     }
 
 

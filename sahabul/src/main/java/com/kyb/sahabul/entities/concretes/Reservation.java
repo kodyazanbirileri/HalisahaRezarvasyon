@@ -42,4 +42,7 @@ public class Reservation {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
+    @OneToOne
+    private Rating rating;
+
 }
