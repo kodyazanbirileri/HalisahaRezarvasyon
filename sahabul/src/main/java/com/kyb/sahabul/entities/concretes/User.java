@@ -20,8 +20,11 @@ public class User {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "user_name")
-    private String userName;
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "phone_number")
+    private int phoneNumber;
 
     @Column(name = "email")
     private String email;

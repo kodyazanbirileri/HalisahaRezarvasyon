@@ -14,6 +14,7 @@ public class PitchDto {
     private int id;
     private String pitchName;
     private String address;
+    private int pitchNumber;
     private CityDto city;
     private DistrictDto district;
     private List<PitchPropertyDto> pitchProperties;

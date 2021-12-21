@@ -24,6 +24,9 @@ public class Pitch {
     @Column(name = "pitch_name")
     private String pitchName;
 
+    @Column(name = "pitch_number")
+    private int pitchNumber;
+
     @Column(name = "address")
     private String address;
 
