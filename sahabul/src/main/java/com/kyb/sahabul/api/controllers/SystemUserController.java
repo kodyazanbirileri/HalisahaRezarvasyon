@@ -18,18 +18,18 @@ public class SystemUserController {
         this.systemUserService = systemUserService;
     }
     @PostMapping(value = "add")
-    public ResponseEntity<SystemUserDto> addOwner(@RequestParam SystemUser systemUser){
+    public ResponseEntity<SystemUserDto> add(@RequestBody SystemUser systemUser){
         return ResponseEntity.ok(systemUserService.add(systemUser));
     }
 
     @GetMapping(value = "/getAll")
-    public ResponseEntity<List<SystemUserDto>> getAllOwner(){
+    public ResponseEntity<List<SystemUserDto>> getAll(){
         return ResponseEntity.ok(systemUserService.getAll());
     }
 
 
     @GetMapping(value = "getById")
-    public SystemUserDto getByIdOwnerDto(@RequestParam int id){
+    public SystemUserDto getById(@RequestParam int id){
         return systemUserService.getById(id);
     }
 

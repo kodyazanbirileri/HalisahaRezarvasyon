@@ -36,7 +36,7 @@ public class UserManager implements UserService {
     }
 
     @Override
-    public void addUser(User user) {
+    public void add(User user) {
         userDao.save(user);
     }
 

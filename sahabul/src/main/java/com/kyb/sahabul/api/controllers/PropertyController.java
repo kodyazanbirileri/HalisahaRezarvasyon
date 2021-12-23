@@ -28,7 +28,7 @@ public class PropertyController {
     }
 
     @PostMapping(value = "add")
-    public ResponseEntity<PropertyDto> add(@RequestParam Property property) {
+    public ResponseEntity<PropertyDto> add(@RequestBody Property property) {
         return ResponseEntity.ok(propertyServices.add(property));
     }
 

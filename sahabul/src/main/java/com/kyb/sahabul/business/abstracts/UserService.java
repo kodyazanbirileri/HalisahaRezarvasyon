@@ -8,7 +8,7 @@ import java.util.List;
 public interface UserService {
     List<UserDto> getAll();
     UserDto getById(int id);
-    void addUser(User user);
+    void add(User user);
     void deleteUser(User user);
     //TODO: DTO araştırması yapılıp, ona göre DTO üzerinden update işlemi yapılacak.
 }

@@ -19,7 +19,7 @@ public class PitchController {
     }
 
     @PostMapping(value = "add")
-    public ResponseEntity<PitchDto> add(@RequestParam Pitch pitch){
+    public ResponseEntity<PitchDto> add(@RequestBody Pitch pitch){
         return ResponseEntity.ok(pitchServices.add(pitch));
     }
 

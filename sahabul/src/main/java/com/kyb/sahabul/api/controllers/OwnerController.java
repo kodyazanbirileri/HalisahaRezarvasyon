@@ -20,7 +20,7 @@ public class OwnerController {
     }
 
     @PostMapping(value = "add")
-    public ResponseEntity<OwnerDto> add(@RequestParam Owner owner){
+    public ResponseEntity<OwnerDto> add(@RequestBody Owner owner){
         return ResponseEntity.ok(ownerServices.add(owner));
     }
 
