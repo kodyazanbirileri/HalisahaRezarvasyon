@@ -4,6 +4,7 @@ import com.kyb.sahabul.entities.concretes.Pitch;
 import com.kyb.sahabul.entities.dto.PitchDto;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.stream.Collectors;
 
@@ -19,7 +20,7 @@ public class PitchDtoConverter {
 
     public PitchDtoConverter(CityDtoConverter cityDtoConverter,
                              DistrictDtoConverter districtDtoConverter,
-                             PitchPropertyDtoConverter pitchPropertyDtoConverter,
+                            @Lazy PitchPropertyDtoConverter pitchPropertyDtoConverter,
                             @Lazy ReservationDtoConverter reservationDtoConverter,
                              PitchHourDtoConverter pitchHourDtoConverter,
                              PitchPhotoDtoConverter pitchPhotoDtoConverter) {
