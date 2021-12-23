@@ -17,7 +17,7 @@ public class UserDtoConverter {
         this.reservationDtoConverter = reservationDtoConverter;
     }
 
-    UserDto convert(User from){
+    public UserDto convert(User from){
         return new UserDto(
                 from.getId(),
                 from.getPassword(),

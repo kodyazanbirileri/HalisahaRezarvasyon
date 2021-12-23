@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SystemUserDtoConverter {
 
-    private UserDtoConverter userDtoConverter;
+    private final UserDtoConverter userDtoConverter;
 
     public SystemUserDtoConverter(UserDtoConverter userDtoConverter) {
         this.userDtoConverter = userDtoConverter;
