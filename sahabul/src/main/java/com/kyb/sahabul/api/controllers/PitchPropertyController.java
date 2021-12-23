@@ -10,10 +10,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/PitchProperty")
-public class PitchPropertyControllers {
+public class PitchPropertyController {
     private final PitchPropertyService pitchPropertyService;
 
-    public PitchPropertyControllers(PitchPropertyService pitchPropertyService) {
+    public PitchPropertyController(PitchPropertyService pitchPropertyService) {
         this.pitchPropertyService = pitchPropertyService;
     }
 
