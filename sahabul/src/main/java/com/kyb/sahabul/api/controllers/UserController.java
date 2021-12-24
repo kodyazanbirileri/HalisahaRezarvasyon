@@ -1,6 +1,6 @@
 package com.kyb.sahabul.api.controllers;
 
-import com.kyb.sahabul.business.abstracts.UserService;
+import com.kyb.sahabul.business.abstracts.UserServices;
 import com.kyb.sahabul.entities.concretes.User;
 import com.kyb.sahabul.entities.dto.UserDto;
 import org.springframework.http.ResponseEntity;
@@ -12,16 +12,16 @@ import java.util.List;
 @RequestMapping(value = "api/user")
 public class UserController {
 
-    private final UserService userService;
+    private final UserServices userServices;
 
 
-    UserController(UserService userService) {
-        this.userService = userService;
+    UserController(UserServices userServices) {
+        this.userServices = userServices;
     }
 
     @GetMapping(value = "/getAll")
     public ResponseEntity<List<UserDto>> getAll(){
-       return ResponseEntity.ok(userService.getAll());
+       return ResponseEntity.ok(userServices.getAll());
     }
 
 
@@ -29,6 +29,6 @@ public class UserController {
     @PostMapping(value = "/add")
     void add(@RequestBody User user)
     {
-        this.userService.add(user);
+        this.userServices.add(user);
     }
 }

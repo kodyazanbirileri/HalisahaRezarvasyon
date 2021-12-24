@@ -5,7 +5,7 @@ import com.kyb.sahabul.entities.dto.UserDto;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserServices {
     List<UserDto> getAll();
     UserDto getById(int id);
     void add(User user);

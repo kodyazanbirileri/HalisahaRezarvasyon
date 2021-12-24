@@ -1,6 +1,6 @@
 package com.kyb.sahabul.business.concretes;
 
-import com.kyb.sahabul.business.abstracts.SystemUserService;
+import com.kyb.sahabul.business.abstracts.SystemUserServices;
 import com.kyb.sahabul.core.converter.SystemUserDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.SystemUserDao;
 import com.kyb.sahabul.entities.concretes.SystemUser;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class SystemUserManager implements SystemUserService {
+public class SystemUserManager implements SystemUserServices {
     private final SystemUserDao systemUserDao;
     private final SystemUserDtoConverter systemUserDtoConverter;
 
