@@ -1,6 +1,6 @@
 package com.kyb.sahabul.api.controllers;
 
-import com.kyb.sahabul.business.abstracts.SystemUserService;
+import com.kyb.sahabul.business.abstracts.SystemUserServices;
 import com.kyb.sahabul.entities.concretes.SystemUser;
 import com.kyb.sahabul.entities.dto.SystemUserDto;
 import org.springframework.http.ResponseEntity;
@@ -12,25 +12,25 @@ import java.util.List;
 @RequestMapping(value = "api/SystemUser")
 public class SystemUserController {
 
-    private final SystemUserService systemUserService;
+    private final SystemUserServices systemUserServices;
 
-    public SystemUserController(SystemUserService systemUserService) {
-        this.systemUserService = systemUserService;
+    public SystemUserController(SystemUserServices systemUserServices) {
+        this.systemUserServices = systemUserServices;
     }
     @PostMapping(value = "add")
     public ResponseEntity<SystemUserDto> add(@RequestBody SystemUser systemUser){
-        return ResponseEntity.ok(systemUserService.add(systemUser));
+        return ResponseEntity.ok(systemUserServices.add(systemUser));
     }
 
     @GetMapping(value = "/getAll")
     public ResponseEntity<List<SystemUserDto>> getAll(){
-        return ResponseEntity.ok(systemUserService.getAll());
+        return ResponseEntity.ok(systemUserServices.getAll());
     }
 
 
     @GetMapping(value = "getById")
     public SystemUserDto getById(@RequestParam int id){
-        return systemUserService.getById(id);
+        return systemUserServices.getById(id);
     }
 
 
