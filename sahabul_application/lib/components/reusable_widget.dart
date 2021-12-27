@@ -29,7 +29,7 @@ class ReusableWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                  child: SingleChildScrollView(
+                  child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: 40,
                       vertical: 0,
