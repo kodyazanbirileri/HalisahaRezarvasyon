@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sahabul_application/components/build_btn.dart';
 import 'package:sahabul_application/components/build_email.dart';
-import 'package:sahabul_application/components/reusable_container.dart';
+import 'package:sahabul_application/components/reusable_widget.dart';
 
 class ForgotPassword extends StatelessWidget {
   @override
@@ -33,6 +34,9 @@ class ForgotPassword extends StatelessWidget {
             height: 20,
           ),
           BuildBtn(
+            onPressed: () {
+              Navigator.pushNamed(context, 'login_screen');
+            },
             text: 'Sıfırla',
           ),
         ],

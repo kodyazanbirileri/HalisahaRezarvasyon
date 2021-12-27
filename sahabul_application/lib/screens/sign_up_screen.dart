@@ -3,7 +3,7 @@ import 'package:sahabul_application/components/build_btn.dart';
 import 'package:sahabul_application/components/build_email.dart';
 import 'package:sahabul_application/components/build_name_surname.dart';
 import 'package:sahabul_application/components/build_password.dart';
-import 'package:sahabul_application/components/reusable_container.dart';
+import 'package:sahabul_application/components/reusable_widget.dart';
 
 class SignUpScreen extends StatelessWidget {
   @override
@@ -17,7 +17,7 @@ class SignUpScreen extends StatelessWidget {
             height: 100.0,
           ),
           Text(
-            'Sign Up',
+            'Üye Ol',
             style: TextStyle(
               color: Colors.white,
               fontSize: 40,
@@ -53,6 +53,9 @@ class SignUpScreen extends StatelessWidget {
             height: 30,
           ),
           BuildBtn(
+            onPressed: () {
+              Navigator.pushNamed(context, 'layout');
+            },
             text: 'SIGN UP',
           ),
         ],

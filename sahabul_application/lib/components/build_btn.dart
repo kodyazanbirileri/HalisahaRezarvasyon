@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class BuildBtn extends StatelessWidget {
-  BuildBtn({required this.text});
+  BuildBtn({required this.text, required this.onPressed});
+
+  final Function onPressed;
 
   final String text;
 
@@ -12,9 +14,7 @@ class BuildBtn extends StatelessWidget {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5,
-        onPressed: () {
-          print('Button çalıştı.');
-        },
+        onPressed: () => onPressed(),
         padding: EdgeInsets.all(15),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         color: Colors.white,
