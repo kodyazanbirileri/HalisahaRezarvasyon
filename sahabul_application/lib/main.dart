@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sahabul_application/screens/forgot_password.dart';
 import 'package:sahabul_application/screens/login_screen.dart';
+import 'package:sahabul_application/screens/owner_form.dart';
 import 'package:sahabul_application/screens/profile.dart';
 import 'package:sahabul_application/screens/reservations.dart';
 import 'package:sahabul_application/screens/searching.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         'reservations': (context) => Reservation(),
         'profile': (context) => Profile(),
         'update_information': (context) => UpdateInformation(),
+        'owner_form': (context) => OwnerForm(),
       },
       debugShowCheckedModeBanner: false,
       title: 'Demo',

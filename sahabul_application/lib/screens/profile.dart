@@ -39,11 +39,24 @@ class Profile extends StatelessWidget {
             ],
           ),
         ),
-        GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, 'update_information');
-          },
-          child: Text('Bilgilerimi güncelle.'),
+        Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, 'update_information');
+                },
+                child: Text('Bilgilerimi güncelle.'),
+              ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, 'owner_form');
+                },
+                child: Text('Halı saha sahibi olmak istiyorum.'),
+              )
+            ],
+          ),
         )
       ],
     ));
