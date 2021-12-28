@@ -27,25 +27,24 @@ class Profile extends StatelessWidget {
               ),
             ),
             Container(
+              height: 15,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  //TODO: Son rezervasyon kartı gelecek. ? yoksa bilgisi yazacak.
-                  Card(
-                    child: Text('deneme'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'update_information');
+                    },
+                    child: Text('Bilgilerimi güncelle.'),
                   ),
-                  BuildBtn(
-                      text: 'Rezervasyonlarım',
-                      onPressed: () {
-                        Navigator.pushNamed(context, 'reservations');
-                      })
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, 'owner_form');
+                    },
+                    child: Text('Halı saha sahibi olmak istiyorum.'),
+                  )
                 ],
               ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, 'update_information');
-              },
-              child: Text('Bilgilerimi güncelle.'),
             )
           ],
         ));

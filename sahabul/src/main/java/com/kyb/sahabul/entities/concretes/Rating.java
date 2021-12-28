@@ -1,5 +1,6 @@
 package com.kyb.sahabul.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "ratings")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","ratingPhones"})
 public class Rating {
 
     @Id

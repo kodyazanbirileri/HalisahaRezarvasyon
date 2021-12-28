@@ -1,11 +1,13 @@
 package com.kyb.sahabul.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.swing.text.View;
 import java.util.Date;
 
 @Data
@@ -13,7 +15,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "reservations")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","reservationHour","pitch","user"})
 public class Reservation {
 
     @Id
