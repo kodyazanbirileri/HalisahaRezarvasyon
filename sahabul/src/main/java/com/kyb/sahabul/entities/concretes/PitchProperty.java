@@ -14,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@JsonIgnoreProperties({"hibernateLazyInıtializer","handler","pitch","property"})
 public class PitchProperty {
 
     @Id

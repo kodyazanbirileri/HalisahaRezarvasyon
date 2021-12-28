@@ -12,7 +12,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table(name = "pitch_hours")
 @Entity
-@JsonIgnoreProperties({"hibernateInitializer","handler","hour","pitch"})
 public class PitchHour {
 
     @Id
