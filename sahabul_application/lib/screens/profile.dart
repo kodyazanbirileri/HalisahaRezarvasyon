@@ -31,15 +31,19 @@ class Profile extends StatelessWidget {
               Card(
                 child: Text('deneme'),
               ),
-              BuildBtn(text: 'Rezervasyonlarım', onPressed: () {})
+              BuildBtn(
+                  text: 'Rezervasyonlarım',
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'reservations');
+                  })
             ],
           ),
         ),
         GestureDetector(
-          onTap: (){},
-          child: Text(
-            'Bilgilerimi güncelle.'
-          ),
+          onTap: () {
+            Navigator.pushNamed(context, 'update_information');
+          },
+          child: Text('Bilgilerimi güncelle.'),
         )
       ],
     ));

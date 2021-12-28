@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sahabul_application/screens/profile.dart';
-import 'package:sahabul_application/screens/reservations.dart';
 import 'package:sahabul_application/screens/searching.dart';
 
 class Layout extends StatefulWidget {
@@ -13,7 +12,6 @@ class _LayoutState extends State<Layout> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
-    Reservation(),
     Searching(),
     Profile(),
   ];
@@ -33,11 +31,6 @@ class _LayoutState extends State<Layout> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Color(0xff728840),
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            backgroundColor: Colors.white,
-            icon: Icon(Icons.calendar_today_rounded),
-            label: 'Rezervasyonlarım',
-          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Saha bul',

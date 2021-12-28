@@ -5,6 +5,7 @@ import 'package:sahabul_application/screens/profile.dart';
 import 'package:sahabul_application/screens/reservations.dart';
 import 'package:sahabul_application/screens/searching.dart';
 import 'package:sahabul_application/screens/sign_up_screen.dart';
+import 'package:sahabul_application/screens/update_information.dart';
 
 import 'layout.dart';
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         'searching': (context) => Searching(),
         'reservations': (context) => Reservation(),
         'profile': (context) => Profile(),
+        'update_information': (context) => UpdateInformation(),
       },
       debugShowCheckedModeBanner: false,
       title: 'Demo',
