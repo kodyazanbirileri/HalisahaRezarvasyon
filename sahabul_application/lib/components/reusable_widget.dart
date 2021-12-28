@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ReusableWidget extends StatelessWidget {
-  ReusableWidget({required this.child});
+  ReusableWidget(
+      {required this.child,
+      required this.paddingHorizontal,
+      required this.paddingvertical});
   final Widget child;
+  final double paddingHorizontal;
+  final double paddingvertical;
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +36,8 @@ class ReusableWidget extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: 40,
-                      vertical: 0,
+                      horizontal: paddingHorizontal,
+                      vertical: paddingvertical,
                     ),
                     child: child,
                   ),
