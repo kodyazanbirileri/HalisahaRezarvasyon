@@ -10,38 +10,40 @@ class ForgotPassword extends StatelessWidget {
     return ReusableWidget(
       paddingHorizontal: 40,
       paddingvertical: 0,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SizedBox(
-            height: 100.0,
-          ),
-          Text(
-            'Şifremi Sıfırla',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              height: 100.0,
             ),
-          ),
-          SizedBox(
-            height: 100,
-          ),
-          BuildEmail(
-            height: 60,
-            hintText: "Email",
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          BuildBtn(
-            onPressed: () {
-              Navigator.pushNamed(context, 'login_screen');
-            },
-            text: 'Sıfırla',
-          ),
-        ],
+            Text(
+              'Şifremi Sıfırla',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 100,
+            ),
+            BuildEmail(
+              height: 60,
+              hintText: "Email",
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            BuildBtn(
+              onPressed: () {
+                Navigator.pushNamed(context, 'login_screen');
+              },
+              text: 'Sıfırla',
+            ),
+          ],
+        ),
       ),
     );
   }

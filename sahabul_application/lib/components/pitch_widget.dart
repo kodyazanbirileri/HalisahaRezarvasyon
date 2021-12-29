@@ -16,7 +16,7 @@ class PitchWidget extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(10).copyWith(left: 0),
           child: ListTile(
-            leading: Image.network(pitch.picture_url),
+            leading: Image.network(pitch.picture_url[0]),
             title: Text(pitch.pitch_name),
             subtitle: Text(pitch.address),
             trailing: Icon(Icons.arrow_forward),
