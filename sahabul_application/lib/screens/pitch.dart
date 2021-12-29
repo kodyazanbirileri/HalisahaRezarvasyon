@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sahabul_application/Models/halisaha.dart';
+import 'package:sahabul_application/components/build_btn.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
 
 class PitchPage extends StatefulWidget {
@@ -8,6 +9,36 @@ class PitchPage extends StatefulWidget {
 }
 
 class _PitchPageState extends State<PitchPage> {
+  int selectedImage = 0;
+
+  GestureDetector buildSmallImages(int index, PitchArguments argument) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedImage = index;
+        });
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 10),
+        padding: EdgeInsets.all(4),
+        height: 64,
+        width: 64,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+              width: 5,
+              color:
+                  selectedImage == index ? Colors.green : Colors.transparent),
+        ),
+        child: Image.network(
+          argument.pitchIndex.picture_url[index],
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final PitchArguments argument =
@@ -16,15 +47,26 @@ class _PitchPageState extends State<PitchPage> {
       paddingHorizontal: 20,
       paddingvertical: 0,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(argument.pitchIndex.pitch_name),
+          Text(
+            argument.pitchIndex.pitch_name,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
           SizedBox(
             width: 300,
             height: 200,
             child: AspectRatio(
               aspectRatio: 1,
               child: Image.network(
-                argument.pitchIndex.picture_url[0],
+                argument.pitchIndex.picture_url[selectedImage],
                 fit: BoxFit.cover,
               ),
             ),
@@ -38,28 +80,11 @@ class _PitchPageState extends State<PitchPage> {
           ),
           Text(argument.pitchIndex.tel_number),
           Text(argument.pitchIndex.address),
+          BuildBtn(text: 'Rezervasyon Yap', onPressed: () {})
         ],
       ),
     );
   }
-}
-
-Container buildSmallImages(int index, PitchArguments argument) {
-  return Container(
-    margin: EdgeInsets.only(right: 10),
-    padding: EdgeInsets.all(8),
-    height: 48,
-    width: 48,
-    decoration: BoxDecoration(
-      color: Colors.transparent,
-      borderRadius: BorderRadius.circular(10),
-      border: Border.all(color: Colors.black),
-    ),
-    child: Image.network(
-      argument.pitchIndex.picture_url[index],
-      fit: BoxFit.cover,
-    ),
-  );
 }
 
 class PitchArguments {
