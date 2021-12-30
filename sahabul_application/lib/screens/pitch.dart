@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sahabul_application/Models/halisaha.dart';
+import 'package:sahabul_application/Models/pitch_model.dart';
 import 'package:sahabul_application/components/build_btn.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
 
@@ -44,8 +44,13 @@ class _PitchPageState extends State<PitchPage> {
     final PitchArguments argument =
         ModalRoute.of(context)!.settings.arguments as PitchArguments;
     return ReusableWidget(
+      bar: AppBar(
+        elevation: 0,
+        backgroundColor: Color(0xff728840),
+        leading: Container(),
+      ),
       paddingHorizontal: 20,
-      paddingvertical: 0,
+      paddingVertical: 0,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

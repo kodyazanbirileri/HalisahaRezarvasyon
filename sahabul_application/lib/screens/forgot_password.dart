@@ -8,15 +8,20 @@ class ForgotPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ReusableWidget(
+      bar: AppBar(
+        elevation: 0,
+        backgroundColor: Color(0xff728840),
+        leading: Container(),
+      ),
       paddingHorizontal: 40,
-      paddingvertical: 0,
+      paddingVertical: 0,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              height: 100.0,
+              height: 70.0,
             ),
             Text(
               'Şifremi Sıfırla',

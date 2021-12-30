@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sahabul_application/Models/halisaha.dart';
+import 'package:sahabul_application/Models/pitch_model.dart';
 
 class PitchWidget extends StatelessWidget {
   late Pitch pitch;

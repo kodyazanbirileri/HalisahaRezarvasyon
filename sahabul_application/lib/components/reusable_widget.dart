@@ -5,14 +5,18 @@ class ReusableWidget extends StatelessWidget {
   ReusableWidget(
       {required this.child,
       required this.paddingHorizontal,
-      required this.paddingvertical});
+      required this.paddingVertical,
+      required this.bar});
+
   final Widget child;
   final double paddingHorizontal;
-  final double paddingvertical;
+  final double paddingVertical;
+  final AppBar bar;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: bar,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: SafeArea(
@@ -23,21 +27,12 @@ class ReusableWidget extends StatelessWidget {
                   height: double.infinity,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0x66728840),
-                        Color(0x99728840),
-                        Color(0xcc728840),
-                        Color(0xff728840),
-                      ],
-                    ),
+                    color: Color(0xff728840),
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: paddingHorizontal,
-                      vertical: paddingvertical,
+                      vertical: paddingVertical,
                     ),
                     child: child,
                   ),

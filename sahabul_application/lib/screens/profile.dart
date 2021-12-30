@@ -6,8 +6,13 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ReusableWidget(
+      bar: AppBar(
+        elevation: 0,
+        backgroundColor: Color(0xff728840),
+        leading: Container(),
+      ),
       paddingHorizontal: 40,
-      paddingvertical: 0,
+      paddingVertical: 0,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
