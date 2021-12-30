@@ -23,7 +23,11 @@ class _ReservationState extends State<Reservation> {
         itemCount: RezervationModel.Rezervations.length,
         itemBuilder: (context, index) => RezervationWidget(
           rezervation: RezervationModel.Rezervations[index],
-          press: () {},
+          press: () {
+            setState(() {
+              RezervationModel.Rezervations.removeAt(index);
+            });
+          },
         ),
       ),
     );

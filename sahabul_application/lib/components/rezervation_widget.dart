@@ -3,7 +3,7 @@ import 'package:sahabul_application/Models/rezervation_model.dart';
 
 class RezervationWidget extends StatelessWidget {
   late Rezervation rezervation;
-  late GestureTapCallback press;
+  late Function press;
   RezervationWidget({Key? key, required this.rezervation, required this.press})
       : assert(rezervation != null),
         super(key: key);
@@ -12,7 +12,6 @@ class RezervationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: GestureDetector(
-        onTap: press,
         child: Padding(
           padding: EdgeInsets.all(10).copyWith(left: 0),
           child: ListTile(
@@ -26,7 +25,12 @@ class RezervationWidget extends StatelessWidget {
                     'Saat Aralığı: ${rezervation.startHour}- ${rezervation.endHour}'),
               ],
             ),
-            trailing: Icon(Icons.close),
+            trailing: IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () {
+                press();
+              },
+            ),
           ),
         ),
       ),
