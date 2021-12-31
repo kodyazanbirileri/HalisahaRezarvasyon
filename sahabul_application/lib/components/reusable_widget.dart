@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class ReusableWidget extends StatelessWidget {
   ReusableWidget(
@@ -17,28 +16,25 @@ class ReusableWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: bar,
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: SafeArea(
-          child: GestureDetector(
-            child: Stack(
-              children: <Widget>[
-                Container(
-                  height: double.infinity,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Color(0xff728840),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: paddingHorizontal,
-                      vertical: paddingVertical,
-                    ),
-                    child: child,
-                  ),
+      body: SafeArea(
+        child: GestureDetector(
+          child: Stack(
+            children: <Widget>[
+              Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Color(0xff728840),
                 ),
-              ],
-            ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: paddingHorizontal,
+                    vertical: paddingVertical,
+                  ),
+                  child: child,
+                ),
+              ),
+            ],
           ),
         ),
       ),
