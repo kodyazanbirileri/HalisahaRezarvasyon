@@ -85,7 +85,11 @@ class _PitchPageState extends State<PitchPage> {
           ),
           Text(argument.pitchIndex.tel_number),
           Text(argument.pitchIndex.address),
-          BuildBtn(text: 'Rezervasyon Yap', onPressed: () {})
+          BuildBtn(
+              text: 'Rezervasyon Yap',
+              onPressed: () {
+                Navigator.pushNamed(context, 'make_reservation');
+              })
         ],
       ),
     );

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sahabul_application/screens/forgot_password.dart';
 import 'package:sahabul_application/screens/login_screen.dart';
-import 'package:sahabul_application/screens/pitch.dart';
+import 'package:sahabul_application/screens/make_reservation.dart';
 import 'package:sahabul_application/screens/owner_form.dart';
+import 'package:sahabul_application/screens/pitch.dart';
 import 'package:sahabul_application/screens/profile.dart';
 import 'package:sahabul_application/screens/reservations.dart';
 import 'package:sahabul_application/screens/searching.dart';
@@ -14,6 +15,8 @@ import 'layout.dart';
 void main() {
   runApp(MyApp());
 }
+
+//TODO: AppBar ile geri sayfalar arası geçiş sağlanmalı.
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -32,6 +35,7 @@ class MyApp extends StatelessWidget {
         'update_information': (context) => UpdateInformation(),
         'pitch': (context) => PitchPage(),
         'owner_form': (context) => OwnerForm(),
+        'make_reservation': (context) => MakeRezervation(),
       },
       debugShowCheckedModeBanner: false,
       title: 'Demo',
