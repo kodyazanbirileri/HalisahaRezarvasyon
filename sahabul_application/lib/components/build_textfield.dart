@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-class BuildName extends StatelessWidget {
+class BuildTextfield extends StatelessWidget {
+  BuildTextfield({required this.text, required this.icon});
+  late Icon icon;
+  late String text;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,11 +24,8 @@ class BuildName extends StatelessWidget {
         ),
         decoration: InputDecoration(
           border: InputBorder.none,
-          prefixIcon: Icon(
-            Icons.person,
-            color: Color(0xff728840),
-          ),
-          hintText: "Name Surname",
+          prefixIcon: icon,
+          hintText: text,
           hintStyle: TextStyle(
             color: Colors.black12,
           ),

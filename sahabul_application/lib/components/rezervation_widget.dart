@@ -15,8 +15,8 @@ class RezervationWidget extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(10).copyWith(left: 0),
           child: ListTile(
-            leading: Image.network(rezervation.pitch.picture_url[0]),
-            title: Text(rezervation.pitch.pitch_name),
+            leading: Image.network(rezervation.pitch.pictureUrl[0]),
+            title: Text(rezervation.pitch.pitchName),
             subtitle: Column(
               children: [
                 Text(

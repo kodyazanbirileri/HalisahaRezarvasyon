@@ -32,7 +32,7 @@ class _PitchPageState extends State<PitchPage> {
                   selectedImage == index ? Colors.green : Colors.transparent),
         ),
         child: Image.network(
-          argument.pitchIndex.picture_url[index],
+          argument.pitchIndex.pictureUrl[index],
           fit: BoxFit.cover,
         ),
       ),
@@ -55,7 +55,7 @@ class _PitchPageState extends State<PitchPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            argument.pitchIndex.pitch_name,
+            argument.pitchIndex.pitchName,
             style: TextStyle(
               color: Colors.white,
               fontSize: 24,
@@ -71,7 +71,7 @@ class _PitchPageState extends State<PitchPage> {
             child: AspectRatio(
               aspectRatio: 1,
               child: Image.network(
-                argument.pitchIndex.picture_url[selectedImage],
+                argument.pitchIndex.pictureUrl[selectedImage],
                 fit: BoxFit.cover,
               ),
             ),
@@ -79,11 +79,11 @@ class _PitchPageState extends State<PitchPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ...List.generate(argument.pitchIndex.picture_url.length,
+              ...List.generate(argument.pitchIndex.pictureUrl.length,
                   (index) => buildSmallImages(index, argument)),
             ],
           ),
-          Text(argument.pitchIndex.tel_number),
+          Text(argument.pitchIndex.telNumber),
           Text(argument.pitchIndex.address),
           BuildBtn(
               text: 'Rezervasyon Yap',

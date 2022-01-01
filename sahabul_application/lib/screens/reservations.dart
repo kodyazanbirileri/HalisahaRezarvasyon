@@ -20,12 +20,12 @@ class _ReservationState extends State<Reservation> {
       paddingHorizontal: 40,
       paddingVertical: 0,
       child: ListView.builder(
-        itemCount: RezervationModel.Rezervations.length,
+        itemCount: RezervationModel.reservations.length,
         itemBuilder: (context, index) => RezervationWidget(
-          rezervation: RezervationModel.Rezervations[index],
+          rezervation: RezervationModel.reservations[index],
           press: () {
             setState(() {
-              RezervationModel.Rezervations.removeAt(index);
+              RezervationModel.reservations.removeAt(index);
             });
           },
         ),

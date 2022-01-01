@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sahabul_application/components/build_dropdown.dart';
+import 'package:sahabul_application/components/build_textfield.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
 
-class OwnerForm extends StatefulWidget {
-  @override
-  State<OwnerForm> createState() => _OwnerFormState();
-}
-
-class _OwnerFormState extends State<OwnerForm> {
-  String? value;
+class OwnerForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ReusableWidget(
@@ -22,100 +18,35 @@ class _OwnerFormState extends State<OwnerForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  DropdownButton<String>(
-                    value: value,
-                    hint: Text('İl seçin'),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        this.value = newValue;
-                      });
-                    },
-                    items: <String>['One', 'Two', 'Free', 'Four']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                  DropdownButton<String>(
-                    value: value,
-                    hint: Text('İlçe Seçin'),
-                    onChanged: value == null
-                        ? null
-                        : (String? value) {
-                            setState(() {
-                              this.value = value;
-                            });
-                          },
-                    items: <String>['One', 'Two', 'Free', 'Four']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ],
-              ),
+              BuildDropdown(),
               SizedBox(
                 height: 20,
               ),
-              Container(
-                child: Column(
-                  children: [
-                    Text(
-                      'Halı saha adı:',
-                      textAlign: TextAlign.left,
-                    ),
-                    TextField(
-                      cursorColor: Colors.white,
-                      decoration: InputDecoration(
-                        hintText: 'enter here',
-                      ),
-                    ),
-                  ],
+              BuildTextfield(
+                text: 'Halısaha Adı',
+                icon: Icon(
+                  Icons.add_business,
+                  color: Color(0xff728840),
                 ),
               ),
               SizedBox(
                 height: 20,
               ),
-              Container(
-                child: Column(
-                  children: [
-                    Text(
-                      'Halı saha numarası:',
-                      textAlign: TextAlign.left,
-                    ),
-                    TextField(
-                      cursorColor: Colors.white,
-                      decoration: InputDecoration(
-                        hintText: 'enter here',
-                      ),
-                    ),
-                  ],
+              BuildTextfield(
+                text: '5*********',
+                icon: Icon(
+                  Icons.add_call,
+                  color: Color(0xff728840),
                 ),
               ),
               SizedBox(
                 height: 20,
               ),
-              Container(
-                child: Column(
-                  children: [
-                    Text(
-                      'Halı saha adresi:',
-                      textAlign: TextAlign.left,
-                    ),
-                    TextField(
-                      cursorColor: Colors.white,
-                      decoration: InputDecoration(
-                        hintText: 'enter here',
-                      ),
-                    ),
-                  ],
+              BuildTextfield(
+                text: 'Adres detay',
+                icon: Icon(
+                  Icons.add_location,
+                  color: Color(0xff728840),
                 ),
               ),
               TextButton(

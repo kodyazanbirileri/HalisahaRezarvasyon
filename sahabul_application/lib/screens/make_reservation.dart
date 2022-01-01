@@ -13,7 +13,7 @@ class _MakeRezervationState extends State<MakeRezervation> {
   Widget build(BuildContext context) {
     return ReusableWidget(
       paddingHorizontal: 40,
-      paddingVertical: 20,
+      paddingVertical: 0,
       bar: AppBar(
         elevation: 0,
         backgroundColor: Color(0xff728840),
@@ -48,6 +48,14 @@ class _MakeRezervationState extends State<MakeRezervation> {
               },
             ),
           ),
+          SizedBox(
+            height: 15,
+          ),
+          BuildBtn(
+              text: 'Rezervasyon Yap',
+              onPressed: () {
+                print('Rezervasyon yapıldı');
+              }),
         ],
       ),
     );

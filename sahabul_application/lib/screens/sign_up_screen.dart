@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sahabul_application/components/build_btn.dart';
 import 'package:sahabul_application/components/build_email.dart';
-import 'package:sahabul_application/components/build_name_surname.dart';
 import 'package:sahabul_application/components/build_password.dart';
+import 'package:sahabul_application/components/build_textfield.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -35,7 +35,13 @@ class SignUpScreen extends StatelessWidget {
             SizedBox(
               height: 100,
             ),
-            BuildName(),
+            BuildTextfield(
+              icon: Icon(
+                Icons.person,
+                color: Color(0xff728840),
+              ),
+              text: 'İsim Soyisim',
+            ),
             SizedBox(
               height: 10,
             ),

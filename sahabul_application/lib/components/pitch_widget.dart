@@ -15,12 +15,14 @@ class PitchWidget extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(10).copyWith(left: 0),
           child: ListTile(
-            leading: Image.network(pitch.picture_url[0]),
-            title: Text(pitch.pitch_name),
+            leading: Image.network(pitch.pictureUrl[0]),
+            title: Text(pitch.pitchName),
             subtitle: Text(pitch.address),
             trailing: IconButton(
               icon: Icon(Icons.arrow_forward),
-              onPressed: (){press();},
+              onPressed: () {
+                press();
+              },
             ),
           ),
         ),
