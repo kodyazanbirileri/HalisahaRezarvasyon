@@ -42,6 +42,7 @@ class ForgotPassword extends StatelessWidget {
               height: 20,
             ),
             BuildBtn(
+              paddingSynmetric: 25,
               onPressed: () {
                 Navigator.pushNamed(context, 'login_screen');
               },

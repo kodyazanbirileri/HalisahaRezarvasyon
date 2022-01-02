@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class BuildBtn extends StatelessWidget {
-  BuildBtn({required this.text, required this.onPressed});
+  BuildBtn(
+      {required this.text,
+      required this.onPressed,
+      required this.paddingSynmetric});
 
+  final double paddingSynmetric;
   final Function onPressed;
 
   final String text;
@@ -10,7 +14,7 @@ class BuildBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25),
+      padding: EdgeInsets.symmetric(vertical: paddingSynmetric),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5,

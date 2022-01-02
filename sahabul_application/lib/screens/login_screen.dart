@@ -54,6 +54,7 @@ class LoginScreen extends StatelessWidget {
               ],
             ),
             BuildBtn(
+              paddingSynmetric: 25,
               onPressed: () {
                 Navigator.pushNamed(context, 'layout');
               },

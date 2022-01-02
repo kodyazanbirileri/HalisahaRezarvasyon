@@ -33,7 +33,7 @@ class SignUpScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 100,
+              height: 60,
             ),
             BuildTextfield(
               icon: Icon(
@@ -41,6 +41,16 @@ class SignUpScreen extends StatelessWidget {
                 color: Color(0xff728840),
               ),
               text: 'İsim Soyisim',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            BuildTextfield(
+              icon: Icon(
+                Icons.add_call,
+                color: Color(0xff728840),
+              ),
+              text: '5*********',
             ),
             SizedBox(
               height: 10,
@@ -67,6 +77,7 @@ class SignUpScreen extends StatelessWidget {
               height: 30,
             ),
             BuildBtn(
+              paddingSynmetric: 25,
               onPressed: () {
                 Navigator.pushNamed(context, 'layout');
               },

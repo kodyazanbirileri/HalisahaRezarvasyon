@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sahabul_application/Models/pitch_model.dart';
 import 'package:sahabul_application/components/build_btn.dart';
+import 'package:sahabul_application/components/pitch_widget.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
 
 class Profile extends StatelessWidget {
@@ -7,6 +9,13 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ReusableWidget(
       bar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'Hesabım',
+          style: TextStyle(
+            fontSize: 25,
+          ),
+        ),
         elevation: 0,
         backgroundColor: Color(0xff728840),
         leading: Container(),
@@ -14,7 +23,6 @@ class Profile extends StatelessWidget {
       paddingHorizontal: 40,
       paddingVertical: 0,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
@@ -22,48 +30,117 @@ class Profile extends StatelessWidget {
               children: [
                 Icon(
                   Icons.account_circle_rounded,
-                  size: 120,
+                  size: 150,
+                  color: Colors.white,
                 ),
-                //TODO: Style'lar güncellenecek.
-                Text('Sırat Semih Çöp'),
-                Text('05061583811'),
-                Text('siratsemih@gmail.com'),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'Sırat Semih Çöp',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 32,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  '05061583811',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'siratsemih@gmail.com',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
               ],
             ),
           ),
           Container(
             child: Column(
               children: [
-                Text('Son Rezervasyon'),
-                //TODO: Son rezervasyon kartı gelecek. ? yoksa bilgisi yazacak.
-                // PitchWidget(
-                //     pitch: Pitch(
-                //         pitch_name: 'Örnek Halısaha',
-                //         address: 'Konaklar Mahallesi Gönül Sokak',
-                //         tel_number: '05334434343',
-                //         picture_url:
-                //             'https://iatkv.tmgrup.com.tr/2337c6/600/314/2/0/637/332?u=https%3A%2F%2Fitkv.tmgrup.com.tr%2F2021%2F06%2F02%2Fhali-sahalar-acik-mi-kapali-mi-hali-saha-maclari-yasak-mi-serbest-mi-calisma-saatleri-1622630415537.jpg'),
-                //     press: () {}),
+                Text(
+                  'Son Rezervasyonum',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                ),
+                PitchWidget(
+                    pitch: Pitch(
+                        pitchName: PitchModel.pitchs[0].pitchName,
+                        address: PitchModel.pitchs[0].address,
+                        telNumber: PitchModel.pitchs[0].telNumber,
+                        pictureUrl: PitchModel.pitchs[0].pictureUrl),
+                    press: () {}),
                 BuildBtn(
+                    paddingSynmetric: 0,
                     text: 'Rezervasyonlarım',
                     onPressed: () {
                       Navigator.pushNamed(context, 'reservations');
-                    })
+                    }),
+                SizedBox(
+                  height: 20,
+                ),
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, 'update_information');
-            },
-            child: Text('Bilgilerimi güncelle.'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, 'update_information');
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 3),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    'Bilgilerimi güncelle',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, 'owner_form');
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white, width: 3),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    'Halısaha Sahibiyim',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, 'owner_form');
-            },
-            child: Text('Halı saha sahibi olmak istiyorum.'),
-          )
         ],
       ),
     );

@@ -24,6 +24,7 @@ class _MakeRezervationState extends State<MakeRezervation> {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 40, vertical: 0),
             child: BuildBtn(
+                paddingSynmetric: 25,
                 text: 'Tarih Seçiniz',
                 onPressed: () {
                   showDatePicker(
@@ -52,6 +53,7 @@ class _MakeRezervationState extends State<MakeRezervation> {
             height: 15,
           ),
           BuildBtn(
+              paddingSynmetric: 25,
               text: 'Rezervasyon Yap',
               onPressed: () {
                 print('Rezervasyon yapıldı');

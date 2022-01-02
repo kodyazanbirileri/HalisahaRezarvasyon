@@ -22,14 +22,10 @@ class _BuildDropdownState extends State<BuildDropdown> {
       children: [
         Container(
           width: 150,
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-              color: Colors.black,
-              width: 1,
-            ),
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
@@ -52,14 +48,10 @@ class _BuildDropdownState extends State<BuildDropdown> {
         ),
         Container(
           width: 150,
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-              color: Colors.black,
-              width: 1,
-            ),
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
