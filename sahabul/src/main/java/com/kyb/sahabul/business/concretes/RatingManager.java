@@ -10,6 +10,7 @@ import com.kyb.sahabul.entities.dto.RatingDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateRatingPhotoForRatingRequest;
 import com.kyb.sahabul.entities.dto.createrequest.CreateRatingPhotoRequest;
 import com.kyb.sahabul.entities.dto.createrequest.CreateRatingRequest;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class RatingManager implements RatingServices {
     private final ReservationServices reservationServices;
     private final RatingPhotoServices ratingPhotoServices;
 
+    @Lazy
     public RatingManager(RatingDao ratingDao, RatingDtoConverter ratingDtoConverter, ReservationServices reservationServices, RatingPhotoServices ratingPhotoServices) {
         this.ratingDao = ratingDao;
         this.ratingDtoConverter = ratingDtoConverter;
