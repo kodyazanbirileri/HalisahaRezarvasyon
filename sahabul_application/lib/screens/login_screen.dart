@@ -6,7 +6,23 @@ import 'package:sahabul_application/components/build_password.dart';
 import 'package:sahabul_application/components/build_sign_up_btn.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final emailTextController = TextEditingController();
+  final passwordTextController = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    emailTextController.dispose();
+    passwordTextController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ReusableWidget(
@@ -37,6 +53,7 @@ class LoginScreen extends StatelessWidget {
               height: 100,
             ),
             BuildEmail(
+              textEditingController: emailTextController,
               height: 60,
               hintText: "Email",
             ),
@@ -44,6 +61,7 @@ class LoginScreen extends StatelessWidget {
               height: 20,
             ),
             BuildPassword(
+              textEditingController: passwordTextController,
               hintText: 'Parola',
               height: 60,
             ),
@@ -56,6 +74,8 @@ class LoginScreen extends StatelessWidget {
             BuildBtn(
               paddingSynmetric: 25,
               onPressed: () {
+                print(
+                    'Kullanıcı Adı: ${emailTextController.text} - Şifre: ${passwordTextController.text}');
                 Navigator.pushNamed(context, 'layout');
               },
               text: 'Giriş Yap',

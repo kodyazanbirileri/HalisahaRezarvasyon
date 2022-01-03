@@ -5,7 +5,25 @@ import 'package:sahabul_application/components/build_password.dart';
 import 'package:sahabul_application/components/build_textfield.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
 
-class UpdateInformation extends StatelessWidget {
+class UpdateInformation extends StatefulWidget {
+  @override
+  State<UpdateInformation> createState() => _UpdateInformationState();
+}
+
+class _UpdateInformationState extends State<UpdateInformation> {
+  final nameSurnameController = TextEditingController();
+  final phoneNumberController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    nameSurnameController.dispose();
+    phoneNumberController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ReusableWidget(
@@ -36,6 +54,7 @@ class UpdateInformation extends StatelessWidget {
               height: 60,
             ),
             BuildTextfield(
+              textEditingController: nameSurnameController,
               icon: Icon(
                 Icons.person,
                 color: Color(0xff728840),
@@ -46,6 +65,7 @@ class UpdateInformation extends StatelessWidget {
               height: 10,
             ),
             BuildTextfield(
+              textEditingController: phoneNumberController,
               icon: Icon(
                 Icons.add_call,
                 color: Color(0xff728840),
@@ -56,6 +76,7 @@ class UpdateInformation extends StatelessWidget {
               height: 10,
             ),
             BuildEmail(
+              textEditingController: emailController,
               height: 40,
               hintText: "Email",
             ),
@@ -63,6 +84,7 @@ class UpdateInformation extends StatelessWidget {
               height: 10,
             ),
             BuildPassword(
+              textEditingController: passwordController,
               height: 40,
               hintText: "Password",
             ),

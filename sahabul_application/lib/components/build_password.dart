@@ -4,9 +4,11 @@ class BuildPassword extends StatelessWidget {
   BuildPassword({
     required this.height,
     required this.hintText,
+    required this.textEditingController,
   });
   final double height;
   final String hintText;
+  final TextEditingController textEditingController;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,6 +22,7 @@ class BuildPassword extends StatelessWidget {
       ),
       height: height, //60
       child: TextField(
+        controller: textEditingController,
         textAlignVertical: TextAlignVertical.center,
         obscureText: true,
         style: TextStyle(

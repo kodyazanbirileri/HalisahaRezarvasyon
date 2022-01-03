@@ -4,9 +4,12 @@ class BuildEmail extends StatelessWidget {
   BuildEmail({
     required this.height,
     required this.hintText,
+    required this.textEditingController,
   });
   final double height;
   final String hintText;
+  final TextEditingController textEditingController;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,6 +23,7 @@ class BuildEmail extends StatelessWidget {
       ),
       height: height,
       child: TextField(
+        controller: textEditingController,
         textAlignVertical: TextAlignVertical.center,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(

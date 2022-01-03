@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 class BuildTextfield extends StatelessWidget {
-  BuildTextfield({required this.text, required this.icon});
+  BuildTextfield(
+      {required this.text,
+      required this.icon,
+      required this.textEditingController});
   late Icon icon;
   late String text;
+  late TextEditingController textEditingController;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,6 +21,7 @@ class BuildTextfield extends StatelessWidget {
       ),
       height: 40,
       child: TextField(
+        controller: textEditingController,
         textAlignVertical: TextAlignVertical.center,
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(

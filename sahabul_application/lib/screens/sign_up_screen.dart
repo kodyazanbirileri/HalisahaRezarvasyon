@@ -5,7 +5,34 @@ import 'package:sahabul_application/components/build_password.dart';
 import 'package:sahabul_application/components/build_textfield.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  late String email;
+  late String phone;
+  late String password;
+  late String nameSurname;
+  final nameSurnameController = TextEditingController();
+  final phoneNumberController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    nameSurnameController.dispose();
+    phoneNumberController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ReusableWidget(
@@ -36,6 +63,7 @@ class SignUpScreen extends StatelessWidget {
               height: 60,
             ),
             BuildTextfield(
+              textEditingController: nameSurnameController,
               icon: Icon(
                 Icons.person,
                 color: Color(0xff728840),
@@ -46,6 +74,7 @@ class SignUpScreen extends StatelessWidget {
               height: 10,
             ),
             BuildTextfield(
+              textEditingController: phoneNumberController,
               icon: Icon(
                 Icons.add_call,
                 color: Color(0xff728840),
@@ -56,6 +85,7 @@ class SignUpScreen extends StatelessWidget {
               height: 10,
             ),
             BuildEmail(
+              textEditingController: emailController,
               height: 40,
               hintText: "Email",
             ),
@@ -63,23 +93,19 @@ class SignUpScreen extends StatelessWidget {
               height: 10,
             ),
             BuildPassword(
+              textEditingController: passwordController,
               height: 40,
               hintText: "Password",
             ),
             SizedBox(
               height: 10,
             ),
-            BuildPassword(
-              height: 40,
-              hintText: "Password Again",
-            ),
-            SizedBox(
-              height: 30,
-            ),
             BuildBtn(
               paddingSynmetric: 25,
               onPressed: () {
-                Navigator.pushNamed(context, 'layout');
+                nameSurname = nameSurnameController.text;
+                print(nameSurname);
+                // Navigator.pushNamed(context, 'layout');
               },
               text: 'SIGN UP',
             ),
