@@ -1,10 +1,12 @@
 package com.kyb.sahabul.business.concretes;
 
+import com.kyb.sahabul.business.abstracts.ReservationServices;
 import com.kyb.sahabul.business.abstracts.SubscriptionServices;
 import com.kyb.sahabul.core.converter.SubscriptionDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.SubscriptionDao;
 import com.kyb.sahabul.entities.concretes.Subscription;
 import com.kyb.sahabul.entities.dto.SubscriptionDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreateSubscriptionRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,10 +16,12 @@ import java.util.stream.Collectors;
 public class SubscriptionManager implements SubscriptionServices {
     private final SubscriptionDao subscriptionDao;
     private final SubscriptionDtoConverter subscriptionDtoConverter;
+    private final ReservationServices reservationServices;
 
-    public SubscriptionManager(SubscriptionDao subscriptionDao, SubscriptionDtoConverter subscriptionDtoConverter) {
+    public SubscriptionManager(SubscriptionDao subscriptionDao, SubscriptionDtoConverter subscriptionDtoConverter, ReservationServices reservationServices) {
         this.subscriptionDao = subscriptionDao;
         this.subscriptionDtoConverter = subscriptionDtoConverter;
+        this.reservationServices = reservationServices;
     }
 
     @Override
@@ -34,7 +38,10 @@ public class SubscriptionManager implements SubscriptionServices {
 
 
     @Override
-    public SubscriptionDto add(Subscription subscription) {
+    public SubscriptionDto add(CreateSubscriptionRequest from) {
+        Subscription subscription = new Subscription();
+        subscription.setReservation(reservationServices.findById(from.getReservationId()));
+
         return subscriptionDtoConverter.convert(subscriptionDao.save(subscription));
     }
 

@@ -28,8 +28,9 @@ public class CityManager implements CityServices {
 
     @Override
     public City findById(int id) {
-        return cityDao.getOne(id);
+        return null;
     }
+
 
     @Override
     public CityDto add(City city) {

@@ -1,10 +1,12 @@
 package com.kyb.sahabul.business.concretes;
 
 import com.kyb.sahabul.business.abstracts.RatingPhotoServices;
+import com.kyb.sahabul.business.abstracts.RatingServices;
 import com.kyb.sahabul.core.converter.RatingPhotoDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.RatingPhotoDao;
 import com.kyb.sahabul.entities.concretes.RatingPhoto;
 import com.kyb.sahabul.entities.dto.RatingPhotoDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreateRatingPhotoRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,10 +16,12 @@ import java.util.stream.Collectors;
 public class RatingPhotoManager implements RatingPhotoServices {
     private final RatingPhotoDao ratingPhotoDao;
     private final RatingPhotoDtoConverter ratingPhotoDtoConverter;
+    private final RatingServices ratingServices;
 
-    public RatingPhotoManager(RatingPhotoDao ratingPhotoDao, RatingPhotoDtoConverter ratingPhotoDtoConverter) {
+    public RatingPhotoManager(RatingPhotoDao ratingPhotoDao, RatingPhotoDtoConverter ratingPhotoDtoConverter, RatingServices ratingServices) {
         this.ratingPhotoDao = ratingPhotoDao;
         this.ratingPhotoDtoConverter = ratingPhotoDtoConverter;
+        this.ratingServices = ratingServices;
     }
 
     @Override
@@ -33,8 +37,13 @@ public class RatingPhotoManager implements RatingPhotoServices {
     }
 
     @Override
-    public RatingPhotoDto add(RatingPhoto ratingPhoto) {
-        return ratingPhotoDtoConverter.convert(ratingPhotoDao.save(ratingPhoto));
+    public RatingPhotoDto add(CreateRatingPhotoRequest from) {
+        RatingPhoto tempRatingPhoto = new RatingPhoto();
+
+        tempRatingPhoto.setRating(ratingServices.findById(from.getRatingId()));
+        tempRatingPhoto.setPhotoPath(from.getPhotoPath());
+
+        return ratingPhotoDtoConverter.convert(ratingPhotoDao.save(tempRatingPhoto));
     }
 
     @Override

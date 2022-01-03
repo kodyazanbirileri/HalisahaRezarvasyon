@@ -21,14 +21,16 @@ public class DistrictManager implements DistrictServices {
     }
 
     @Override
-    public DistrictDto getById(int id) {
+    public District findById(int id) {
         return null;
     }
 
     @Override
-    public District findById(int id) {
-        return districtDao.getOne(id);
+    public DistrictDto getById(int id) {
+        return null;
     }
+
+
 
     @Override
     public DistrictDto add(District district) {

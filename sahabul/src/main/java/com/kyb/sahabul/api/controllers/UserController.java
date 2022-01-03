@@ -3,6 +3,7 @@ package com.kyb.sahabul.api.controllers;
 import com.kyb.sahabul.business.abstracts.UserServices;
 import com.kyb.sahabul.entities.concretes.User;
 import com.kyb.sahabul.entities.dto.UserDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreateUserRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,8 +28,8 @@ public class UserController {
 
 
     @PostMapping(value = "/add")
-    void add(@RequestBody User user)
+    ResponseEntity<UserDto> add(@RequestBody CreateUserRequest createUserRequest)
     {
-        this.userServices.add(user);
+        return ResponseEntity.ok(userServices.add(createUserRequest));
     }
 }
