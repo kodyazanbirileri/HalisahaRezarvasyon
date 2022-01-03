@@ -12,20 +12,17 @@ public class PitchWithRatingsDtoConverter {
     private final CityDtoConverter cityDtoConverter;
     private final DistrictDtoConverter districtDtoConverter;
     private final PitchPropertyDtoConverter pitchPropertyDtoConverter;
-    private final PitchHourDtoConverter pitchHourDtoConverter;
     private final PitchPhotoDtoConverter pitchPhotoDtoConverter;
     private final RatingDtoConverter ratingDtoConverter;
 
     public PitchWithRatingsDtoConverter(CityDtoConverter cityDtoConverter,
                                         DistrictDtoConverter districtDtoConverter,
                                         PitchPropertyDtoConverter pitchPropertyDtoConverter,
-                                        PitchHourDtoConverter pitchHourDtoConverter,
                                         PitchPhotoDtoConverter pitchPhotoDtoConverter,
                                         RatingDtoConverter ratingDtoConverter) {
         this.cityDtoConverter = cityDtoConverter;
         this.districtDtoConverter = districtDtoConverter;
         this.pitchPropertyDtoConverter = pitchPropertyDtoConverter;
-        this.pitchHourDtoConverter = pitchHourDtoConverter;
         this.pitchPhotoDtoConverter = pitchPhotoDtoConverter;
         this.ratingDtoConverter = ratingDtoConverter;
     }
@@ -40,9 +37,6 @@ public class PitchWithRatingsDtoConverter {
                 districtDtoConverter.convertToDistrictForPicthDto(from.getDistrict()),
                 from.getPitchProperties().stream()
                         .map(pitchPropertyDtoConverter::convertToPitchPropertyForPitchDto)
-                        .collect(Collectors.toList()),
-                from.getPitchHours().stream()
-                        .map(pitchHourDtoConverter::convert)
                         .collect(Collectors.toList()),
                 from.getPitchPhotos().stream()
                         .map(pitchPhotoDtoConverter::convert)

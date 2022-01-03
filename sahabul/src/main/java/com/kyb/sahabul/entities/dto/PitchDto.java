@@ -19,7 +19,6 @@ public class PitchDto {
     private DistrictForPitchDto district;
     private List<PitchPropertyForPitchDto> pitchProperties;
     private List<ReservationDto> reservations;
-    private List<PitchHourDto> pitchHours;
     private List<PitchPhotoDto> pitchPhotos;
 
 

@@ -28,6 +28,11 @@ public class RatingManager implements RatingServices {
     }
 
     @Override
+    public Rating findById(int id) {
+        return ratingDao.getOne(id);
+    }
+
+    @Override
     public RatingDto getById(int id) {
         return ratingDtoConverter.convert(ratingDao.getOne(id));
     }
