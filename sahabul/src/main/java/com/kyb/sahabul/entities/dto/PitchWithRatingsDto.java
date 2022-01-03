@@ -18,7 +18,6 @@ public class PitchWithRatingsDto {
     private CityDto city;
     private DistrictForPitchDto district;
     private List<PitchPropertyForPitchDto> pitchProperties;
-    private List<PitchHourDto> pitchHours;
     private List<PitchPhotoDto> pitchPhotos;
     private List<RatingDto> ratings;
 

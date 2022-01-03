@@ -30,6 +30,4 @@ public class Hour {
     @OneToMany(mappedBy = "reservationHour")
     private List<Reservation> reservations;
 
-    @OneToMany(mappedBy = "hour")
-    private List<PitchHour> pitchHours;
 }

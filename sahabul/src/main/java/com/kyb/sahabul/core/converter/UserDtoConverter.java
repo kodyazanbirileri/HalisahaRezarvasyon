@@ -20,10 +20,9 @@ public class UserDtoConverter {
     public UserDto convert(User from){
         return new UserDto(
                 from.getId(),
-                from.getPassword(),
+                from.getFirstName(),
+                from.getLastName(),
                 from.getEmail(),
-                from.getUserCreated(),
-                from.isStatus(),
                 from.getPhoneNumber(),
                 from.getReservations().stream()
                         .map(reservationDtoConverter::convert)

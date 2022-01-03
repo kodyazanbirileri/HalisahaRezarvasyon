@@ -3,6 +3,8 @@ package com.kyb.sahabul.api.controllers;
 import com.kyb.sahabul.business.abstracts.PitchPropertyService;
 import com.kyb.sahabul.entities.concretes.PitchProperty;
 import com.kyb.sahabul.entities.dto.PitchPropertyDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreatePitchPropertyRequest;
+import com.kyb.sahabul.entities.dto.createrequest.CreatePitchRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +30,7 @@ public class PitchPropertyController {
     }
 
     @PostMapping(value = "add")
-    public ResponseEntity<PitchPropertyDto> add(@RequestBody PitchProperty pitchProperty){
-        return ResponseEntity.ok(pitchPropertyService.add(pitchProperty));
+    public ResponseEntity<PitchPropertyDto> add(@RequestBody CreatePitchPropertyRequest createPitchPropertyRequest) {
+        return ResponseEntity.ok(pitchPropertyService.add(createPitchPropertyRequest));
     }
 }

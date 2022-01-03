@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface RatingServices {
     List<RatingDto> getAll();
+    Rating findById(int id);
     RatingDto getById(int id);
     RatingDto add(Rating rating);
     void delete(Rating rating);

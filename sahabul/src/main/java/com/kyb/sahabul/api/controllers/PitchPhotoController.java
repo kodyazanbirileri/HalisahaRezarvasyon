@@ -3,6 +3,7 @@ package com.kyb.sahabul.api.controllers;
 import com.kyb.sahabul.business.abstracts.PitchPhotoServices;
 import com.kyb.sahabul.entities.concretes.PitchPhoto;
 import com.kyb.sahabul.entities.dto.PitchPhotoDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreatePitchPhotoRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class PitchPhotoController {
     }
 
     @PostMapping(value = "add")
-    public ResponseEntity<PitchPhotoDto> add(@RequestBody PitchPhoto pitchPhoto) {
-        return ResponseEntity.ok(pitchPhotoServices.add(pitchPhoto));
+    public ResponseEntity<PitchPhotoDto> add(@RequestBody CreatePitchPhotoRequest createPitchPhotoRequest) {
+        return ResponseEntity.ok(pitchPhotoServices.add(createPitchPhotoRequest));
     }
 }

@@ -15,20 +15,17 @@ public class PitchDtoConverter {
     private final DistrictDtoConverter districtDtoConverter;
     private final PitchPropertyDtoConverter pitchPropertyDtoConverter;
     private final ReservationDtoConverter reservationDtoConverter;
-    private final PitchHourDtoConverter pitchHourDtoConverter;
     private final PitchPhotoDtoConverter pitchPhotoDtoConverter;
 
     public PitchDtoConverter(CityDtoConverter cityDtoConverter,
                              DistrictDtoConverter districtDtoConverter,
                             @Lazy PitchPropertyDtoConverter pitchPropertyDtoConverter,
                             @Lazy ReservationDtoConverter reservationDtoConverter,
-                             PitchHourDtoConverter pitchHourDtoConverter,
                              PitchPhotoDtoConverter pitchPhotoDtoConverter) {
         this.cityDtoConverter = cityDtoConverter;
         this.districtDtoConverter = districtDtoConverter;
         this.pitchPropertyDtoConverter = pitchPropertyDtoConverter;
         this.reservationDtoConverter = reservationDtoConverter;
-        this.pitchHourDtoConverter = pitchHourDtoConverter;
         this.pitchPhotoDtoConverter = pitchPhotoDtoConverter;
     }
 
@@ -46,9 +43,6 @@ public class PitchDtoConverter {
                         .collect(Collectors.toList()),
                 from.getReservations().stream()
                         .map(reservationDtoConverter::convert)
-                        .collect(Collectors.toList()),
-                from.getPitchHours().stream()
-                        .map(pitchHourDtoConverter::convert)
                         .collect(Collectors.toList()),
                 from.getPitchPhotos().stream()
                         .map(pitchPhotoDtoConverter::convert)

@@ -31,14 +31,17 @@ public class Pitch {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "start_hour")
+    private String startHour = "12:00";
+
+    @Column(name = "end_hour")
+    private String endHour = "03:00";
+
     @OneToMany(mappedBy = "pitch")
     private List<Reservation> reservations;
 
     @OneToMany(mappedBy = "pitch")
     private List<PitchProperty> pitchProperties;
-
-    @OneToMany(mappedBy = "pitch")
-    private List<PitchHour> pitchHours;
 
     @OneToMany(mappedBy = "pitch")
     private List<PitchPhoto> pitchPhotos;

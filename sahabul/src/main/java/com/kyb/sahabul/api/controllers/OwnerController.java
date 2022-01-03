@@ -3,6 +3,7 @@ package com.kyb.sahabul.api.controllers;
 import com.kyb.sahabul.business.abstracts.OwnerServices;
 import com.kyb.sahabul.entities.concretes.Owner;
 import com.kyb.sahabul.entities.dto.OwnerDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreateOwnerRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,8 @@ public class OwnerController {
     }
 
     @PostMapping(value = "add")
-    public ResponseEntity<OwnerDto> add(@RequestBody Owner owner){
-        return ResponseEntity.ok(ownerServices.add(owner));
+    public ResponseEntity<OwnerDto> add(@RequestBody CreateOwnerRequest createOwnerRequest){
+        return ResponseEntity.ok(ownerServices.add(createOwnerRequest));
     }
 
     @GetMapping(value = "/getAll")

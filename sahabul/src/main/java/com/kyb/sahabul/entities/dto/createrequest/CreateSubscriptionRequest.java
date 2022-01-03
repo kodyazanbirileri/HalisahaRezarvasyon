@@ -1,4 +1,4 @@
-package com.kyb.sahabul.entities.dto;
+package com.kyb.sahabul.entities.dto.createrequest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PitchHourDto {
+public class CreateSubscriptionRequest {
 
-    private int id;
-    private HourDto hour;
+    private int reservationId;
 
 }

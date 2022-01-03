@@ -30,9 +30,13 @@ public class UserManager implements UserServices {
     }
 
     @Override
+    public User findById(int id) {
+        return userDao.getOne(id);
+    }
+
+    @Override
     public UserDto getById(int id) {
-        userDtoConverter.convert(userDao.getOne(id));
-        return null;
+        return userDtoConverter.convert(userDao.getOne(id));
     }
 
     @Override

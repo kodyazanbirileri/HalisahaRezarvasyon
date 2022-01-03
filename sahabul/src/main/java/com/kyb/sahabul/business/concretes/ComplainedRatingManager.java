@@ -1,10 +1,13 @@
 package com.kyb.sahabul.business.concretes;
 
 import com.kyb.sahabul.business.abstracts.ComplainedRatingServices;
+import com.kyb.sahabul.business.abstracts.ReservationServices;
 import com.kyb.sahabul.core.converter.ComplainedRatingDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.ComplainedRatingDao;
 import com.kyb.sahabul.entities.concretes.ComplainedRating;
 import com.kyb.sahabul.entities.dto.ComplainedRatingDto;
+import com.kyb.sahabul.entities.dto.ReservationDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreateComplainedRating;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,10 +17,14 @@ import java.util.stream.Collectors;
 public class ComplainedRatingManager implements ComplainedRatingServices {
     private final ComplainedRatingDao complainedRatingDao;
     private final ComplainedRatingDtoConverter complainedRatingDtoConverter;
+    private final ReservationServices reservationServices;
 
-    public ComplainedRatingManager(ComplainedRatingDao complainedRatingDao, ComplainedRatingDtoConverter complainedRatingDtoConverter) {
+    public ComplainedRatingManager(ComplainedRatingDao complainedRatingDao,
+                                   ComplainedRatingDtoConverter complainedRatingDtoConverter,
+                                   ReservationServices reservationServices) {
         this.complainedRatingDao = complainedRatingDao;
         this.complainedRatingDtoConverter = complainedRatingDtoConverter;
+        this.reservationServices = reservationServices;
     }
 
     @Override
@@ -33,8 +40,14 @@ public class ComplainedRatingManager implements ComplainedRatingServices {
     }
 
     @Override
-    public ComplainedRatingDto add(ComplainedRating complainedRating) {
-        return complainedRatingDtoConverter.convert(complainedRatingDao.save(complainedRating));
+    public ComplainedRatingDto add(CreateComplainedRating from) {
+
+        ComplainedRating tempComplainedRating = new ComplainedRating();
+        tempComplainedRating.setConfirmed(false);
+        tempComplainedRating.setReservation(reservationServices.findById(from.getReservationId()));
+
+
+        return complainedRatingDtoConverter.convert(complainedRatingDao.save(tempComplainedRating));
     }
 
     @Override

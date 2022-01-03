@@ -28,6 +28,11 @@ public class ReservationManager implements ReservationServices {
     }
 
     @Override
+    public Reservation findById(int id) {
+        return reservationDao.getOne(id);
+    }
+
+    @Override
     public ReservationDto getById(int id) {
         return reservationDtoConverter.convert(reservationDao.getOne(id));
     }

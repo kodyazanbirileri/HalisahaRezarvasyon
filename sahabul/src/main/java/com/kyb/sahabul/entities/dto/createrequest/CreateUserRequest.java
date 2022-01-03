@@ -1,22 +1,19 @@
-package com.kyb.sahabul.entities.dto;
+package com.kyb.sahabul.entities.dto.createrequest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class CreateUserRequest {
 
-    private int id;
     private String firstName;
     private String lastName;
+    private String password;
     private String email;
     private int phoneNumber;
-    private List<ReservationDto> reservations;
+
 
 }
