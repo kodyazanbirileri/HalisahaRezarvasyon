@@ -34,11 +34,6 @@ public class PropertyManager implements PropertyServices {
     }
 
     @Override
-    public Property findById(int id) {
-        return propertyDao.getOne(id);
-    }
-
-    @Override
     public PropertyDto add(Property property) {
         return propertyDtoConverter.convert(propertyDao.save(property));
     }

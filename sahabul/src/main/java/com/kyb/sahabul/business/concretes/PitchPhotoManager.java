@@ -1,12 +1,10 @@
 package com.kyb.sahabul.business.concretes;
 
 import com.kyb.sahabul.business.abstracts.PitchPhotoServices;
-import com.kyb.sahabul.business.abstracts.PitchServices;
 import com.kyb.sahabul.core.converter.PitchPhotoDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.PitchPhotoDao;
 import com.kyb.sahabul.entities.concretes.PitchPhoto;
 import com.kyb.sahabul.entities.dto.PitchPhotoDto;
-import com.kyb.sahabul.entities.dto.createrequest.CreatePitchPhotoRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,12 +13,10 @@ import java.util.stream.Collectors;
 public class PitchPhotoManager implements PitchPhotoServices {
     private final PitchPhotoDao pitchPhotoDao;
     private final PitchPhotoDtoConverter pitchPhotoDtoConverter;
-    private final PitchServices pitchServices;
 
-    public PitchPhotoManager(PitchPhotoDao pitchPhotoDao, PitchPhotoDtoConverter pitchPhotoDtoConverter, PitchServices pitchServices) {
+    public PitchPhotoManager(PitchPhotoDao pitchPhotoDao, PitchPhotoDtoConverter pitchPhotoDtoConverter) {
         this.pitchPhotoDao = pitchPhotoDao;
         this.pitchPhotoDtoConverter = pitchPhotoDtoConverter;
-        this.pitchServices = pitchServices;
     }
 
     @Override
@@ -36,12 +32,7 @@ public class PitchPhotoManager implements PitchPhotoServices {
     }
 
     @Override
-    public PitchPhotoDto add(CreatePitchPhotoRequest from) {
-        PitchPhoto pitchPhoto = new PitchPhoto();
-
-        pitchPhoto.setPhotoPath(from.getPhotoPath());
-        pitchPhoto.setPitch(pitchServices.findById(from.getPitchId()));
-
+    public PitchPhotoDto add(PitchPhoto pitchPhoto) {
         return pitchPhotoDtoConverter.convert(pitchPhotoDao.save(pitchPhoto));
     }
 

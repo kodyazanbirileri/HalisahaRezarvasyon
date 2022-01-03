@@ -34,11 +34,6 @@ public class PitchManager implements PitchServices {
     }
 
     @Override
-    public Pitch findById(int id) {
-        return pitchDao.getOne(id);
-    }
-
-    @Override
     public PitchDto add(Pitch pitch) {
         return pitchDtoConverter.convert(pitchDao.save(pitch));
     }

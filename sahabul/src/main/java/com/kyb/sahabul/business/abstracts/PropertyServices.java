@@ -8,7 +8,6 @@ import java.util.List;
 public interface PropertyServices {
     List<PropertyDto> getAll();
     PropertyDto getById(int id);
-    Property findById(int id);
     PropertyDto add(Property property);
     void delete(Property property);
 }
