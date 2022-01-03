@@ -3,6 +3,7 @@ package com.kyb.sahabul.api.controllers;
 import com.kyb.sahabul.business.abstracts.ComplainedRatingServices;
 import com.kyb.sahabul.entities.concretes.ComplainedRating;
 import com.kyb.sahabul.entities.dto.ComplainedRatingDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreateComplainedRating;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +29,8 @@ public class ComplainedRatingController {
     }
 
     @PostMapping(value = "add")
-    public  ResponseEntity<ComplainedRatingDto> add(@RequestBody ComplainedRating complainedRating){
-        return ResponseEntity.ok(complainedRatingServices.add(complainedRating));
+    public  ResponseEntity<ComplainedRatingDto> add(@RequestBody CreateComplainedRating createComplainedRating){
+        return ResponseEntity.ok(complainedRatingServices.add(createComplainedRating));
     }
 
 }
