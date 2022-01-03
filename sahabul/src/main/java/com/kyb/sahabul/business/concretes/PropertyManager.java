@@ -5,6 +5,7 @@ import com.kyb.sahabul.core.converter.PropertyDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.PropertyDao;
 import com.kyb.sahabul.entities.concretes.Property;
 import com.kyb.sahabul.entities.dto.PropertyDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreatePropertyRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,8 +40,12 @@ public class PropertyManager implements PropertyServices {
     }
 
     @Override
-    public PropertyDto add(Property property) {
-        return propertyDtoConverter.convert(propertyDao.save(property));
+    public PropertyDto add(CreatePropertyRequest from) {
+
+        Property tempProperty = new Property();
+        tempProperty.setPropertyName(from.getPropertyName());
+        
+        return propertyDtoConverter.convert(propertyDao.save(tempProperty));
     }
 
     @Override
