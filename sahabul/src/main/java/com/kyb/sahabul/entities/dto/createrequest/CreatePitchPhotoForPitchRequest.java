@@ -1,8 +1,8 @@
 package com.kyb.sahabul.entities.dto.createrequest;
 
-public class CreateRatingPhotoRequest {
+
+public class CreatePitchPhotoForPitchRequest {
 
     private String photoPath;
-    private int ratingId;
 
 }

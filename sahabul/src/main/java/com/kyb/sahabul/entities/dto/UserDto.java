@@ -13,10 +13,9 @@ import java.util.List;
 public class UserDto {
 
     private int id;
-    private String password;
+    private String firstName;
+    private String lastName;
     private String email;
-    private Date userCreated;
-    private boolean status;
     private int phoneNumber;
     private List<ReservationDto> reservations;
 
