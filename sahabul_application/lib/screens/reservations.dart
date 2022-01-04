@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sahabul_application/Models/rezervation_model.dart';
+import 'package:sahabul_application/Models/reservation_model.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
 import 'package:sahabul_application/components/rezervation_widget.dart';
 
@@ -20,12 +20,12 @@ class _ReservationState extends State<Reservation> {
       paddingHorizontal: 40,
       paddingVertical: 0,
       child: ListView.builder(
-        itemCount: RezervationModel.reservations.length,
+        itemCount: ReservationModel.reservations.length,
         itemBuilder: (context, index) => RezervationWidget(
-          rezervation: RezervationModel.reservations[index],
+          rezervation: ReservationModel.reservations[index],
           press: () {
             setState(() {
-              RezervationModel.reservations.removeAt(index);
+              ReservationModel.reservations.removeAt(index);
             });
           },
         ),
