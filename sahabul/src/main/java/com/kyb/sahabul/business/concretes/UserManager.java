@@ -1,12 +1,13 @@
 package com.kyb.sahabul.business.concretes;
 
 import com.kyb.sahabul.business.abstracts.UserServices;
+import com.kyb.sahabul.core.converter.UpdateToRequestUserDtoConverter;
 import com.kyb.sahabul.core.converter.UserDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.UserDao;
 import com.kyb.sahabul.entities.concretes.User;
 import com.kyb.sahabul.entities.dto.UserDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateUserRequest;
-import org.apache.catalina.realm.UserDatabaseRealm;
+import com.kyb.sahabul.entities.dto.updaterequest.UpdateUserRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,10 +18,14 @@ public class UserManager implements UserServices {
 
     private final UserDao userDao;
     private final UserDtoConverter userDtoConverter;
+    private final UpdateToRequestUserDtoConverter updateToRequestUserDtoConverter;
 
-    public UserManager(UserDao userDao, UserDtoConverter userDtoConverter) {
+    public UserManager(UserDao userDao,
+                       UserDtoConverter userDtoConverter,
+                       UpdateToRequestUserDtoConverter updateToRequestUserDtoConverter) {
         this.userDao = userDao;
         this.userDtoConverter = userDtoConverter;
+        this.updateToRequestUserDtoConverter = updateToRequestUserDtoConverter;
     }
 
     @Override
@@ -41,19 +46,33 @@ public class UserManager implements UserServices {
         return userDtoConverter.convert(userDao.getOne(id));
     }
 
+    private User generateBody(User user,CreateUserRequest from)
+    {
+        user.setFirstName(from.getFirstName());
+        user.setLastName(from.getLastName());
+        user.setEmail(from.getEmail());
+        user.setStatus(true);
+        user.setPassword(from.getPassword());
+        user.setPhoneNumber(from.getPhoneNumber());
+        return user;
+    }
+
+
     @Override
     public UserDto add(CreateUserRequest from) {
         User tempUser = new User();
+        return userDtoConverter.convert(userDao.save(generateBody(tempUser,from)));
 
-        tempUser.setFirstName(from.getFirstName());
-        tempUser.setLastName(from.getLastName());
-        tempUser.setEmail(from.getEmail());
-        tempUser.setStatus(true);
-        tempUser.setPassword(from.getPassword());
-        tempUser.setPhoneNumber(from.getPhoneNumber());
+    }
 
-        return userDtoConverter.convert(userDao.save(tempUser));
+    @Override
+    public UserDto update(UpdateUserRequest from) {
+        User tempUser = new User();
+        tempUser.setId(from.getId());
 
+        return userDtoConverter.convert(
+                userDao.save(generateBody(tempUser,
+                        updateToRequestUserDtoConverter.convert(from))));
     }
 
     @Override
