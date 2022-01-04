@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sahabul_application/Models/hours_model.dart';
 import 'package:sahabul_application/components/build_btn.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
 
@@ -8,7 +9,7 @@ class MakeRezervation extends StatefulWidget {
 }
 
 class _MakeRezervationState extends State<MakeRezervation> {
-  late DateTime _dateTime;
+  DateTime? _dateTime;
   @override
   Widget build(BuildContext context) {
     return ReusableWidget(
@@ -25,27 +26,32 @@ class _MakeRezervationState extends State<MakeRezervation> {
             padding: EdgeInsets.symmetric(horizontal: 40, vertical: 0),
             child: BuildBtn(
                 paddingSynmetric: 25,
-                text: 'Tarih Seçiniz',
+                text: _dateTime == null
+                    ? 'Tarih giriniz'
+                    : '${_dateTime!.day} / ${_dateTime!.month}',
                 onPressed: () {
                   showDatePicker(
                     context: context,
+                    initialDatePickerMode: DatePickerMode.day,
                     initialDate: DateTime.now(),
                     firstDate: DateTime.now(),
                     lastDate: DateTime.now().add(Duration(days: 14)),
                   ).then((date) {
                     setState(() {
-                      _dateTime = DateTime.now();
+                      _dateTime = date;
                     });
                   });
                 }),
           ),
           Expanded(
             child: GridView.builder(
-              itemCount: 15,
+              itemCount: HoursModel.hours.length,
               gridDelegate:
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               itemBuilder: (context, index) {
-                return reservation_hours();
+                return ReservationHours(
+                  index: index,
+                );
               },
             ),
           ),
@@ -56,6 +62,7 @@ class _MakeRezervationState extends State<MakeRezervation> {
               paddingSynmetric: 25,
               text: 'Rezervasyon Yap',
               onPressed: () {
+                print(_dateTime);
                 print('Rezervasyon yapıldı');
               }),
         ],
@@ -64,28 +71,32 @@ class _MakeRezervationState extends State<MakeRezervation> {
   }
 }
 
-class reservation_hours extends StatefulWidget {
-  @override
-  State<reservation_hours> createState() => _reservation_hoursState();
-}
-
-class _reservation_hoursState extends State<reservation_hours> {
+class ReservationHours extends StatefulWidget {
   bool _HoursSelected = false;
   Color _HourBackground = Colors.white;
   Color _HourTextColor = Color(0xff728840);
 
+  late int index;
+
+  ReservationHours({Key? key, required this.index});
+
+  @override
+  State<ReservationHours> createState() => _ReservationHoursState();
+}
+
+class _ReservationHoursState extends State<ReservationHours> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _HoursSelected = !_HoursSelected;
+        widget._HoursSelected = !widget._HoursSelected;
         setState(() {
-          if (_HoursSelected) {
-            _HourBackground = Colors.blueAccent;
-            _HourTextColor = Colors.white;
+          if (widget._HoursSelected) {
+            widget._HourBackground = Colors.blueAccent;
+            widget._HourTextColor = Colors.white;
           } else {
-            _HourBackground = Colors.white;
-            _HourTextColor = Color(0xff728840);
+            widget._HourBackground = Colors.white;
+            widget._HourTextColor = Color(0xff728840);
           }
         });
       },
@@ -95,13 +106,13 @@ class _reservation_hoursState extends State<reservation_hours> {
           borderRadius: BorderRadius.circular(
             10,
           ),
-          color: _HourBackground,
+          color: widget._HourBackground,
         ),
         child: Center(
           child: Text(
-            '12-13',
+            HoursModel.hours[widget.index].hour,
             style: TextStyle(
-              color: _HourTextColor,
+              color: widget._HourTextColor,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
