@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-import 'package:sahabul_application/Models/attribute_model.dart';
+import 'package:sahabul_application/Models/property_model.dart';
 
 class MultiselectWidget extends StatefulWidget {
   @override

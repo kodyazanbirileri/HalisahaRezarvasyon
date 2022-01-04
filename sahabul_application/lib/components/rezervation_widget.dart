@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sahabul_application/Models/rezervation_model.dart';
+import 'package:sahabul_application/Models/reservation_model.dart';
 
 class RezervationWidget extends StatelessWidget {
   late Rezervation rezervation;
