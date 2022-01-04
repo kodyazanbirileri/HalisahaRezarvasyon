@@ -4,7 +4,6 @@ import com.kyb.sahabul.business.abstracts.UserServices;
 import com.kyb.sahabul.entities.concretes.User;
 import com.kyb.sahabul.entities.dto.UserDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateUserRequest;
-import com.kyb.sahabul.entities.dto.updaterequest.UpdateUserRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,10 +25,7 @@ public class UserController {
        return ResponseEntity.ok(userServices.getAll());
     }
 
-    @PostMapping(value = "/update")
-    public ResponseEntity<UserDto> update(@RequestBody UpdateUserRequest  updateUserRequest) {
-        return ResponseEntity.ok(userServices.update(updateUserRequest));
-    }
+
 
     @PostMapping(value = "/add")
     ResponseEntity<UserDto> add(@RequestBody CreateUserRequest createUserRequest)
