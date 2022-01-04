@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/getAll")
-    public ResponseEntity<List<UserDto>> getAll(){
+    public ResponseEntity<List<UserDto>> getAll() {
        return ResponseEntity.ok(userServices.getAll());
     }
 
@@ -32,8 +32,13 @@ public class UserController {
     }
 
     @PostMapping(value = "/add")
-    ResponseEntity<UserDto> add(@RequestBody CreateUserRequest createUserRequest)
-    {
+    ResponseEntity<UserDto> add(@RequestBody CreateUserRequest createUserRequest) {
         return ResponseEntity.ok(userServices.add(createUserRequest));
     }
+
+    @PostMapping(value = "/delete")
+    ResponseEntity<UserDto> add(@RequestParam int userId) {
+        return ResponseEntity.ok(userServices.delete(userId));
+    }
+
 }

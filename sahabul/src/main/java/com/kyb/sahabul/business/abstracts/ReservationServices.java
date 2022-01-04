@@ -11,5 +11,5 @@ public interface ReservationServices {
     Reservation findById(int id);
     ReservationDto getById(int id);
     ReservationDto add(CreateReservationRequest createReservationRequest);
-    void delete(Reservation reservation);
+    ReservationDto delete(int reservationId);
 }

@@ -12,5 +12,5 @@ public interface RatingServices {
     Rating findById(int id);
     RatingDto getById(int id);
     RatingDto add(CreateRatingRequest createRatingRequest);
-    void delete(Rating rating);
+    RatingDto delete(int ratingId);
 }

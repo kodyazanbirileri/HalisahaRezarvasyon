@@ -19,18 +19,24 @@ public class ReservationController {
         this.reservationServices = reservationServices;
     }
 
-    @GetMapping(value = "getAll")
+    @GetMapping(value = "/getAll")
     public ResponseEntity<List<ReservationDto>> getAll() {
         return ResponseEntity.ok(reservationServices.getAll());
     }
 
-    @GetMapping(value = "getById")
+    @GetMapping(value = "/getById")
     public ResponseEntity<ReservationDto> getById(@RequestParam int id) {
         return ResponseEntity.ok(reservationServices.getById(id));
     }
 
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public ResponseEntity<ReservationDto> add(@RequestBody CreateReservationRequest createReservationRequest) {
         return ResponseEntity.ok(reservationServices.add(createReservationRequest));
     }
+
+    @PostMapping(value = "/delete")
+    public ResponseEntity<ReservationDto> delete(@RequestParam int reservationId) {
+        return ResponseEntity.ok(reservationServices.delete(reservationId));
+    }
+
 }

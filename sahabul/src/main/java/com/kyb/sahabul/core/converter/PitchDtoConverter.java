@@ -35,6 +35,7 @@ public class PitchDtoConverter {
                 from.getPitchNumber(),
                 from.getDistrict().getCity().getCityName(),
                 from.getDistrict().getDistrictName(),
+                from.isStatus(),
                 Optional.ofNullable(from.getPitchProperties())
                         .orElseGet(Collections::emptyList)
                         .stream()

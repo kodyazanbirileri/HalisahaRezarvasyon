@@ -27,7 +27,7 @@ public class Pitch {
     private String pitchName;
 
     @Column(name = "pitch_number")
-    private int pitchNumber;
+    private String pitchNumber;
 
     @Column(name = "address")
     private String address;
@@ -37,6 +37,9 @@ public class Pitch {
 
     @Column(name = "end_hour")
     private String endHour = "03:00";
+
+    @Column(name = "status")
+    private boolean status = true;
 
     @OneToMany(mappedBy = "pitch")
     private List<Reservation> reservations;

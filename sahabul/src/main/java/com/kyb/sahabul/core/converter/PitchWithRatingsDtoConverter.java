@@ -35,6 +35,7 @@ public class PitchWithRatingsDtoConverter {
                 from.getPitchNumber(),
                 from.getDistrict().getCity().getCityName(),
                 from.getDistrict().getDistrictName(),
+                from.isStatus(),
                 from.getPitchProperties().stream()
                         .map(pitchPropertyForPitchDtoConverter::convert)
                         .collect(Collectors.toList()),

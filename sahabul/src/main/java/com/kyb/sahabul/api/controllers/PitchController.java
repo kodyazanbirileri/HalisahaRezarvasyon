@@ -19,9 +19,14 @@ public class PitchController {
         this.pitchServices = pitchServices;
     }
 
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public ResponseEntity<PitchDto> add(@RequestBody CreatePitchRequest createPitchRequest){
         return ResponseEntity.ok(pitchServices.add(createPitchRequest));
+    }
+
+    @PostMapping(value = "/delete")
+    public ResponseEntity<PitchDto> add(@RequestParam int pitchId){
+        return ResponseEntity.ok(pitchServices.delete(pitchId));
     }
 
     @GetMapping(value = "/getAll")
@@ -30,7 +35,7 @@ public class PitchController {
     }
 
 
-    @GetMapping(value = "getById")
+    @GetMapping(value = "/getById")
     public PitchDto getById(@RequestParam int id){
         return pitchServices.getById(id);
     }

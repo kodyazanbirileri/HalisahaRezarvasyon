@@ -16,7 +16,8 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String email;
-    private int phoneNumber;
+    private String phoneNumber;
+    private boolean status;
     private List<ReservationDto> reservations;
 
 }

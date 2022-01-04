@@ -76,9 +76,12 @@ public class UserManager implements UserServices {
     }
 
     @Override
-    public void deleteUser(User user) {
-        userDao.delete(user);
+    public UserDto delete(int userId) {
 
+        User deletedUser = this.findById(userId);
+        deletedUser.setStatus(false);
+
+        return userDtoConverter.convert(userDao.save(deletedUser));
     }
 
 

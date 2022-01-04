@@ -27,6 +27,7 @@ public class UserDtoConverter {
                 from.getLastName(),
                 from.getEmail(),
                 from.getPhoneNumber(),
+                from.isStatus(),
                 Optional.ofNullable(from.getReservations())
                         .orElseGet(Collections::emptyList)
                         .stream()

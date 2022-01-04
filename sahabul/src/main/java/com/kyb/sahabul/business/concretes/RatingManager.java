@@ -66,7 +66,12 @@ public class RatingManager implements RatingServices {
     }
 
     @Override
-    public void delete(Rating rating) {
-        ratingDao.delete(rating);
+    public RatingDto delete(int ratingId) {
+
+        Rating deletedRating = this.findById(ratingId);
+        deletedRating.setStatus(false);
+
+        return ratingDtoConverter.convert(ratingDao.save(deletedRating));
     }
+
 }

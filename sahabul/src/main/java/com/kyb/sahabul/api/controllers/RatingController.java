@@ -18,20 +18,26 @@ public class RatingController {
         this.ratingServices = ratingServices;
     }
 
-    @GetMapping(value = "getAll")
+    @GetMapping(value = "/getAll")
     public ResponseEntity<List<RatingDto>> getAll() {
         return ResponseEntity.ok(ratingServices.getAll());
     }
 
-    @GetMapping(value = "getById")
+    @GetMapping(value = "/getById")
     public ResponseEntity<RatingDto> getById(@RequestParam int id) {
         return ResponseEntity.ok(ratingServices.getById(id));
     }
 
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public ResponseEntity<RatingDto> add(@RequestBody CreateRatingRequest createRatingRequest  ) {
 
         return ResponseEntity.ok(ratingServices.add(createRatingRequest));
+    }
+
+    @PostMapping(value = "/delete")
+    public ResponseEntity<RatingDto> add(@RequestParam int ratingId ) {
+
+        return ResponseEntity.ok(ratingServices.delete(ratingId));
     }
 
 }

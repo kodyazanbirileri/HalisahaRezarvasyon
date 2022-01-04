@@ -64,7 +64,11 @@ public class ReservationManager implements ReservationServices {
     }
 
     @Override
-    public void delete(Reservation reservation) {
-        reservationDao.delete(reservation);
+    public ReservationDto delete(int reservationId) {
+
+        Reservation deletedReservation = this.findById(reservationId);
+        deletedReservation.setStatus(false);
+
+        return reservationDtoConverter.convert(reservationDao.save(deletedReservation));
     }
 }

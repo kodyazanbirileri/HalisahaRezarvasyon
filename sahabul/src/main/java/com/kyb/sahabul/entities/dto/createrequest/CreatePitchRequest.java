@@ -12,7 +12,7 @@ import java.util.List;
 public class CreatePitchRequest {
 
     private String pitchName;
-    private int pitchNumber;
+    private String pitchNumber;
     private int cityId;
     private int districtId;
     private String address;

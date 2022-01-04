@@ -11,6 +11,6 @@ public interface PitchServices {
     Pitch findById(int id);
     PitchDto getById(int id);
     PitchDto add(CreatePitchRequest from);
-    void delete(Pitch pitch);
+    PitchDto delete(int pitchId);
 
 }

@@ -79,7 +79,10 @@ public class PitchManager implements PitchServices {
     }
 
     @Override
-    public void delete(Pitch pitch) {
-        pitchDao.delete(pitch);
+    public PitchDto delete(int pitchId) {
+        Pitch deletedPitch = this.findById(pitchId);
+        deletedPitch.setStatus(false);
+
+        return pitchDtoConverter.convert(pitchDao.save(deletedPitch));
     }
 }
