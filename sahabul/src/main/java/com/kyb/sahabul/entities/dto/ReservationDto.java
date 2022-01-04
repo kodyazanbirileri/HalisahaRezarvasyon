@@ -17,7 +17,7 @@ public class ReservationDto {
     private String note;
     private boolean status;
     private HourDto reservationHour;
-    private PitchDto pitch;
-    private UserDto user;
+    private int pitchId;
+    private int userId;
 
 }

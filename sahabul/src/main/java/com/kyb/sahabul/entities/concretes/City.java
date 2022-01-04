@@ -25,6 +25,4 @@ public class City
     @OneToMany(mappedBy = "city")
     List<District> districts;
 
-    @OneToMany(mappedBy = "city")
-    List<Pitch> pitches;
 }

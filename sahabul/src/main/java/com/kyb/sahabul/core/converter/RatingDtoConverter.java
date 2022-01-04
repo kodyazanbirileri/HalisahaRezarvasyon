@@ -10,12 +10,10 @@ import java.util.stream.Collectors;
 public class RatingDtoConverter {
 
     private final RatingPhotoDtoConverter ratingPhotoDtoConverter;
-    private final ReservationDtoConverter reservationDtoConverter;
 
-    public RatingDtoConverter(RatingPhotoDtoConverter ratingPhotoDtoConverter
-            , ReservationDtoConverter reservationDtoConverter) {
+
+    public RatingDtoConverter(RatingPhotoDtoConverter ratingPhotoDtoConverter) {
         this.ratingPhotoDtoConverter = ratingPhotoDtoConverter;
-        this.reservationDtoConverter = reservationDtoConverter;
     }
 
     public RatingDto convert(Rating from) {
@@ -28,7 +26,7 @@ public class RatingDtoConverter {
                 from.getRatingPhotos().stream()
                         .map(ratingPhotoDtoConverter::convert)
                         .collect(Collectors.toList()),
-                reservationDtoConverter.convert(from.getReservation())
+                from.getReservation().getId()
 
         );
 

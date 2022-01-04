@@ -15,8 +15,8 @@ public class PitchWithRatingsDto {
     private String pitchName;
     private String address;
     private int pitchNumber;
-    private CityDto city;
-    private DistrictForPitchDto district;
+    private String city;
+    private String district;
     private List<PitchPropertyForPitchDto> pitchProperties;
     private List<PitchPhotoDto> pitchPhotos;
     private List<RatingDto> ratings;

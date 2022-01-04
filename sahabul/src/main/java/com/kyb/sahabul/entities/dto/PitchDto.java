@@ -15,10 +15,10 @@ public class PitchDto {
     private String pitchName;
     private String address;
     private int pitchNumber;
-    private CityDto city;
-    private DistrictForPitchDto district;
+    private String city;
+    private String district;
     private List<PitchPropertyForPitchDto> pitchProperties;
-    private List<ReservationDto> reservations;
+    private List<ReservationForPitchDto> reservations;
     private List<PitchPhotoDto> pitchPhotos;
 
 

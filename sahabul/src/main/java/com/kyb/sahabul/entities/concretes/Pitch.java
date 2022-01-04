@@ -47,10 +47,6 @@ public class Pitch {
     private List<PitchPhoto> pitchPhotos;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "city_id",referencedColumnName = "id")
-    private City city;
-
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "district_id", referencedColumnName = "id")
     private District district;
 

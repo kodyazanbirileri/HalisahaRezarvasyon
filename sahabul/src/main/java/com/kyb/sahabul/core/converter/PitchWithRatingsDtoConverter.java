@@ -11,18 +11,18 @@ public class PitchWithRatingsDtoConverter {
 
     private final CityDtoConverter cityDtoConverter;
     private final DistrictDtoConverter districtDtoConverter;
-    private final PitchPropertyDtoConverter pitchPropertyDtoConverter;
+    private final PitchPropertyForPitchDtoConverter pitchPropertyForPitchDtoConverter;
     private final PitchPhotoDtoConverter pitchPhotoDtoConverter;
     private final RatingDtoConverter ratingDtoConverter;
 
     public PitchWithRatingsDtoConverter(CityDtoConverter cityDtoConverter,
                                         DistrictDtoConverter districtDtoConverter,
-                                        PitchPropertyDtoConverter pitchPropertyDtoConverter,
+                                        PitchPropertyForPitchDtoConverter pitchPropertyForPitchDtoConverter,
                                         PitchPhotoDtoConverter pitchPhotoDtoConverter,
                                         RatingDtoConverter ratingDtoConverter) {
         this.cityDtoConverter = cityDtoConverter;
         this.districtDtoConverter = districtDtoConverter;
-        this.pitchPropertyDtoConverter = pitchPropertyDtoConverter;
+        this.pitchPropertyForPitchDtoConverter = pitchPropertyForPitchDtoConverter;
         this.pitchPhotoDtoConverter = pitchPhotoDtoConverter;
         this.ratingDtoConverter = ratingDtoConverter;
     }
@@ -33,10 +33,10 @@ public class PitchWithRatingsDtoConverter {
                 from.getPitchName(),
                 from.getAddress(),
                 from.getPitchNumber(),
-                cityDtoConverter.convert(from.getCity()),
-                districtDtoConverter.convertToDistrictForPicthDto(from.getDistrict()),
+                from.getDistrict().getCity().getCityName(),
+                from.getDistrict().getDistrictName(),
                 from.getPitchProperties().stream()
-                        .map(pitchPropertyDtoConverter::convertToPitchPropertyForPitchDto)
+                        .map(pitchPropertyForPitchDtoConverter::convert)
                         .collect(Collectors.toList()),
                 from.getPitchPhotos().stream()
                         .map(pitchPhotoDtoConverter::convert)

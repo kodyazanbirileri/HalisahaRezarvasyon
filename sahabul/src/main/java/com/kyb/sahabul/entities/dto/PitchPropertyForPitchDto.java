@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class PitchPropertyForPitchDto {
 
     private int id;
-    PropertyDto propertyDto;
+    private String propertyName;
 
 
 }

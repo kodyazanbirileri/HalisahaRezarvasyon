@@ -10,15 +10,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class ReservationDtoConverter {
     private final HourDtoConverter hourDtoConverter;
-    private final PitchDtoConverter pitchDtoConverter;
-    private final UserDtoConverter userDtoConverter;
 
-    public ReservationDtoConverter(HourDtoConverter hourDtoConverter,
-                                   PitchDtoConverter pitchDtoConverter,
-                                   UserDtoConverter userDtoConverter) {
+
+    public ReservationDtoConverter(HourDtoConverter hourDtoConverter) {
         this.hourDtoConverter = hourDtoConverter;
-        this.pitchDtoConverter = pitchDtoConverter;
-        this.userDtoConverter = userDtoConverter;
+
     }
 
     public ReservationDto convert(Reservation from)
@@ -28,8 +24,8 @@ public class ReservationDtoConverter {
                 from.getNote(),
                 from.isStatus(),
                 hourDtoConverter.convert(from.getReservationHour()),
-                pitchDtoConverter.convert(from.getPitch()),
-                userDtoConverter.convert(from.getUser())
+                from.getPitch().getId(),
+                from.getUser().getId()
                 );
     }
 

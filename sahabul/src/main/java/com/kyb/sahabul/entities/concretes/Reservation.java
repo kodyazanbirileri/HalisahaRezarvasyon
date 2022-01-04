@@ -32,7 +32,7 @@ public class Reservation {
     private boolean status;
 
     @ManyToOne(cascade = CascadeType.MERGE, targetEntity = Hour.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "reservation_id",referencedColumnName = "id")
+    @JoinColumn(name = "hour_id",referencedColumnName = "id")
     private Hour reservationHour;
 
     @ManyToOne(cascade = CascadeType.MERGE, targetEntity = Pitch.class, fetch = FetchType.LAZY)

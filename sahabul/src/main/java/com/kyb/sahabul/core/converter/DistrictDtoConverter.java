@@ -14,6 +14,7 @@ public class DistrictDtoConverter {
     public DistrictDtoConverter(CityDtoConverter cityDtoConverter) {
         this.cityDtoConverter = cityDtoConverter;
     }
+
     public DistrictDto convert(District from)
     {
         return new DistrictDto(
@@ -23,12 +24,5 @@ public class DistrictDtoConverter {
         );
     }
 
-    public DistrictForPitchDto convertToDistrictForPicthDto(District from)
-    {
-        return new DistrictForPitchDto(
-                from.getId(),
-                from.getDistrictName()
-        );
-    }
 
 }

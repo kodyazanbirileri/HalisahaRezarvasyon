@@ -1,23 +1,22 @@
 package com.kyb.sahabul.entities.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RatingDto {
+public class ReservationForPitchDto {
 
     private int id;
-    private int rate;
-    private String rateDetail;
+    private Date reservationDate;
+    private String note;
     private boolean status;
-    private List<RatingPhotoDto> ratingPhotos;
-    private int reservationId;
-
+    private HourDto reservationHour;
+    private String firstName;
+    private String lastName;
 
 }

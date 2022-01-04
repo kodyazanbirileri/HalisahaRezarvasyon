@@ -21,7 +21,6 @@ public class PitchManager implements PitchServices {
     private final PitchDtoConverter pitchDtoConverter;
     private final PitchPropertyService pitchPropertyService;
     private final PitchPhotoServices pitchPhotoServices;
-    private final CityServices cityServices;
     private final DistrictServices districtServices;
 
     @Lazy
@@ -29,13 +28,11 @@ public class PitchManager implements PitchServices {
                         PitchDtoConverter pitchDtoConverter,
                         PitchPropertyService pitchPropertyService,
                         PitchPhotoServices pitchPhotoServices,
-                        CityServices cityServices,
                         DistrictServices districtServices) {
         this.pitchDao = pitchDao;
         this.pitchDtoConverter = pitchDtoConverter;
         this.pitchPropertyService = pitchPropertyService;
         this.pitchPhotoServices = pitchPhotoServices;
-        this.cityServices = cityServices;
         this.districtServices = districtServices;
     }
 
@@ -64,7 +61,6 @@ public class PitchManager implements PitchServices {
         tempPitch.setPitchName(from.getPitchName());
         tempPitch.setAddress(from.getAddress());
         tempPitch.setPitchNumber(from.getPitchNumber());
-        tempPitch.setCity(cityServices.findById(from.getCityId()));
         tempPitch.setDistrict(districtServices.findById(from.getDistrictId()));
 
         int pitchId = pitchDao.save(tempPitch).getId();
