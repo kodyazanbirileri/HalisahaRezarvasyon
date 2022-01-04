@@ -46,11 +46,11 @@ public class Pitch {
     @OneToMany(mappedBy = "pitch")
     private List<PitchPhoto> pitchPhotos;
 
-    @OneToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "city_id",referencedColumnName = "id")
     private City city;
 
-    @OneToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "district_id", referencedColumnName = "id")
     private District district;
 

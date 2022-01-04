@@ -3,6 +3,7 @@ package com.kyb.sahabul.api.controllers;
 import com.kyb.sahabul.business.abstracts.SubscriptionServices;
 import com.kyb.sahabul.entities.concretes.Subscription;
 import com.kyb.sahabul.entities.dto.SubscriptionDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreateSubscriptionRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class SubscriptionController {
     }
 
     @PostMapping(value = "add")
-    public ResponseEntity<SubscriptionDto> add(@RequestBody Subscription subscription) {
-        return ResponseEntity.ok(subscriptionServices.add(subscription));
+    public ResponseEntity<SubscriptionDto> add(@RequestBody CreateSubscriptionRequest createSubscriptionRequest) {
+        return ResponseEntity.ok(subscriptionServices.add(createSubscriptionRequest));
     }
 }

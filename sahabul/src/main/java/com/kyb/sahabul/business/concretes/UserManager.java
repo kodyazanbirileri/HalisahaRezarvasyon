@@ -5,6 +5,8 @@ import com.kyb.sahabul.core.converter.UserDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.UserDao;
 import com.kyb.sahabul.entities.concretes.User;
 import com.kyb.sahabul.entities.dto.UserDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreateUserRequest;
+import org.apache.catalina.realm.UserDatabaseRealm;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,8 +42,18 @@ public class UserManager implements UserServices {
     }
 
     @Override
-    public void add(User user) {
-        userDao.save(user);
+    public UserDto add(CreateUserRequest from) {
+        User tempUser = new User();
+
+        tempUser.setFirstName(from.getFirstName());
+        tempUser.setLastName(from.getLastName());
+        tempUser.setEmail(from.getEmail());
+        tempUser.setStatus(true);
+        tempUser.setPassword(from.getPassword());
+        tempUser.setPhoneNumber(from.getPhoneNumber());
+
+        return userDtoConverter.convert(userDao.save(tempUser));
+
     }
 
     @Override

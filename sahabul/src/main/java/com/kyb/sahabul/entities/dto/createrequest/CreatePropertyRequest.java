@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateSystemUserDto {
+public class CreatePropertyRequest {
 
-    private int userId;
+    private String propertyName;
 
 }

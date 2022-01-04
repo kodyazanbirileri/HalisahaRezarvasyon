@@ -3,6 +3,7 @@ package com.kyb.sahabul.api.controllers;
 import com.kyb.sahabul.business.abstracts.SystemUserServices;
 import com.kyb.sahabul.entities.concretes.SystemUser;
 import com.kyb.sahabul.entities.dto.SystemUserDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreateSystemUserRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +19,8 @@ public class SystemUserController {
         this.systemUserServices = systemUserServices;
     }
     @PostMapping(value = "add")
-    public ResponseEntity<SystemUserDto> add(@RequestBody SystemUser systemUser){
-        return ResponseEntity.ok(systemUserServices.add(systemUser));
+    public ResponseEntity<SystemUserDto> add(@RequestBody CreateSystemUserRequest createSystemUserRequest){
+        return ResponseEntity.ok(systemUserServices.add(createSystemUserRequest));
     }
 
     @GetMapping(value = "/getAll")

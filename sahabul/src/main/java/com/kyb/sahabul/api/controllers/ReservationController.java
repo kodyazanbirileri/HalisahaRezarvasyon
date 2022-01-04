@@ -4,6 +4,7 @@ import com.kyb.sahabul.business.abstracts.ReservationServices;
 import com.kyb.sahabul.dataAccess.abstracts.ReservationDao;
 import com.kyb.sahabul.entities.concretes.Reservation;
 import com.kyb.sahabul.entities.dto.ReservationDto;
+import com.kyb.sahabul.entities.dto.createrequest.CreateReservationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class ReservationController {
     }
 
     @PostMapping(value = "add")
-    public ResponseEntity<ReservationDto> add(@RequestBody Reservation reservation) {
-        return ResponseEntity.ok(reservationServices.add(reservation));
+    public ResponseEntity<ReservationDto> add(@RequestBody CreateReservationRequest createReservationRequest) {
+        return ResponseEntity.ok(reservationServices.add(createReservationRequest));
     }
 }

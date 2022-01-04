@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.Collections;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -38,13 +40,19 @@ public class PitchDtoConverter {
                 from.getPitchNumber(),
                 cityDtoConverter.convert(from.getCity()),
                 districtDtoConverter.convertToDistrictForPicthDto(from.getDistrict()),
-                from.getPitchProperties().stream()
+                Optional.ofNullable(from.getPitchProperties())
+                        .orElseGet(Collections::emptyList)
+                        .stream()
                         .map(pitchPropertyDtoConverter::convertToPitchPropertyForPitchDto)
                         .collect(Collectors.toList()),
-                from.getReservations().stream()
+                Optional.ofNullable(from.getReservations())
+                        .orElseGet(Collections::emptyList)
+                        .stream()
                         .map(reservationDtoConverter::convert)
                         .collect(Collectors.toList()),
-                from.getPitchPhotos().stream()
+                Optional.ofNullable(from.getPitchPhotos())
+                        .orElseGet(Collections::emptyList)
+                        .stream()
                         .map(pitchPhotoDtoConverter::convert)
                         .collect(Collectors.toList())
         );
