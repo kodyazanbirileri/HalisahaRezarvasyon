@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @Data
@@ -20,4 +21,7 @@ public class City
 
     @Column(name = "city_name")
     private String cityName;
+
+    @OneToMany(mappedBy = "city")
+    List<District> districts;
 }

@@ -22,7 +22,7 @@ public class District {
     @Column(name = "district_name")
     private String districtName;
 
-    @OneToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "city_id",referencedColumnName = "id")
     private City city;
 
