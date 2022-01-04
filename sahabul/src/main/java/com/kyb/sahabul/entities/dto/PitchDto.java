@@ -18,9 +18,9 @@ public class PitchDto {
     private String city;
     private String district;
     private boolean status;
-    private List<PitchPropertyForPitchDto> pitchProperties;
+    private List<String> pitchProperties;
+    private List<String> pitchPhotoUrls;
     private List<ReservationForPitchDto> reservations;
-    private List<PitchPhotoDto> pitchPhotos;
 
 
 
