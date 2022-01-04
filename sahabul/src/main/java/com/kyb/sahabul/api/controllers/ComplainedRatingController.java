@@ -19,16 +19,16 @@ public class ComplainedRatingController {
         this.complainedRatingServices = complainedRatingServices;
     }
 
-    @GetMapping(value = "getAll")
+    @GetMapping(value = "/getAll")
     public ResponseEntity<List<ComplainedRatingDto>> getAll(){
         return ResponseEntity.ok(complainedRatingServices.getAll());
     }
-    @GetMapping(value = "getById")
+    @GetMapping(value = "/getById")
     public  ResponseEntity<ComplainedRatingDto> getById(@RequestParam int id){
         return ResponseEntity.ok(complainedRatingServices.getById(id));
     }
 
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public  ResponseEntity<ComplainedRatingDto> add(@RequestBody CreateComplainedRating createComplainedRating){
         return ResponseEntity.ok(complainedRatingServices.add(createComplainedRating));
     }

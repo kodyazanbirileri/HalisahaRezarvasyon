@@ -19,17 +19,17 @@ public class SubscriptionController {
         this.subscriptionServices = subscriptionServices;
     }
 
-    @GetMapping(value = "getAll")
+    @GetMapping(value = "/getAll")
     public ResponseEntity<List<SubscriptionDto>> getAll() {
         return ResponseEntity.ok(subscriptionServices.getAll());
     }
 
-    @GetMapping(value = "getById")
+    @GetMapping(value = "/getById")
     public ResponseEntity<SubscriptionDto> getById(@RequestParam int id) {
         return ResponseEntity.ok(subscriptionServices.getById(id));
     }
 
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public ResponseEntity<SubscriptionDto> add(@RequestBody CreateSubscriptionRequest createSubscriptionRequest) {
         return ResponseEntity.ok(subscriptionServices.add(createSubscriptionRequest));
     }

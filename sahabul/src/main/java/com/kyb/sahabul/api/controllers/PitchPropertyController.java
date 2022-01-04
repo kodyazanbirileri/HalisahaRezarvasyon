@@ -19,17 +19,17 @@ public class PitchPropertyController {
         this.pitchPropertyService = pitchPropertyService;
     }
 
-    @GetMapping(value = "getAll")
+    @GetMapping(value = "/getAll")
     public ResponseEntity<List<PitchPropertyDto>> getAll(){
         return ResponseEntity.ok(pitchPropertyService.getAll());
     }
 
-    @GetMapping(value = "getById")
+    @GetMapping(value = "/getById")
     public ResponseEntity<PitchPropertyDto> getById(@RequestParam int id){
         return ResponseEntity.ok(pitchPropertyService.getById(id));
     }
 
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public ResponseEntity<PitchPropertyDto> add(@RequestBody CreatePitchPropertyRequest createPitchPropertyRequest) {
         return ResponseEntity.ok(pitchPropertyService.add(createPitchPropertyRequest));
     }

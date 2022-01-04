@@ -20,7 +20,7 @@ public class OwnerController {
         this.ownerServices = ownerServices;
     }
 
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public ResponseEntity<OwnerDto> add(@RequestBody CreateOwnerRequest createOwnerRequest){
         return ResponseEntity.ok(ownerServices.add(createOwnerRequest));
     }
@@ -31,7 +31,7 @@ public class OwnerController {
     }
 
 
-    @GetMapping(value = "getById")
+    @GetMapping(value = "/getById")
     public OwnerDto getById(@RequestParam int id){
         return ownerServices.getById(id);
     }

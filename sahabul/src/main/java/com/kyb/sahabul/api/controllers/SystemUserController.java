@@ -18,7 +18,7 @@ public class SystemUserController {
     public SystemUserController(SystemUserServices systemUserServices) {
         this.systemUserServices = systemUserServices;
     }
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public ResponseEntity<SystemUserDto> add(@RequestBody CreateSystemUserRequest createSystemUserRequest){
         return ResponseEntity.ok(systemUserServices.add(createSystemUserRequest));
     }
@@ -29,7 +29,7 @@ public class SystemUserController {
     }
 
 
-    @GetMapping(value = "getById")
+    @GetMapping(value = "/getById")
     public SystemUserDto getById(@RequestParam int id){
         return systemUserServices.getById(id);
     }

@@ -23,12 +23,12 @@ public class PropertyController {
         return ResponseEntity.ok(propertyServices.getById(id));
     }
 
-    @GetMapping(value = "getAll")
+    @GetMapping(value = "/getAll")
     public ResponseEntity<List<PropertyDto>> getAll() {
         return ResponseEntity.ok(propertyServices.getAll());
     }
 
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public ResponseEntity<PropertyDto> add(@RequestBody CreatePropertyRequest createPropertyRequest) {
         return ResponseEntity.ok(propertyServices.add(createPropertyRequest));
     }

@@ -18,17 +18,17 @@ public class PitchPhotoController {
         this.pitchPhotoServices = pitchPhotoServices;
     }
 
-    @GetMapping(value = "getAll")
+    @GetMapping(value = "/getAll")
     public ResponseEntity<List<PitchPhotoDto>> getAll() {
         return ResponseEntity.ok(pitchPhotoServices.getAll());
     }
 
-    @GetMapping(value = "getById")
+    @GetMapping(value = "/getById")
     public ResponseEntity<PitchPhotoDto> getById(int id) {
         return ResponseEntity.ok(pitchPhotoServices.getById(id));
     }
 
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public ResponseEntity<PitchPhotoDto> add(@RequestBody CreatePitchPhotoRequest createPitchPhotoRequest) {
         return ResponseEntity.ok(pitchPhotoServices.add(createPitchPhotoRequest));
     }

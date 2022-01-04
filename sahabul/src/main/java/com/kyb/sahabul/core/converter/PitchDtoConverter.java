@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class PitchDtoConverter {
-    
+
     private final ReservationForPitchDtoConverter reservationForPitchDtoConverter;
 
     public PitchDtoConverter(PitchPropertyForPitchDtoConverter pitchPropertyForPitchDtoConverter,

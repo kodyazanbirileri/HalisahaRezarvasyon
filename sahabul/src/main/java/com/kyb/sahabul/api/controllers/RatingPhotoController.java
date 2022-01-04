@@ -18,17 +18,17 @@ public class RatingPhotoController {
         this.ratingPhotoServices = ratingPhotoServices;
     }
 
-    @GetMapping(value = "getAll")
+    @GetMapping(value = "/getAll")
     public ResponseEntity<List<RatingPhotoDto>> getAll() {
         return ResponseEntity.ok(ratingPhotoServices.getAll());
     }
 
-    @GetMapping(value = "getById")
+    @GetMapping(value = "/getById")
     public ResponseEntity<RatingPhotoDto> getById(@RequestParam int id) {
         return ResponseEntity.ok(ratingPhotoServices.getById(id));
     }
 
-    @PostMapping(value = "add")
+    @PostMapping(value = "/add")
     public ResponseEntity<RatingPhotoDto> add(@RequestBody CreateRatingPhotoRequest createRatingPhotoRequest) {
         return ResponseEntity.ok(ratingPhotoServices.add(createRatingPhotoRequest));
     }
