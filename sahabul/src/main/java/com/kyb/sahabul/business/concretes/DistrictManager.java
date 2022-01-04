@@ -22,7 +22,7 @@ public class DistrictManager implements DistrictServices {
 
     @Override
     public District findById(int id) {
-        return null;
+        return districtDao.getOne(id);
     }
 
     @Override
