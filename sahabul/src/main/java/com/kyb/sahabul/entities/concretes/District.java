@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @Data
@@ -25,5 +26,8 @@ public class District {
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "city_id",referencedColumnName = "id")
     private City city;
+
+    @OneToMany(mappedBy = "district")
+    List<Pitch> pitches;
 
 }
