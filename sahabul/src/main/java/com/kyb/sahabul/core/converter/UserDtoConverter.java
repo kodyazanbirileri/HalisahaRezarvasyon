@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 
+import javax.swing.text.html.Option;
+import java.util.Collections;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -24,7 +27,9 @@ public class UserDtoConverter {
                 from.getLastName(),
                 from.getEmail(),
                 from.getPhoneNumber(),
-                from.getReservations().stream()
+                Optional.ofNullable(from.getReservations())
+                        .orElseGet(Collections::emptyList)
+                        .stream()
                         .map(reservationDtoConverter::convert)
                         .collect(Collectors.toList())
 
