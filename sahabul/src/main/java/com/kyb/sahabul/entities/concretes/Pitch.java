@@ -2,6 +2,7 @@ package com.kyb.sahabul.entities.concretes;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.kyb.sahabul.entities.dto.DistrictDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -46,7 +47,7 @@ public class Pitch {
     @OneToMany(mappedBy = "pitch")
     private List<PitchPhoto> pitchPhotos;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = City.class, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = District.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "district_id", referencedColumnName = "id")
     private District district;
 

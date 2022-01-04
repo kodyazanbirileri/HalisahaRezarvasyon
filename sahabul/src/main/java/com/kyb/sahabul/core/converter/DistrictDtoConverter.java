@@ -9,18 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class DistrictDtoConverter {
 
-    private final CityDtoConverter cityDtoConverter;
-
-    public DistrictDtoConverter(CityDtoConverter cityDtoConverter) {
-        this.cityDtoConverter = cityDtoConverter;
-    }
-
     public DistrictDto convert(District from)
     {
         return new DistrictDto(
                 from.getId(),
                 from.getDistrictName(),
-                cityDtoConverter.convert(from.getCity())
+                from.getCity().getCityName()
         );
     }
 

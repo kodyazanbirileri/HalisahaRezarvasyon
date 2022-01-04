@@ -2,6 +2,7 @@ package com.kyb.sahabul.core.converter;
 
 import com.kyb.sahabul.entities.concretes.Pitch;
 import com.kyb.sahabul.entities.dto.PitchDto;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
@@ -16,6 +17,7 @@ public class PitchDtoConverter {
     private final ReservationForPitchDtoConverter reservationForPitchDtoConverter;
     private final PitchPhotoDtoConverter pitchPhotoDtoConverter;
 
+    @Lazy
     public PitchDtoConverter(PitchPropertyForPitchDtoConverter pitchPropertyForPitchDtoConverter,
                              ReservationForPitchDtoConverter reservationForPitchDtoConverter,
                              PitchPhotoDtoConverter pitchPhotoDtoConverter) {
