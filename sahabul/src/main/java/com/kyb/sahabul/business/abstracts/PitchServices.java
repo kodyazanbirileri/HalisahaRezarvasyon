@@ -12,7 +12,7 @@ public interface PitchServices {
     List<PitchDto> getByCityId(OnlyIdDto onlyIdDto);
     List<PitchDto> getByDistrictId(OnlyIdDto onlyIdDto);
     Pitch findById(int id);
-    PitchDto getById(int id);
+    PitchDto getById(OnlyIdDto from);
     PitchDto add(CreatePitchRequest from);
     PitchDto delete(int pitchId);
 

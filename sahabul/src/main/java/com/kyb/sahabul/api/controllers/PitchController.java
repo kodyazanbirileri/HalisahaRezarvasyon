@@ -36,9 +36,9 @@ public class PitchController {
     }
 
 
-    @GetMapping(value = "/getById")
-    public ResponseEntity<PitchDto> getById(@RequestParam int id){
-        return ResponseEntity.ok(pitchServices.getById(id));
+    @PostMapping(value = "/getById")
+    public ResponseEntity<PitchDto> getById(@RequestParam OnlyIdDto onlyIdDto){
+        return ResponseEntity.ok(pitchServices.getById(onlyIdDto));
     }
 
     @PostMapping(value = "/getByCityId")
