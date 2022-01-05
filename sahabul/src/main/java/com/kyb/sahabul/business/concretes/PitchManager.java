@@ -44,6 +44,20 @@ public class PitchManager implements PitchServices {
     }
 
     @Override
+    public List<PitchDto> getByCityId(int id) {
+        return pitchDao.findAllByDistrictCityId(id)
+                .stream().map(pitchDtoConverter::convert)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PitchDto> getByDistrictId(int id) {
+        return pitchDao.findAllByDistrictId(id)
+                .stream().map(pitchDtoConverter::convert)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public Pitch findById(int id) {
         return pitchDao.getOne(id);
     }

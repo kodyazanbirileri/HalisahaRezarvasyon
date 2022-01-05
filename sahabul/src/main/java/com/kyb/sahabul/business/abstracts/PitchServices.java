@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface PitchServices {
     List<PitchDto> getAll();
+    List<PitchDto> getByCityId(int id);
+    List<PitchDto> getByDistrictId(int id);
     Pitch findById(int id);
     PitchDto getById(int id);
     PitchDto add(CreatePitchRequest from);

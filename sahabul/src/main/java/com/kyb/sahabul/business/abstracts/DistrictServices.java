@@ -9,6 +9,4 @@ public interface DistrictServices {
     List<DistrictDto> getAll();
     District findById(int id);
     DistrictDto getById(int id);
-    DistrictDto add(District district);
-    void delete(District district);
 }

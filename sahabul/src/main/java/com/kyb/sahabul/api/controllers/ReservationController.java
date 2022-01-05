@@ -1,13 +1,13 @@
 package com.kyb.sahabul.api.controllers;
 
 import com.kyb.sahabul.business.abstracts.ReservationServices;
-import com.kyb.sahabul.dataAccess.abstracts.ReservationDao;
-import com.kyb.sahabul.entities.concretes.Reservation;
+import com.kyb.sahabul.entities.dto.ReservationDateWithPitchIdDto;
 import com.kyb.sahabul.entities.dto.ReservationDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateReservationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -28,6 +28,14 @@ public class ReservationController {
     public ResponseEntity<ReservationDto> getById(@RequestParam int id) {
         return ResponseEntity.ok(reservationServices.getById(id));
     }
+
+    @PostMapping(value = "/getReservationHoursByDateAndPitchId")
+    public ResponseEntity<List<Integer>> getReservationHoursByDateAndPitchId
+            (@RequestBody ReservationDateWithPitchIdDto reservationDateWithPitchIdDto) {
+        return ResponseEntity.ok(reservationServices
+                .getAllByReservationDateHoursLike(reservationDateWithPitchIdDto));
+    }
+
 
     @PostMapping(value = "/add")
     public ResponseEntity<ReservationDto> add(@RequestBody CreateReservationRequest createReservationRequest) {

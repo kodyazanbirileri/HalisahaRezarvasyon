@@ -1,6 +1,7 @@
 package com.kyb.sahabul.business.abstracts;
 
 import com.kyb.sahabul.entities.concretes.User;
+import com.kyb.sahabul.entities.dto.UserCheckDto;
 import com.kyb.sahabul.entities.dto.UserDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateUserRequest;
 import com.kyb.sahabul.entities.dto.updaterequest.UpdateUserRequest;
@@ -14,4 +15,5 @@ public interface UserServices {
     UserDto add(CreateUserRequest from);
     UserDto update(UpdateUserRequest from);
     UserDto delete(int userId);
+    boolean checkUserIsRight(UserCheckDto from);
 }

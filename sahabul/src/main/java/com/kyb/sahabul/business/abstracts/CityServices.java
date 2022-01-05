@@ -9,6 +9,4 @@ public interface CityServices {
     List<CityDto> getAll();
     CityDto getById(int id);
     City findById(int id);
-    CityDto add(City city);
-    void delete(City city);
 }

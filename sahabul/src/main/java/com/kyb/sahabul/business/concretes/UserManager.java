@@ -5,12 +5,14 @@ import com.kyb.sahabul.core.converter.UpdateToRequestUserDtoConverter;
 import com.kyb.sahabul.core.converter.UserDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.UserDao;
 import com.kyb.sahabul.entities.concretes.User;
+import com.kyb.sahabul.entities.dto.UserCheckDto;
 import com.kyb.sahabul.entities.dto.UserDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateUserRequest;
 import com.kyb.sahabul.entities.dto.updaterequest.UpdateUserRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -82,6 +84,18 @@ public class UserManager implements UserServices {
         deletedUser.setStatus(false);
 
         return userDtoConverter.convert(userDao.save(deletedUser));
+    }
+
+    @Override
+    public boolean checkUserIsRight(UserCheckDto from) {
+
+        User targetUser = userDao.getByEmail(from.getEmail());
+
+        if ( targetUser != null ) {
+            return Objects.equals(targetUser.getPassword(), from.getPassword());
+        }
+
+        return false;
     }
 
 

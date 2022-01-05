@@ -36,7 +36,18 @@ public class PitchController {
 
 
     @GetMapping(value = "/getById")
-    public PitchDto getById(@RequestParam int id){
-        return pitchServices.getById(id);
+    public ResponseEntity<PitchDto> getById(@RequestParam int id){
+        return ResponseEntity.ok(pitchServices.getById(id));
     }
+
+    @GetMapping(value = "/getByCityId")
+    public ResponseEntity<List<PitchDto>> getAllByCityId(@RequestParam int id){
+        return ResponseEntity.ok(pitchServices.getByCityId(id));
+    }
+
+    @GetMapping(value = "/getByDistrictId")
+    public ResponseEntity<List<PitchDto>> getAllByDistrictId(@RequestParam int id){
+        return ResponseEntity.ok(pitchServices.getByDistrictId(id));
+    }
+
 }

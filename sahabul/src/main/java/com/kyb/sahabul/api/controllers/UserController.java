@@ -2,6 +2,7 @@ package com.kyb.sahabul.api.controllers;
 
 import com.kyb.sahabul.business.abstracts.UserServices;
 import com.kyb.sahabul.entities.concretes.User;
+import com.kyb.sahabul.entities.dto.UserCheckDto;
 import com.kyb.sahabul.entities.dto.UserDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateUserRequest;
 import com.kyb.sahabul.entities.dto.updaterequest.UpdateUserRequest;
@@ -36,9 +37,14 @@ public class UserController {
         return ResponseEntity.ok(userServices.add(createUserRequest));
     }
 
-    @PostMapping(value = "/delete")
+    @GetMapping(value = "/delete")
     ResponseEntity<UserDto> add(@RequestParam int userId) {
         return ResponseEntity.ok(userServices.delete(userId));
+    }
+
+    @PostMapping(value = "/checkUser")
+    ResponseEntity<Boolean> checkUserIsRight(@RequestBody UserCheckDto userCheckDto) {
+        return ResponseEntity.ok(userServices.checkUserIsRight(userCheckDto));
     }
 
 }

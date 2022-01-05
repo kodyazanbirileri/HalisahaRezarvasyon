@@ -7,10 +7,14 @@ import com.kyb.sahabul.business.abstracts.UserServices;
 import com.kyb.sahabul.core.converter.ReservationDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.ReservationDao;
 import com.kyb.sahabul.entities.concretes.Reservation;
+import com.kyb.sahabul.entities.dto.ReservationDateWithPitchIdDto;
 import com.kyb.sahabul.entities.dto.ReservationDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateReservationRequest;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,6 +39,24 @@ public class ReservationManager implements ReservationServices {
         return reservationDao.findAll().stream()
                 .map(reservationDtoConverter::convert)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Integer> getAllByReservationDateHoursLike(ReservationDateWithPitchIdDto from) {
+
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String targetDate = formatter.format(from.getDate());
+
+        List<ReservationDto> reservationDates = this.getAll().stream()
+                .filter(r -> formatter.format(r.getReservationDate()).equals(targetDate))
+                .collect(Collectors.toList());
+
+        List<Integer> hoursIds = reservationDates.stream()
+                .filter(r -> r.getPitchId() == from.getPitchId())
+                .map(fr -> fr.getReservationHour().getId())
+                .collect(Collectors.toList());
+
+        return hoursIds;
     }
 
     @Override
