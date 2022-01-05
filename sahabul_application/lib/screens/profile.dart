@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sahabul_application/components/build_btn.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
-import 'package:sahabul_application/models/datas/user_data.dart';
+import 'package:sahabul_application/models/data/user_data.dart';
 import 'package:sahabul_application/screens/reservations.dart';
 
 class Profile extends StatelessWidget {

@@ -6,7 +6,7 @@ import 'package:sahabul_application/components/build_forgot_pass_btn.dart';
 import 'package:sahabul_application/components/build_password.dart';
 import 'package:sahabul_application/components/build_sign_up_btn.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
-import 'package:sahabul_application/models/datas/user_data.dart';
+import 'package:sahabul_application/models/data/user_data.dart';
 import 'package:sahabul_application/models/user_model.dart';
 import 'package:sahabul_application/services/user_service.dart';
 

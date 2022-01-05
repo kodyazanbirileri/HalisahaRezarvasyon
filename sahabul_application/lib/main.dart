@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sahabul_application/layout.dart';
-import 'package:sahabul_application/models/datas/city_data.dart';
-import 'package:sahabul_application/models/datas/district_data.dart';
-import 'package:sahabul_application/models/datas/hours_data.dart';
-import 'package:sahabul_application/models/datas/pitch_data.dart';
-import 'package:sahabul_application/models/datas/user_data.dart';
+import 'package:sahabul_application/models/data/city_data.dart';
+import 'package:sahabul_application/models/data/district_data.dart';
+import 'package:sahabul_application/models/data/hours_data.dart';
+import 'package:sahabul_application/models/data/pitch_data.dart';
+import 'package:sahabul_application/models/data/user_data.dart';
 import 'package:sahabul_application/screens/forgot_password.dart';
 import 'package:sahabul_application/screens/login_screen.dart';
 import 'package:sahabul_application/screens/make_reservation.dart';

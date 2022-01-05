@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:sahabul_application/components/build_btn.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
-import 'package:sahabul_application/models/datas/hours_data.dart';
-import 'package:sahabul_application/models/datas/user_data.dart';
+import 'package:sahabul_application/models/data/hours_data.dart';
+import 'package:sahabul_application/models/data/user_data.dart';
 import 'package:sahabul_application/models/hours_model.dart';
 import 'package:sahabul_application/services/hours_service.dart';
 import 'package:sahabul_application/services/reservation_service.dart';
+import 'package:sahabul_application/services/user_service.dart';
 
 class MakeRezervation extends StatefulWidget {
   @override
@@ -39,9 +41,11 @@ class _MakeRezervationState extends State<MakeRezervation> {
     int pitchId,
     int userId,
     int hourId,
-    DateTime date,
+    String date,
   ) async {
     await ReservationService.makeReservation(userId, pitchId, hourId, date);
+    Provider.of<UserData>(context, listen: false).user =
+        await UserService.getUserById(userId);
     setState(() {});
   }
 
@@ -101,12 +105,13 @@ class _MakeRezervationState extends State<MakeRezervation> {
               text: 'Rezervasyon Yap',
               onPressed: () {
                 setState(() {
+                  DateFormat formatter = DateFormat('yyyy-MM-dd');
                   makeReservation(
                       pitchId,
                       Provider.of<UserData>(context, listen: false).user.id!,
                       Provider.of<HoursData>(context, listen: false)
                           .selectedHour,
-                      _dateTime!);
+                      formatter.format(_dateTime!));
                 });
               }),
         ],
@@ -116,7 +121,6 @@ class _MakeRezervationState extends State<MakeRezervation> {
 }
 
 class ReservationHours extends StatefulWidget {
-  Color _HourBackground = Colors.white;
   Color _HourTextColor = Color(0xff728840);
 
   late HoursModel index;
@@ -165,7 +169,7 @@ class _ReservationHoursState extends State<ReservationHours> {
           borderRadius: BorderRadius.circular(
             10,
           ),
-          color: widget.checkPress == 1 ? Colors.black : Colors.red,
+          color: widget.checkPress == 1 ? Colors.black : Colors.white,
         ),
         child: Center(
           child: Text(

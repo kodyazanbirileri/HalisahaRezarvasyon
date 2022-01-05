@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 import 'package:sahabul_application/models/reservation_model.dart';
 import 'package:sahabul_application/services/globals.dart';
 
@@ -41,10 +40,9 @@ class ReservationService {
   }
 
   static Future<ReservationModel> makeReservation(
-      int userId, int pitchId, int hourId, DateTime reservationDate) async {
-    final DateFormat formatter = DateFormat('yyyy-MM-dd');
+      int userId, int pitchId, int hourId, String reservationDate) async {
     Map data = {
-      "date": formatter.format(reservationDate),
+      "reservationDate": reservationDate,
       "pitchId": pitchId,
       "userId": userId,
       "hourId": hourId,

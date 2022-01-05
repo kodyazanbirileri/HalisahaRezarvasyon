@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sahabul_application/Models/reservation_model.dart';
+import 'package:sahabul_application/components/reservation_widget.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
 
 class Reservation extends StatefulWidget {
@@ -15,17 +15,18 @@ class _ReservationState extends State<Reservation> {
       bar: AppBar(
         elevation: 0,
         backgroundColor: Color(0xff728840),
-        leading: Container(),
+        title: Text('Rezervasyonlarım'),
+        centerTitle: true,
       ),
       paddingHorizontal: 40,
       paddingVertical: 0,
       child: ListView.builder(
         itemCount: reservations.length,
         itemBuilder: (context, index) => RezervationWidget(
-          reservation: ReservationModel.reservations[index],
+          reservation: reservations[index],
           press: () {
             setState(() {
-              ReservationModel.reservations.removeAt(index);
+              reservations.removeAt(index);
             });
           },
         ),

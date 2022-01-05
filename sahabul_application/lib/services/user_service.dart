@@ -22,6 +22,22 @@ class UserService {
     return userModel;
   }
 
+  static Future<UserModel> getUserById(int userId) async {
+    var body = json.encode(userId);
+    var url = Uri.parse(baseURL + 'user/getById');
+
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+
+    Map userMap = jsonDecode(response.body);
+    print(userMap);
+    UserModel userModel = UserModel.fromMap(userMap);
+    return userModel;
+  }
+
   static Future<bool> checkUser(String email, String password) async {
     Map data = {
       "email": email,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sahabul_application/models/datas/city_data.dart';
-import 'package:sahabul_application/models/datas/district_data.dart';
-import 'package:sahabul_application/models/datas/pitch_data.dart';
+import 'package:sahabul_application/models/data/city_data.dart';
+import 'package:sahabul_application/models/data/district_data.dart';
+import 'package:sahabul_application/models/data/pitch_data.dart';
 
 class BuildDropdown extends StatefulWidget {
   const BuildDropdown({Key? key}) : super(key: key);

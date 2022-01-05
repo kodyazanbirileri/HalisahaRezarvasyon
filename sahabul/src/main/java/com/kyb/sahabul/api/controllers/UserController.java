@@ -3,6 +3,7 @@ package com.kyb.sahabul.api.controllers;
 import com.kyb.sahabul.business.abstracts.UserServices;
 import com.kyb.sahabul.entities.concretes.User;
 import com.kyb.sahabul.entities.dto.EmailDto;
+import com.kyb.sahabul.entities.dto.OnlyIdDto;
 import com.kyb.sahabul.entities.dto.UserCheckDto;
 import com.kyb.sahabul.entities.dto.UserDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateUserRequest;
@@ -51,6 +52,11 @@ public class UserController {
     @PostMapping(value = "/checkUser")
     ResponseEntity<Boolean> checkUserIsRight(@RequestBody UserCheckDto userCheckDto) {
         return ResponseEntity.ok(userServices.checkUserIsRight(userCheckDto));
+    }
+
+    @PostMapping(value = "/getById")
+    ResponseEntity<UserDto> getById(@RequestBody OnlyIdDto onlyIdDto) {
+        return ResponseEntity.ok(userServices.getById(onlyIdDto));
     }
 
 

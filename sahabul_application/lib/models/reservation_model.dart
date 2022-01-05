@@ -1,4 +1,4 @@
-import 'package:sahabul_application/Models/hours_model.dart';
+import 'package:sahabul_application/models/hours_model.dart';
 
 class ReservationModel {
   late int id;

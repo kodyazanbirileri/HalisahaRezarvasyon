@@ -1,4 +1,4 @@
-import 'package:sahabul_application/Models/reservation_model.dart';
+import 'package:sahabul_application/models/reservation_model.dart';
 
 class UserModel {
   int? id;

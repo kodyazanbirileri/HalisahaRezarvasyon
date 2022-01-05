@@ -15,14 +15,16 @@ class RezervationWidget extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(10).copyWith(left: 0),
           child: ListTile(
-            leading: Image.network(reservation.pitch.pictureUrl[0]),
-            title: Text(reservation.pitchId),
+            leading: Image.network(
+                'https://i2.milimaj.com/i/milliyet/75/0x0/603df3005542811804d80ccf.jpg'),
+            title: Text('${reservation.pitchId}'),
             subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                    '${reservation.date.day}-${reservation.date.month}-${reservation.date.year}'),
+                    ' ${reservation.reservationDate.day}-${reservation.reservationDate.month}-${reservation.reservationDate.year}'),
                 Text(
-                    'Saat Aralığı: ${reservation.startHour}- ${reservation.endHour}'),
+                    'Saat Aralığı: ${reservation.reservationHour.endHour}-${reservation.reservationHour.startHour}'),
               ],
             ),
             trailing: IconButton(

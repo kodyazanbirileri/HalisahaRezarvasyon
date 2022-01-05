@@ -6,6 +6,7 @@ import com.kyb.sahabul.core.converter.UserDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.UserDao;
 import com.kyb.sahabul.entities.concretes.User;
 import com.kyb.sahabul.entities.dto.EmailDto;
+import com.kyb.sahabul.entities.dto.OnlyIdDto;
 import com.kyb.sahabul.entities.dto.UserCheckDto;
 import com.kyb.sahabul.entities.dto.UserDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateUserRequest;
@@ -47,8 +48,8 @@ public class UserManager implements UserServices {
     }
 
     @Override
-    public UserDto getById(int id) {
-        return userDtoConverter.convert(userDao.getOne(id));
+    public UserDto getById(OnlyIdDto from) {
+        return userDtoConverter.convert(userDao.getOne(from.getId()));
     }
 
     private User generateBody(User user,CreateUserRequest from)
