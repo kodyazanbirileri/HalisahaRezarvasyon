@@ -47,23 +47,15 @@ class _PitchPageState extends State<PitchPage> {
       bar: AppBar(
         elevation: 0,
         backgroundColor: Color(0xff728840),
-        leading: Container(),
+        title: Text(pitch.pitchName),
+        centerTitle: true,
       ),
       paddingHorizontal: 20,
       paddingVertical: 0,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
-            pitch.pitchName,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
           SizedBox(
-            height: 10,
+            height: 40,
           ),
           SizedBox(
             width: 300,
@@ -76,28 +68,54 @@ class _PitchPageState extends State<PitchPage> {
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // ...List.generate(pitch.pitchIndex.pictureUrl.length,
-              //     (index) => buildSmallImages(index, argument)),
-            ],
-          ),
-          Text(pitch.address),
-          BuildBtn(
-              paddingSynmetric: 25,
-              text: 'Rezervasyon Yap',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MakeRezervation(),
-                    settings: RouteSettings(
-                      arguments: pitch.id,
-                    ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 35,
+              vertical: 0,
+            ),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Telefon Numarası: ${pitch.pitchNumber.toString()}',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
                   ),
-                );
-              })
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Adres:${pitch.address} ${pitch.district}/${pitch.city}',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                BuildBtn(
+                  paddingSynmetric: 25,
+                  text: 'Rezervasyon Yap',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MakeRezervation(),
+                        settings: RouteSettings(
+                          arguments: pitch.id,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

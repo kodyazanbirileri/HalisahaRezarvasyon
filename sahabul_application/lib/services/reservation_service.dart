@@ -24,11 +24,8 @@ class ReservationService {
   }
 
   static Future<List<dynamic>> getReservationHours(
-      int pitchId, DateTime reservationDate) async {
-    Map data = {
-      "date": reservationDate.toString().substring(0, 10),
-      "pitchId": pitchId
-    };
+      int pitchId, String reservationDate) async {
+    Map data = {"date": reservationDate, "pitchId": pitchId};
     var body = json.encode(data);
     var url =
         Uri.parse(baseURL + "reservation/getReservationHoursByDateAndPitchId");

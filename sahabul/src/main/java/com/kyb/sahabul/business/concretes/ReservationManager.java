@@ -52,6 +52,8 @@ public class ReservationManager implements ReservationServices {
                 .filter(r -> r.getReservationDate().equals(from.getDate()))
                 .collect(Collectors.toList());
 
+        System.out.println(reservationDates);
+
         List<Integer> hoursIds = reservationDates.stream()
                 .filter(r -> r.getPitchId() == from.getPitchId())
                 .map(fr -> fr.getReservationHour().getId())

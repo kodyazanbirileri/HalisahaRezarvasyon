@@ -12,6 +12,6 @@ import java.time.LocalDate;
 public class ReservationDateWithPitchIdDto {
 
     private int pitchId;
-    private LocalDate date;
+    private String date;
 
 }

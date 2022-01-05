@@ -18,6 +18,7 @@ class MakeRezervation extends StatefulWidget {
 class _MakeRezervationState extends State<MakeRezervation> {
   DateTime? _dateTime;
   List<HoursModel>? hours;
+  DateFormat formatter = DateFormat('yyyy-MM-dd');
 
   getHours() async {
     hours = await HoursService.getHours();
@@ -25,16 +26,18 @@ class _MakeRezervationState extends State<MakeRezervation> {
     setState(() {});
   }
 
+  getReservationHoursData(String date, int pitchId) async {
+    Provider.of<HoursData>(context, listen: false).reservationHourList =
+        await ReservationService.getReservationHours(pitchId, date);
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
     getHours();
-  }
-
-  getReservationHoursData(DateTime date, int pitchId) async {
-    Provider.of<HoursData>(context, listen: false).reservationHourList =
-        await ReservationService.getReservationHours(pitchId, date);
-    setState(() {});
+    Provider.of<HoursData>(context, listen: false).hoursDebugger();
+    Provider.of<HoursData>(context, listen: false).reservationHourList = [];
   }
 
   makeReservation(
@@ -77,9 +80,11 @@ class _MakeRezervationState extends State<MakeRezervation> {
                     firstDate: DateTime.now(),
                     lastDate: DateTime.now().add(Duration(days: 14)),
                   ).then((date) {
+                    getReservationHoursData(formatter.format(date!), pitchId);
                     setState(() {
+                      Provider.of<HoursData>(context, listen: false)
+                          .hoursDebugger();
                       _dateTime = date;
-                      getReservationHoursData(date!, pitchId);
                     });
                   });
                 }),
@@ -104,8 +109,8 @@ class _MakeRezervationState extends State<MakeRezervation> {
               paddingSynmetric: 25,
               text: 'Rezervasyon Yap',
               onPressed: () {
+                getReservationHoursData(formatter.format(_dateTime!), pitchId);
                 setState(() {
-                  DateFormat formatter = DateFormat('yyyy-MM-dd');
                   makeReservation(
                       pitchId,
                       Provider.of<UserData>(context, listen: false).user.id!,
@@ -113,6 +118,7 @@ class _MakeRezervationState extends State<MakeRezervation> {
                           .selectedHour,
                       formatter.format(_dateTime!));
                 });
+                Navigator.pushNamed(context, 'profile');
               }),
         ],
       ),
@@ -169,7 +175,11 @@ class _ReservationHoursState extends State<ReservationHours> {
           borderRadius: BorderRadius.circular(
             10,
           ),
-          color: widget.checkPress == 1 ? Colors.black : Colors.white,
+          color: Provider.of<HoursData>(context, listen: false)
+                  .reservationHourList
+                  .contains(widget.index.id)
+              ? Colors.black
+              : (widget.checkPress == 1 ? Colors.grey : Colors.white),
         ),
         child: Center(
           child: Text(
