@@ -87,6 +87,11 @@ public class UserManager implements UserServices {
     }
 
     @Override
+    public UserDto getByEmail(String email) {
+        return userDtoConverter.convert(userDao.getByEmail(email));
+    }
+
+    @Override
     public boolean checkUserIsRight(UserCheckDto from) {
 
         User targetUser = userDao.getByEmail(from.getEmail());

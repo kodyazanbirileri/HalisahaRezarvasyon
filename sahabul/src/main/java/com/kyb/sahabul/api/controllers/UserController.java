@@ -27,6 +27,11 @@ public class UserController {
        return ResponseEntity.ok(userServices.getAll());
     }
 
+    @GetMapping(value = "/getByEmail")
+    public ResponseEntity<UserDto> getByEmail(@RequestParam String email) {
+        return ResponseEntity.ok(userServices.getByEmail(email));
+    }
+
     @PostMapping(value = "/update")
     public ResponseEntity<UserDto> update(@RequestBody UpdateUserRequest  updateUserRequest) {
         return ResponseEntity.ok(userServices.update(updateUserRequest));
@@ -37,7 +42,7 @@ public class UserController {
         return ResponseEntity.ok(userServices.add(createUserRequest));
     }
 
-    @GetMapping(value = "/delete")
+    @PostMapping(value = "/delete")
     ResponseEntity<UserDto> add(@RequestParam int userId) {
         return ResponseEntity.ok(userServices.delete(userId));
     }
@@ -46,5 +51,7 @@ public class UserController {
     ResponseEntity<Boolean> checkUserIsRight(@RequestBody UserCheckDto userCheckDto) {
         return ResponseEntity.ok(userServices.checkUserIsRight(userCheckDto));
     }
+
+
 
 }

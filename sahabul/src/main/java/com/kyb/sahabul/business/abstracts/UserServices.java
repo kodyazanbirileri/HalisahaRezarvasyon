@@ -15,5 +15,7 @@ public interface UserServices {
     UserDto add(CreateUserRequest from);
     UserDto update(UpdateUserRequest from);
     UserDto delete(int userId);
+    UserDto getByEmail(String email);
     boolean checkUserIsRight(UserCheckDto from);
+
 }
