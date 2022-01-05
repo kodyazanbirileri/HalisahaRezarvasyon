@@ -13,7 +13,7 @@ import java.util.Date;
 public class ReservationForPitchDto {
 
     private int id;
-    private LocalDate reservationDate;
+    private String reservationDate;
     private String note;
     private boolean status;
     private HourDto reservationHour;

@@ -44,7 +44,11 @@ public class ReservationManager implements ReservationServices {
     @Override
     public List<Integer> getAllByReservationDateHoursLike(ReservationDateWithPitchIdDto from) {
 
-        List<ReservationDto> reservationDates = this.getAll().stream()
+        List<ReservationDto> activeReservations = this.getAll().stream()
+                .filter(ReservationDto::isStatus)
+                .collect(Collectors.toList());
+
+        List<ReservationDto> reservationDates = activeReservations.stream()
                 .filter(r -> r.getReservationDate().equals(from.getDate()))
                 .collect(Collectors.toList());
 

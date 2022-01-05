@@ -39,7 +39,7 @@ public class User {
     private String email;
 
     @Column(name = "user_created")
-    private LocalDate userCreated;
+    private String userCreated;
 
     @Column(name = "status")
     private boolean status;

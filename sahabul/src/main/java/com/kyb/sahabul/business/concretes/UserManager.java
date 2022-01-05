@@ -12,6 +12,8 @@ import com.kyb.sahabul.entities.dto.createrequest.CreateUserRequest;
 import com.kyb.sahabul.entities.dto.updaterequest.UpdateUserRequest;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -64,6 +66,8 @@ public class UserManager implements UserServices {
     @Override
     public UserDto add(CreateUserRequest from) {
         User tempUser = new User();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        tempUser.setUserCreated(formatter.format(LocalDate.now()));
         return userDtoConverter.convert(userDao.save(generateBody(tempUser,from)));
 
     }

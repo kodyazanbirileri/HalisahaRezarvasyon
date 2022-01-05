@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class CreateReservationRequest {
 
-    private LocalDate reservationDate;
+    private String reservationDate;
     private String note;
     private int hourId;
     private int pitchId;

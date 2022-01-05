@@ -24,7 +24,7 @@ public class Reservation {
     private int id;
 
     @Column(name = "reservation_date")
-    private LocalDate reservationDate;
+    private String reservationDate;
 
     @Column(name = "reservation_note")
     private String note;
