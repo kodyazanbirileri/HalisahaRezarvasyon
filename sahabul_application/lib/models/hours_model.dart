@@ -2,6 +2,7 @@ class HoursModel {
   late int id;
   late int endHour;
   late int startHour;
+  late bool isCheck = false;
 
   HoursModel({
     required this.id,

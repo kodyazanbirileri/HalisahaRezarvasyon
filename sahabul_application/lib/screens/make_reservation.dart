@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sahabul_application/Models/hours_model.dart';
+import 'package:provider/provider.dart';
 import 'package:sahabul_application/components/build_btn.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
+import 'package:sahabul_application/models/hours_data.dart';
+import 'package:sahabul_application/models/hours_model.dart';
+import 'package:sahabul_application/services/hours_service.dart';
 
 class MakeRezervation extends StatefulWidget {
   @override
@@ -10,6 +13,20 @@ class MakeRezervation extends StatefulWidget {
 
 class _MakeRezervationState extends State<MakeRezervation> {
   DateTime? _dateTime;
+  List<HoursModel>? hours;
+
+  getHours() async {
+    hours = await HoursService.getHours();
+    Provider.of<HoursData>(context, listen: false).hours = hours!;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getHours();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ReusableWidget(
@@ -45,13 +62,12 @@ class _MakeRezervationState extends State<MakeRezervation> {
           ),
           Expanded(
             child: GridView.builder(
-              itemCount: HoursModel.hours.length,
+              itemCount: Provider.of<HoursData>(context).hours.length,
               gridDelegate:
                   SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
               itemBuilder: (context, index) {
                 return ReservationHours(
-                  index: index,
-                );
+                    index: Provider.of<HoursData>(context).hours[index]);
               },
             ),
           ),
@@ -72,13 +88,15 @@ class _MakeRezervationState extends State<MakeRezervation> {
 }
 
 class ReservationHours extends StatefulWidget {
-  bool _HoursSelected = false;
   Color _HourBackground = Colors.white;
   Color _HourTextColor = Color(0xff728840);
 
-  late int index;
+  late HoursModel index;
 
-  ReservationHours({Key? key, required this.index});
+  ReservationHours({
+    Key? key,
+    required this.index,
+  });
 
   @override
   State<ReservationHours> createState() => _ReservationHoursState();
@@ -88,18 +106,7 @@ class _ReservationHoursState extends State<ReservationHours> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        widget._HoursSelected = !widget._HoursSelected;
-        setState(() {
-          if (widget._HoursSelected) {
-            widget._HourBackground = Colors.blueAccent;
-            widget._HourTextColor = Colors.white;
-          } else {
-            widget._HourBackground = Colors.white;
-            widget._HourTextColor = Color(0xff728840);
-          }
-        });
-      },
+      onTap: () {},
       child: Container(
         margin: EdgeInsets.all(5),
         decoration: BoxDecoration(
@@ -110,10 +117,10 @@ class _ReservationHoursState extends State<ReservationHours> {
         ),
         child: Center(
           child: Text(
-            HoursModel.hours[widget.index].hour,
+            '${widget.index.endHour}:00-${widget.index.startHour}:00',
             style: TextStyle(
               color: widget._HourTextColor,
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
           ),

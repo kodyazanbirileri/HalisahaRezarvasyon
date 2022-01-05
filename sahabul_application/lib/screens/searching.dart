@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sahabul_application/Models/pitch_model.dart';
+import 'package:provider/provider.dart';
 import 'package:sahabul_application/components/build_dropdown.dart';
 import 'package:sahabul_application/components/pitch_widget.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
+import 'package:sahabul_application/models/pitch_data.dart';
+import 'package:sahabul_application/models/pitch_model.dart';
 import 'package:sahabul_application/screens/pitch.dart';
+import 'package:sahabul_application/services/pitch_service.dart';
 
 class Searching extends StatefulWidget {
   @override
@@ -11,6 +14,20 @@ class Searching extends StatefulWidget {
 }
 
 class _SearchingState extends State<Searching> {
+  List<PitchModel>? pitches;
+
+  getHours() async {
+    pitches = await PitchService.getPitches();
+    Provider.of<PitchData>(context, listen: false).pitches = pitches!;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getHours();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ReusableWidget(
@@ -29,15 +46,21 @@ class _SearchingState extends State<Searching> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: PitchModel.pitchs.length,
+              itemCount:
+                  Provider.of<PitchData>(context, listen: false).pitches.length,
               itemBuilder: (context, index) {
                 return PitchWidget(
-                  pitch: PitchModel.pitchs[index],
-                  press: () => Navigator.pushNamed(
+                  pitch: Provider.of<PitchData>(context, listen: false)
+                      .pitches[index],
+                  press: () => Navigator.push(
                     context,
-                    'pitch',
-                    arguments: PitchArguments(
-                      pitchIndex: PitchModel.pitchs[index],
+                    MaterialPageRoute(
+                      builder: (context) => PitchPage(),
+                      settings: RouteSettings(
+                        arguments:
+                            Provider.of<PitchData>(context, listen: false)
+                                .pitches[index],
+                      ),
                     ),
                   ),
                 );

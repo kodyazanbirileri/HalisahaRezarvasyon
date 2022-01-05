@@ -12,6 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
 
@@ -34,54 +35,57 @@ class _LoginScreenState extends State<LoginScreen> {
       paddingHorizontal: 40,
       paddingVertical: 0,
       child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: 70.0,
-            ),
-            Text(
-              'Sahabul',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: 70.0,
               ),
-            ),
-            SizedBox(
-              height: 100,
-            ),
-            BuildEmail(
-              textEditingController: emailTextController,
-              height: 60,
-              hintText: "Email",
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            BuildPassword(
-              textEditingController: passwordTextController,
-              hintText: 'Parola',
-              height: 60,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                BuildForgotPassBtn(),
-              ],
-            ),
-            BuildBtn(
-              paddingSynmetric: 25,
-              onPressed: () {
-                print(
-                    'Kullanıcı Adı: ${emailTextController.text} - Şifre: ${passwordTextController.text}');
-                Navigator.pushNamed(context, 'layout');
-              },
-              text: 'Giriş Yap',
-            ),
-            BuildSignUpBtn(),
-          ],
+              Text(
+                'Sahabul',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 100,
+              ),
+              BuildEmail(
+                textEditingController: emailTextController,
+                height: 60,
+                hintText: "Email",
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              BuildPassword(
+                textEditingController: passwordTextController,
+                hintText: 'Parola',
+                height: 60,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  BuildForgotPassBtn(),
+                ],
+              ),
+              BuildBtn(
+                paddingSynmetric: 25,
+                onPressed: () {
+                  print(
+                      'Kullanıcı Adı: ${emailTextController.text} - Şifre: ${passwordTextController.text}');
+                  Navigator.pushNamed(context, 'layout');
+                },
+                text: 'Giriş Yap',
+              ),
+              BuildSignUpBtn(),
+            ],
+          ),
         ),
       ),
     );

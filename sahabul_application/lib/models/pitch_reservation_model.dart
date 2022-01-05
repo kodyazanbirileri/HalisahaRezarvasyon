@@ -26,7 +26,7 @@ class PitchReservationModel {
         status: pitchReservationMap['status'],
         lastName: pitchReservationMap['lastName'],
         note: pitchReservationMap['note'],
-        reservationDate: pitchReservationMap['reservationDate'],
+        reservationDate: DateTime.parse(pitchReservationMap['reservationDate']),
         reservationHour:
             HoursModel.fromMap(pitchReservationMap['reservationHour']));
   }
