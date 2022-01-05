@@ -2,11 +2,9 @@ package com.kyb.sahabul.api.controllers;
 
 import com.kyb.sahabul.business.abstracts.DistrictServices;
 import com.kyb.sahabul.entities.dto.DistrictDto;
+import com.kyb.sahabul.entities.dto.OnlyIdDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +27,11 @@ public class DistrictController {
     @GetMapping(value = "/getById")
     public ResponseEntity<DistrictDto> getById(@RequestParam int id) {
         return ResponseEntity.ok(districtServices.getById(id));
+    }
+
+    @PostMapping(value = "/getByCityId")
+    public ResponseEntity<List<DistrictDto>> getByCityId(@RequestParam OnlyIdDto onlyIdDto) {
+        return ResponseEntity.ok(districtServices.getByCityId(onlyIdDto));
     }
 
 }

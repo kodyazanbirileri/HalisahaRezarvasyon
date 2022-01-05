@@ -5,6 +5,7 @@ import com.kyb.sahabul.core.converter.DistrictDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.DistrictDao;
 import com.kyb.sahabul.entities.concretes.District;
 import com.kyb.sahabul.entities.dto.DistrictDto;
+import com.kyb.sahabul.entities.dto.OnlyIdDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,6 +35,11 @@ public class DistrictManager implements DistrictServices {
     @Override
     public DistrictDto getById(int id) {
         return districtDtoConverter.convert(districtDao.getOne(id));
+    }
+
+    @Override
+    public List<DistrictDto> getByCityId(OnlyIdDto from) {
+        return districtDao.getAllByCityId(from.getId()).stream().map(districtDtoConverter::convert).collect(Collectors.toList());
     }
 
 }
