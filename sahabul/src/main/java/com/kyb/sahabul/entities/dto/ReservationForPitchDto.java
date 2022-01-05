@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -12,7 +13,7 @@ import java.util.Date;
 public class ReservationForPitchDto {
 
     private int id;
-    private Date reservationDate;
+    private LocalDate reservationDate;
     private String note;
     private boolean status;
     private HourDto reservationHour;

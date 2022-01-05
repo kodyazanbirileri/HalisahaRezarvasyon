@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.swing.text.View;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -23,7 +24,7 @@ public class Reservation {
     private int id;
 
     @Column(name = "reservation_date")
-    private Date reservationDate;
+    private LocalDate reservationDate;
 
     @Column(name = "reservation_note")
     private String note;

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -11,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class CreateReservationRequest {
 
-    private Date reservationDate;
+    private LocalDate reservationDate;
     private String note;
     private int hourId;
     private int pitchId;

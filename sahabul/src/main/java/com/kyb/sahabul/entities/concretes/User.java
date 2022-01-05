@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class User {
     private String email;
 
     @Column(name = "user_created")
-    private Date userCreated;
+    private LocalDate userCreated;
 
     @Column(name = "status")
     private boolean status;
