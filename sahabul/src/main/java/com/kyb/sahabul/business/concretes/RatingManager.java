@@ -35,6 +35,7 @@ public class RatingManager implements RatingServices {
     @Override
     public List<RatingDto> getAll() {
         return ratingDao.findAll().stream()
+                .filter(Rating::isStatus)
                 .map(ratingDtoConverter::convert)
                 .collect(Collectors.toList());
     }
@@ -46,7 +47,9 @@ public class RatingManager implements RatingServices {
 
     @Override
     public RatingDto getById(int id) {
-        return ratingDtoConverter.convert(ratingDao.getOne(id));
+
+        Rating tempRating = ratingDao.getOne(id);
+        return tempRating.isStatus() ? ratingDtoConverter.convert(tempRating) : null;
     }
 
     @Override

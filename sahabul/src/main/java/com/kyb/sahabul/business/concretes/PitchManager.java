@@ -40,6 +40,7 @@ public class PitchManager implements PitchServices {
     @Override
     public List<PitchDto> getAll() {
         return pitchDao.findAll().stream()
+                .filter(Pitch::isStatus)
                 .map(pitchDtoConverter::convert)
                 .collect(Collectors.toList());
     }
@@ -47,14 +48,16 @@ public class PitchManager implements PitchServices {
     @Override
     public List<PitchDto> getByCityId(OnlyIdDto from) {
         return pitchDao.findAllByDistrictCityId(from.getId())
-                .stream().map(pitchDtoConverter::convert)
+                .stream().filter(Pitch::isStatus)
+                .map(pitchDtoConverter::convert)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<PitchDto> getByDistrictId(OnlyIdDto from) {
         return pitchDao.findAllByDistrictId(from.getId())
-                .stream().map(pitchDtoConverter::convert)
+                .stream().filter(Pitch::isStatus)
+                .map(pitchDtoConverter::convert)
                 .collect(Collectors.toList());
     }
 
@@ -81,13 +84,12 @@ public class PitchManager implements PitchServices {
         int pitchId = pitchDao.save(tempPitch).getId();
 
         from.getPitchPhotoRequests().forEach(pp -> {
-            pitchPhotoServices.add(new CreatePitchPhotoRequest(pitchId,pp.getPhotoPath()));
+            pitchPhotoServices.add(new CreatePitchPhotoRequest(pitchId, pp.getPhotoPath()));
         });
 
         from.getPitchPropertyRequests().forEach(pp -> {
-           pitchPropertyService.add(new CreatePitchPropertyRequest(pp.getPropertyId(),pitchId));
+            pitchPropertyService.add(new CreatePitchPropertyRequest(pp.getPropertyId(), pitchId));
         });
-
 
 
         return pitchDtoConverter.convert(tempPitch);

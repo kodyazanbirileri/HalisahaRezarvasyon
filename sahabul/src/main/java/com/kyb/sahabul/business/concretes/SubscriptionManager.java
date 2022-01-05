@@ -27,13 +27,17 @@ public class SubscriptionManager implements SubscriptionServices {
     @Override
     public List<SubscriptionDto> getAll() {
         return subscriptionDao.findAll().stream()
+                .filter(Subscription::isStatus)
                 .map(subscriptionDtoConverter::convert)
                 .collect(Collectors.toList());
     }
 
     @Override
     public SubscriptionDto getById(int id) {
-        return subscriptionDtoConverter.convert(subscriptionDao.getOne(id));
+        Subscription tempSubscription = subscriptionDao.getOne(id);
+        return tempSubscription.isStatus() ?
+                subscriptionDtoConverter.convert(tempSubscription) :
+                null;
     }
 
 
