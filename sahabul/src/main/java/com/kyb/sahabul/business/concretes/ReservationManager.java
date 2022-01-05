@@ -43,12 +43,9 @@ public class ReservationManager implements ReservationServices {
 
     @Override
     public List<Integer> getAllByReservationDateHoursLike(ReservationDateWithPitchIdDto from) {
-
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String targetDate = formatter.format(from.getDate());
-
+        
         List<ReservationDto> reservationDates = this.getAll().stream()
-                .filter(r -> formatter.format(r.getReservationDate()).equals(targetDate))
+                .filter(r -> r.getReservationDate().equals(from.getDate()))
                 .collect(Collectors.toList());
 
         List<Integer> hoursIds = reservationDates.stream()
