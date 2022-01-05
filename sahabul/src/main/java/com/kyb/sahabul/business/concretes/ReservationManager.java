@@ -36,8 +36,8 @@ public class ReservationManager implements ReservationServices {
 
     @Override
     public List<ReservationDto> getAll() {
-        return reservationDao.findAll().stream()
-                .map(reservationDtoConverter::convert)
+        return reservationDao.findAll().stream().filter(Reservation::isStatus).
+                map(reservationDtoConverter::convert)
                 .collect(Collectors.toList());
     }
 

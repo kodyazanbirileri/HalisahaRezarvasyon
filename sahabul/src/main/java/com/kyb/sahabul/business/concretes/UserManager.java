@@ -36,9 +36,9 @@ public class UserManager implements UserServices {
 
     @Override
     public List<UserDto> getAll() {
-        return userDao.findAll().
-                stream().
-                map(userDtoConverter::convert).
+        return userDao.findAll().stream()
+                .filter(User::isStatus)
+                .map(userDtoConverter::convert).
                 collect(Collectors.toList());
     }
 
@@ -49,7 +49,8 @@ public class UserManager implements UserServices {
 
     @Override
     public UserDto getById(OnlyIdDto from) {
-        return userDtoConverter.convert(userDao.getOne(from.getId()));
+        User tempUser = userDao.getOne(from.getId());
+        return tempUser.isStatus() ? userDtoConverter.convert(tempUser) : null;
     }
 
     private User generateBody(User user,CreateUserRequest from)
@@ -94,7 +95,8 @@ public class UserManager implements UserServices {
 
     @Override
     public UserDto getByEmail(EmailDto email) {
-        return userDtoConverter.convert(userDao.findByEmail(email.getEmail()));
+        User tempUser = userDao.findByEmail(email.getEmail());
+        return tempUser.isStatus() ? userDtoConverter.convert(tempUser) : null;
     }
 
     @Override

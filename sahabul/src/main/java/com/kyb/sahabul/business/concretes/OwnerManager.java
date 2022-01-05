@@ -29,6 +29,7 @@ public class OwnerManager implements OwnerServices {
     @Override
     public List<OwnerDto> getAll() {
         return ownerDao.findAll().stream()
+                .filter(Owner::isConfirmed)
                 .map(ownerDtoConverter::convert)
                 .collect(Collectors.toList());
     }
