@@ -5,6 +5,7 @@ import com.kyb.sahabul.core.converter.UpdateToRequestUserDtoConverter;
 import com.kyb.sahabul.core.converter.UserDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.UserDao;
 import com.kyb.sahabul.entities.concretes.User;
+import com.kyb.sahabul.entities.dto.EmailDto;
 import com.kyb.sahabul.entities.dto.UserCheckDto;
 import com.kyb.sahabul.entities.dto.UserDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateUserRequest;
@@ -87,14 +88,14 @@ public class UserManager implements UserServices {
     }
 
     @Override
-    public UserDto getByEmail(String email) {
-        return userDtoConverter.convert(userDao.getByEmail(email));
+    public UserDto getByEmail(EmailDto email) {
+        return userDtoConverter.convert(userDao.findByEmail(email.getEmail()));
     }
 
     @Override
     public boolean checkUserIsRight(UserCheckDto from) {
 
-        User targetUser = userDao.getByEmail(from.getEmail());
+        User targetUser = userDao.findByEmail(from.getEmail());
 
         if ( targetUser != null ) {
             return Objects.equals(targetUser.getPassword(), from.getPassword());

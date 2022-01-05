@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DistrictDto {
+public class EmailDto {
 
-    private int id;
-    private String districtName;
-    private String cityName;
+    private String email;
 
 }

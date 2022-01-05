@@ -25,7 +25,7 @@ class ReservationModel {
         note: reservationModelMap['note'],
         reservationHour:
             HoursModel.fromMap(reservationModelMap['reservationHour']),
-        reservationDate: reservationModelMap['reservationDate'],
+        reservationDate: DateTime.parse(reservationModelMap['reservationDate']),
         status: reservationModelMap['status'],
         id: reservationModelMap['id'],
         userId: reservationModelMap['userId']);

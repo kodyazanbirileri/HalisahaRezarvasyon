@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sahabul_application/components/build_btn.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
 import 'package:sahabul_application/models/pitch_model.dart';
+import 'package:sahabul_application/screens/make_reservation.dart';
 
 class PitchPage extends StatefulWidget {
   @override
@@ -87,7 +88,15 @@ class _PitchPageState extends State<PitchPage> {
               paddingSynmetric: 25,
               text: 'Rezervasyon Yap',
               onPressed: () {
-                Navigator.pushNamed(context, 'make_reservation');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MakeRezervation(),
+                    settings: RouteSettings(
+                      arguments: pitch.id,
+                    ),
+                  ),
+                );
               })
         ],
       ),

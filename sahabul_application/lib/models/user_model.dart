@@ -1,12 +1,12 @@
 import 'package:sahabul_application/Models/reservation_model.dart';
 
 class UserModel {
-  late int id;
-  late String email;
-  late String firstName;
-  late String lastName;
-  late String phoneNumber;
-  late List<ReservationModel> reservations;
+  int? id;
+  String? email;
+  String? firstName;
+  String? lastName;
+  String? phoneNumber;
+  late List<dynamic> reservations;
 
   UserModel({
     required this.id,

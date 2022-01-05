@@ -4,6 +4,7 @@ import com.kyb.sahabul.business.abstracts.*;
 import com.kyb.sahabul.core.converter.PitchDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.PitchDao;
 import com.kyb.sahabul.entities.concretes.Pitch;
+import com.kyb.sahabul.entities.dto.OnlyIdDto;
 import com.kyb.sahabul.entities.dto.PitchDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreatePitchPhotoRequest;
 import com.kyb.sahabul.entities.dto.createrequest.CreatePitchPropertyRequest;
@@ -44,15 +45,15 @@ public class PitchManager implements PitchServices {
     }
 
     @Override
-    public List<PitchDto> getByCityId(int id) {
-        return pitchDao.findAllByDistrictCityId(id)
+    public List<PitchDto> getByCityId(OnlyIdDto from) {
+        return pitchDao.findAllByDistrictCityId(from.getId())
                 .stream().map(pitchDtoConverter::convert)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<PitchDto> getByDistrictId(int id) {
-        return pitchDao.findAllByDistrictId(id)
+    public List<PitchDto> getByDistrictId(OnlyIdDto from) {
+        return pitchDao.findAllByDistrictId(from.getId())
                 .stream().map(pitchDtoConverter::convert)
                 .collect(Collectors.toList());
     }

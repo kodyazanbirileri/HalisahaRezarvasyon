@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sahabul_application/models/datas/city_data.dart';
+import 'package:sahabul_application/models/datas/district_data.dart';
+import 'package:sahabul_application/models/datas/pitch_data.dart';
 
 class BuildDropdown extends StatefulWidget {
   const BuildDropdown({Key? key}) : super(key: key);
@@ -8,13 +12,9 @@ class BuildDropdown extends StatefulWidget {
 }
 
 class _BuildDropdownState extends State<BuildDropdown> {
-  String? value;
-  final items = ['item1', 'item2', 'item3', 'item4', 'item5'];
-  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-      value: item,
-      child: Text(
-        item,
-      ));
+  String? city;
+  String? district;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -29,18 +29,24 @@ class _BuildDropdownState extends State<BuildDropdown> {
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
-              value: value,
+              value: city,
               hint: Text('İl seçin'),
               onChanged: (String? newValue) {
+                //CityModal
                 setState(() {
-                  this.value = newValue;
+                  this.city = newValue; //cityModal.cityName
+                  Provider.of<DistrictData>(context, listen: false)
+                      .getAllById(int.parse(newValue!));
+                  Provider.of<PitchData>(context, listen: false)
+                      .getAllByCityId(int.parse(newValue));
                 });
               },
-              items: <String>['One', 'Two', 'Free', 'Four']
-                  .map<DropdownMenuItem<String>>((String value) {
+              items: Provider.of<CityData>(context, listen: false)
+                  .cities
+                  .map((cityModel) {
                 return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
+                  value: cityModel.id.toString(),
+                  child: Text(cityModel.cityName),
                 );
               }).toList(),
             ),
@@ -55,20 +61,20 @@ class _BuildDropdownState extends State<BuildDropdown> {
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
-              value: value,
+              value: district,
               hint: Text('İlçe Seçin'),
-              onChanged: value == null
-                  ? null
-                  : (String? value) {
-                      setState(() {
-                        this.value = value;
-                      });
-                    },
-              items: <String>['One', 'Two', 'Free', 'Four']
-                  .map<DropdownMenuItem<String>>((String value) {
+              onChanged: (String? value) {
+                setState(() {
+                  this.district = value; //DistrictModal.districtName
+                  //Pitch'den district id'ye göre veri çekilecek.
+                });
+              },
+              items: Provider.of<DistrictData>(context, listen: false)
+                  .districts
+                  .map<DropdownMenuItem<String>>((districtModel) {
                 return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
+                  value: districtModel.id.toString(),
+                  child: Text(districtModel.districtName),
                 );
               }).toList(),
             ),

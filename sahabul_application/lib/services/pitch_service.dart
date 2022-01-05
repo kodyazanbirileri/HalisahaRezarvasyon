@@ -21,4 +21,43 @@ class PitchService {
 
     return pitchModels;
   }
+
+  static Future<List<PitchModel>> getPitchesByCityId(int cityId) async {
+    var body = json.encode(cityId);
+    var url = Uri.parse(baseURL + "pitch/getByCityId");
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+
+    print(response.body);
+    List responseList = jsonDecode(response.body);
+    List<PitchModel> pitchModels = [];
+    for (Map pitchMap in responseList) {
+      PitchModel pitchModel = PitchModel.fromMap(pitchMap);
+      pitchModels.add(pitchModel);
+    }
+
+    return pitchModels;
+  }
+
+  static Future<List<PitchModel>> getPitchesByDistrictId(int districtId) async {
+    var body = json.encode(districtId);
+    var url = Uri.parse(baseURL + "pitch/getByDistrictId");
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+
+    List responseList = jsonDecode(response.body);
+    List<PitchModel> pitchModels = [];
+    for (Map pitchMap in responseList) {
+      PitchModel pitchModel = PitchModel.fromMap(pitchMap);
+      pitchModels.add(pitchModel);
+    }
+
+    return pitchModels;
+  }
 }

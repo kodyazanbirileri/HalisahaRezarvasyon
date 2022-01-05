@@ -2,6 +2,7 @@ package com.kyb.sahabul.api.controllers;
 
 import com.kyb.sahabul.business.abstracts.UserServices;
 import com.kyb.sahabul.entities.concretes.User;
+import com.kyb.sahabul.entities.dto.EmailDto;
 import com.kyb.sahabul.entities.dto.UserCheckDto;
 import com.kyb.sahabul.entities.dto.UserDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateUserRequest;
@@ -27,8 +28,8 @@ public class UserController {
        return ResponseEntity.ok(userServices.getAll());
     }
 
-    @GetMapping(value = "/getByEmail")
-    public ResponseEntity<UserDto> getByEmail(@RequestParam String email) {
+    @PostMapping(value = "/getByEmail")
+    public ResponseEntity<UserDto> getByEmail(@RequestBody EmailDto email) {
         return ResponseEntity.ok(userServices.getByEmail(email));
     }
 

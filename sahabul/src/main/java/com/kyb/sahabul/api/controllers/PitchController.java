@@ -2,6 +2,7 @@ package com.kyb.sahabul.api.controllers;
 
 import com.kyb.sahabul.business.abstracts.PitchServices;
 import com.kyb.sahabul.entities.concretes.Pitch;
+import com.kyb.sahabul.entities.dto.OnlyIdDto;
 import com.kyb.sahabul.entities.dto.PitchDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreatePitchRequest;
 import org.springframework.http.ResponseEntity;
@@ -40,14 +41,14 @@ public class PitchController {
         return ResponseEntity.ok(pitchServices.getById(id));
     }
 
-    @GetMapping(value = "/getByCityId")
-    public ResponseEntity<List<PitchDto>> getAllByCityId(@RequestParam int id){
-        return ResponseEntity.ok(pitchServices.getByCityId(id));
+    @PostMapping(value = "/getByCityId")
+    public ResponseEntity<List<PitchDto>> getAllByCityId(@RequestBody OnlyIdDto onlyIdDto){
+        return ResponseEntity.ok(pitchServices.getByCityId(onlyIdDto));
     }
 
-    @GetMapping(value = "/getByDistrictId")
-    public ResponseEntity<List<PitchDto>> getAllByDistrictId(@RequestParam int id){
-        return ResponseEntity.ok(pitchServices.getByDistrictId(id));
+    @PostMapping(value = "/getByDistrictId")
+    public ResponseEntity<List<PitchDto>> getAllByDistrictId(@RequestBody OnlyIdDto onlyIdDto){
+        return ResponseEntity.ok(pitchServices.getByDistrictId(onlyIdDto));
     }
 
 }

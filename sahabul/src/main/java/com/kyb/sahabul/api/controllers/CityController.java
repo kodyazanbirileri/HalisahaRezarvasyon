@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping
-@RestController(value = "api/cities")
+@RestController
+@RequestMapping(value = "api/cities")
 public class CityController {
 
     private final CityServices cityServices;

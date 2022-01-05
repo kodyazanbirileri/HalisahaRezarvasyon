@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'package:sahabul_application/models/reservation_model.dart';
 import 'package:sahabul_application/services/globals.dart';
 
 class ReservationService {
-  static Future<List<ReservationModel>> getHours() async {
+  static Future<List<ReservationModel>> getReservations() async {
     var url = Uri.parse(baseURL + "reservation/getAll");
     http.Response response = await http.get(
       url,
@@ -21,5 +22,44 @@ class ReservationService {
     }
 
     return reservationModels;
+  }
+
+  static Future<List<dynamic>> getReservationHours(
+      int pitchId, DateTime reservationDate) async {
+    Map data = {
+      "date": reservationDate.toString().substring(0, 10),
+      "pitchId": pitchId
+    };
+    var body = json.encode(data);
+    var url =
+        Uri.parse(baseURL + "reservation/getReservationHoursByDateAndPitchId");
+    http.Response response = await http.post(url, headers: headers, body: body);
+    print(response.body);
+    List<dynamic> reservationHours = jsonDecode(response.body);
+
+    return reservationHours;
+  }
+
+  static Future<ReservationModel> makeReservation(
+      int userId, int pitchId, int hourId, DateTime reservationDate) async {
+    final DateFormat formatter = DateFormat('yyyy-MM-dd');
+    Map data = {
+      "date": formatter.format(reservationDate),
+      "pitchId": pitchId,
+      "userId": userId,
+      "hourId": hourId,
+      "note": "sonradan eklenecek."
+    };
+    var body = json.encode(data);
+    var url = Uri.parse(baseURL + "reservation/add");
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+    print(response.body);
+    Map reservationMap = jsonDecode(response.body);
+    ReservationModel reservation = ReservationModel.fromMap(reservationMap);
+    return reservation;
   }
 }

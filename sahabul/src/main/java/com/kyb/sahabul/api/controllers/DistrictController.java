@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/disctricts")
+@RequestMapping(value = "api/districts")
 public class DistrictController {
 
     private final DistrictServices districtServices;
@@ -30,7 +30,7 @@ public class DistrictController {
     }
 
     @PostMapping(value = "/getByCityId")
-    public ResponseEntity<List<DistrictDto>> getByCityId(@RequestParam OnlyIdDto onlyIdDto) {
+    public ResponseEntity<List<DistrictDto>> getByCityId(@RequestBody OnlyIdDto onlyIdDto) {
         return ResponseEntity.ok(districtServices.getByCityId(onlyIdDto));
     }
 

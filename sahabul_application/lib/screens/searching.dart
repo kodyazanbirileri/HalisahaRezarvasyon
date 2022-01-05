@@ -3,10 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:sahabul_application/components/build_dropdown.dart';
 import 'package:sahabul_application/components/pitch_widget.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
-import 'package:sahabul_application/models/pitch_data.dart';
+import 'package:sahabul_application/models/city_model.dart';
+import 'package:sahabul_application/models/datas/city_data.dart';
+import 'package:sahabul_application/models/datas/pitch_data.dart';
 import 'package:sahabul_application/models/pitch_model.dart';
 import 'package:sahabul_application/screens/pitch.dart';
-import 'package:sahabul_application/services/pitch_service.dart';
+import 'package:sahabul_application/services/city_service.dart';
 
 class Searching extends StatefulWidget {
   @override
@@ -15,17 +17,19 @@ class Searching extends StatefulWidget {
 
 class _SearchingState extends State<Searching> {
   List<PitchModel>? pitches;
+  List<CityModel>? districts;
+  List<CityModel>? cities;
 
-  getHours() async {
-    pitches = await PitchService.getPitches();
-    Provider.of<PitchData>(context, listen: false).pitches = pitches!;
+  getAllData() async {
+    cities = await CityService.getCities();
+    Provider.of<CityData>(context, listen: false).cities = cities!;
     setState(() {});
   }
 
   @override
   void initState() {
     super.initState();
-    getHours();
+    getAllData();
   }
 
   @override
@@ -45,27 +49,27 @@ class _SearchingState extends State<Searching> {
             height: 20,
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount:
-                  Provider.of<PitchData>(context, listen: false).pitches.length,
-              itemBuilder: (context, index) {
-                return PitchWidget(
-                  pitch: Provider.of<PitchData>(context, listen: false)
-                      .pitches[index],
-                  press: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PitchPage(),
-                      settings: RouteSettings(
-                        arguments:
-                            Provider.of<PitchData>(context, listen: false)
-                                .pitches[index],
+            child: Consumer<PitchData>(builder: (context, pitchData, child) {
+              return ListView.builder(
+                itemCount: Provider.of<PitchData>(context, listen: false)
+                    .pitches
+                    .length,
+                itemBuilder: (context, index) {
+                  return PitchWidget(
+                    pitch: pitchData.pitches[index],
+                    press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PitchPage(),
+                        settings: RouteSettings(
+                          arguments: pitchData.pitches[index],
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
-            ),
+                  );
+                },
+              );
+            }),
           ),
         ],
       ),

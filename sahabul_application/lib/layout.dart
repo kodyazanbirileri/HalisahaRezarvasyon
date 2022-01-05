@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sahabul_application/screens/profile.dart';
 import 'package:sahabul_application/screens/searching.dart';
 
 class Layout extends StatefulWidget {
@@ -12,7 +13,7 @@ class _LayoutState extends State<Layout> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
     Searching(),
-    //Profile(),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {
