@@ -1,5 +1,6 @@
 package com.kyb.sahabul.core.converter;
 
+import com.kyb.sahabul.entities.concretes.Reservation;
 import com.kyb.sahabul.entities.concretes.User;
 import com.kyb.sahabul.entities.dto.UserDto;
 import org.springframework.context.annotation.Lazy;
@@ -31,6 +32,7 @@ public class UserDtoConverter {
                 Optional.ofNullable(from.getReservations())
                         .orElseGet(Collections::emptyList)
                         .stream()
+                        .filter(Reservation::isStatus)
                         .map(reservationDtoConverter::convert)
                         .collect(Collectors.toList())
 

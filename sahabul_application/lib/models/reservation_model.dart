@@ -1,10 +1,11 @@
 import 'package:sahabul_application/models/hours_model.dart';
 
 class ReservationModel {
-  late int id;
+  late int reservationId;
   late String note;
   late int userId;
   late int pitchId;
+  late String pitchName;
   late DateTime reservationDate;
   late HoursModel reservationHour;
   late bool status;
@@ -15,8 +16,9 @@ class ReservationModel {
     required this.reservationHour,
     required this.reservationDate,
     required this.status,
-    required this.id,
+    required this.reservationId,
     required this.userId,
+    required this.pitchName,
   });
 
   factory ReservationModel.fromMap(Map reservationModelMap) {
@@ -27,7 +29,8 @@ class ReservationModel {
             HoursModel.fromMap(reservationModelMap['reservationHour']),
         reservationDate: DateTime.parse(reservationModelMap['reservationDate']),
         status: reservationModelMap['status'],
-        id: reservationModelMap['id'],
-        userId: reservationModelMap['userId']);
+        reservationId: reservationModelMap['id'],
+        userId: reservationModelMap['userId'],
+        pitchName: reservationModelMap['pitchName']);
   }
 }

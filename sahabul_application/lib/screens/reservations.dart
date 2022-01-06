@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sahabul_application/components/reservation_widget.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
+import 'package:sahabul_application/services/reservation_service.dart';
 
 class Reservation extends StatefulWidget {
   @override
@@ -25,6 +26,8 @@ class _ReservationState extends State<Reservation> {
         itemBuilder: (context, index) => RezervationWidget(
           reservation: reservations[index],
           press: () {
+            ReservationService.deleteReservation(
+                reservations[index].reservationId);
             setState(() {
               reservations.removeAt(index);
             });

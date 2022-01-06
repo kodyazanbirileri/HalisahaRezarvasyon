@@ -57,4 +57,21 @@ class ReservationService {
     ReservationModel reservation = ReservationModel.fromMap(reservationMap);
     return reservation;
   }
+
+  static Future<ReservationModel> deleteReservation(int reservationId) async {
+    Map data = {
+      "id": reservationId,
+    };
+    var body = json.encode(data);
+    var url = Uri.parse(baseURL + "reservation/delete");
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+    print(response.body);
+    Map reservationMap = jsonDecode(response.body);
+    ReservationModel reservation = ReservationModel.fromMap(reservationMap);
+    return reservation;
+  }
 }

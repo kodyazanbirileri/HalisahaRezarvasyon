@@ -17,7 +17,7 @@ class RezervationWidget extends StatelessWidget {
           child: ListTile(
             leading: Image.network(
                 'https://i2.milimaj.com/i/milliyet/75/0x0/603df3005542811804d80ccf.jpg'),
-            title: Text('${reservation.pitchId}'),
+            title: Text(reservation.pitchName),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

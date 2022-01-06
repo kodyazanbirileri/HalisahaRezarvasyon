@@ -21,7 +21,7 @@ class _BuildDropdownState extends State<BuildDropdown> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
-          width: 150,
+          width: 300,
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -52,34 +52,34 @@ class _BuildDropdownState extends State<BuildDropdown> {
             ),
           ),
         ),
-        Container(
-          width: 150,
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(5),
-          ),
-          child: DropdownButtonHideUnderline(
-            child: DropdownButton<String>(
-              value: district,
-              hint: Text('İlçe Seçin'),
-              onChanged: (String? value) {
-                setState(() {
-                  this.district = value; //DistrictModal.districtName
-                  //Pitch'den district id'ye göre veri çekilecek.
-                });
-              },
-              items: Provider.of<DistrictData>(context, listen: false)
-                  .districts
-                  .map<DropdownMenuItem<String>>((districtModel) {
-                return DropdownMenuItem<String>(
-                  value: districtModel.id.toString(),
-                  child: Text(districtModel.districtName),
-                );
-              }).toList(),
-            ),
-          ),
-        ),
+        // Container(
+        //   width: 150,
+        //   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+        //   decoration: BoxDecoration(
+        //     color: Colors.white,
+        //     borderRadius: BorderRadius.circular(5),
+        //   ),
+        //   child: DropdownButtonHideUnderline(
+        //     child: DropdownButton<String>(
+        //       value: district,
+        //       hint: Text('İlçe Seçin'),
+        //       onChanged: (String? value) {
+        //         setState(() {
+        //           this.district = value; //DistrictModal.districtName
+        //           //Pitch'den district id'ye göre veri çekilecek.
+        //         });
+        //       },
+        //       items: Provider.of<DistrictData>(context, listen: false)
+        //           .districts
+        //           .map<DropdownMenuItem<String>>((districtModel) {
+        //         return DropdownMenuItem<String>(
+        //           value: districtModel.id.toString(),
+        //           child: Text(districtModel.districtName),
+        //         );
+        //       }).toList(),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

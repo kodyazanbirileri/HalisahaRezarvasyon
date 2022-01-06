@@ -7,14 +7,12 @@ import com.kyb.sahabul.business.abstracts.UserServices;
 import com.kyb.sahabul.core.converter.ReservationDtoConverter;
 import com.kyb.sahabul.dataAccess.abstracts.ReservationDao;
 import com.kyb.sahabul.entities.concretes.Reservation;
+import com.kyb.sahabul.entities.dto.OnlyIdDto;
 import com.kyb.sahabul.entities.dto.ReservationDateWithPitchIdDto;
 import com.kyb.sahabul.entities.dto.ReservationDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateReservationRequest;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -89,9 +87,9 @@ public class ReservationManager implements ReservationServices {
     }
 
     @Override
-    public ReservationDto delete(int reservationId) {
+    public ReservationDto delete(OnlyIdDto from) {
 
-        Reservation deletedReservation = this.findById(reservationId);
+        Reservation deletedReservation = this.findById(from.getId());
         deletedReservation.setStatus(false);
 
         return reservationDtoConverter.convert(reservationDao.save(deletedReservation));

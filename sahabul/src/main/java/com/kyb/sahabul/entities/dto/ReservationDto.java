@@ -16,6 +16,7 @@ public class ReservationDto {
     private String reservationDate;
     private String note;
     private boolean status;
+    private String pitchName;
     private HourDto reservationHour;
     private int pitchId;
     private int userId;

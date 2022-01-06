@@ -74,6 +74,7 @@ class _PitchPageState extends State<PitchPage> {
               vertical: 0,
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 20,
@@ -89,7 +90,17 @@ class _PitchPageState extends State<PitchPage> {
                   height: 20,
                 ),
                 Text(
-                  'Adres:${pitch.address} ${pitch.district}/${pitch.city}',
+                  'Adres: ${pitch.address} ${pitch.district}/${pitch.city}',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Çalışma Saatleri: 12:00 - 03:00',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,

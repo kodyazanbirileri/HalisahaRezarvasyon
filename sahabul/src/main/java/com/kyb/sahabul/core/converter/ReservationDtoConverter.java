@@ -23,6 +23,7 @@ public class ReservationDtoConverter {
                 from.getReservationDate(),
                 from.getNote(),
                 from.isStatus(),
+                from.getPitch().getPitchName(),
                 hourDtoConverter.convert(from.getReservationHour()),
                 from.getPitch().getId(),
                 from.getUser().getId()

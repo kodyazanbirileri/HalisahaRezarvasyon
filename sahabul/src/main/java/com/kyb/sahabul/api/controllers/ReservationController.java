@@ -1,6 +1,7 @@
 package com.kyb.sahabul.api.controllers;
 
 import com.kyb.sahabul.business.abstracts.ReservationServices;
+import com.kyb.sahabul.entities.dto.OnlyIdDto;
 import com.kyb.sahabul.entities.dto.ReservationDateWithPitchIdDto;
 import com.kyb.sahabul.entities.dto.ReservationDto;
 import com.kyb.sahabul.entities.dto.createrequest.CreateReservationRequest;
@@ -42,8 +43,8 @@ public class ReservationController {
     }
 
     @PostMapping(value = "/delete")
-    public ResponseEntity<ReservationDto> delete(@RequestParam int reservationId) {
-        return ResponseEntity.ok(reservationServices.delete(reservationId));
+    public ResponseEntity<ReservationDto> delete(@RequestBody OnlyIdDto onlyIdDto) {
+        return ResponseEntity.ok(reservationServices.delete(onlyIdDto));
     }
 
 }
