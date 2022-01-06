@@ -83,7 +83,7 @@ class _PitchPageState extends State<PitchPage> {
                   'Telefon Numarası: ${pitch.pitchNumber.toString()}',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 16,
                   ),
                 ),
                 SizedBox(
@@ -93,7 +93,7 @@ class _PitchPageState extends State<PitchPage> {
                   'Adres: ${pitch.address} ${pitch.district}/${pitch.city}',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 16,
                   ),
                 ),
                 SizedBox(
@@ -103,11 +103,18 @@ class _PitchPageState extends State<PitchPage> {
                   'Çalışma Saatleri: 12:00 - 03:00',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 16,
                   ),
                 ),
                 SizedBox(
                   height: 20,
+                ),
+                Text(
+                  'Halısaha Özellikleri: Servis, Otopark, Duş, Soyunma Odası, Ekipman Kiralama, Kafetarya, Wifi ',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
                 ),
                 BuildBtn(
                   paddingSynmetric: 25,

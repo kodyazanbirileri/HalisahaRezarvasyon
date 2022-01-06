@@ -59,7 +59,6 @@ public class UserManager implements UserServices {
         user.setLastName(from.getLastName());
         user.setEmail(from.getEmail());
         user.setStatus(true);
-        user.setPassword(from.getPassword());
         user.setPhoneNumber(from.getPhoneNumber());
         return user;
     }
@@ -68,6 +67,7 @@ public class UserManager implements UserServices {
     @Override
     public UserDto add(CreateUserRequest from) {
         User tempUser = new User();
+        tempUser.setPassword(from.getPassword());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         tempUser.setUserCreated(formatter.format(LocalDate.now()));
         return userDtoConverter.convert(userDao.save(generateBody(tempUser,from)));
@@ -76,8 +76,7 @@ public class UserManager implements UserServices {
 
     @Override
     public UserDto update(UpdateUserRequest from) {
-        User tempUser = new User();
-        tempUser.setId(from.getId());
+        User tempUser = userDao.getOne(from.getId());
 
         return userDtoConverter.convert(
                 userDao.save(generateBody(tempUser,

@@ -26,52 +26,52 @@ class Profile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            child: Column(
-              children: [
-                Icon(
-                  Icons.account_circle_rounded,
-                  size: 150,
-                  color: Colors.white,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  '${Provider.of<UserData>(context, listen: false).user.firstName!} ${Provider.of<UserData>(context, listen: false).user.lastName!}',
-                  style: TextStyle(
+          Consumer<UserData>(builder: (context, userData, child) {
+            return Container(
+              child: Column(
+                children: [
+                  Icon(
+                    Icons.account_circle_rounded,
+                    size: 150,
                     color: Colors.white,
-                    fontSize: 32,
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  Provider.of<UserData>(context, listen: false)
-                      .user
-                      .phoneNumber!,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
+                  SizedBox(
+                    height: 10,
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  Provider.of<UserData>(context, listen: false).user.email!,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
+                  Text(
+                    '${userData.user.firstName!} ${userData.user.lastName!}',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 32,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-              ],
-            ),
-          ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    userData.user.phoneNumber!,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    userData.user.email!,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                ],
+              ),
+            );
+          }),
           Container(
             child: Column(
               children: [

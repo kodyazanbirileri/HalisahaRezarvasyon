@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sahabul_application/components/build_btn.dart';
 import 'package:sahabul_application/components/build_email.dart';
-import 'package:sahabul_application/components/build_password.dart';
 import 'package:sahabul_application/components/build_textfield.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
+import 'package:sahabul_application/models/data/user_data.dart';
 
 class UpdateInformation extends StatefulWidget {
   @override
@@ -11,17 +12,35 @@ class UpdateInformation extends StatefulWidget {
 }
 
 class _UpdateInformationState extends State<UpdateInformation> {
-  final nameSurnameController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
   final phoneNumberController = TextEditingController();
   final emailController = TextEditingController();
-  final passwordController = TextEditingController();
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    nameSurnameController.dispose();
+    firstNameController.dispose();
+    emailController.dispose();
+    lastNameController.dispose();
     phoneNumberController.dispose();
     super.dispose();
+  }
+
+  generateControllers() {
+    firstNameController.text =
+        Provider.of<UserData>(context, listen: false).user.firstName!;
+    lastNameController.text =
+        Provider.of<UserData>(context, listen: false).user.lastName!;
+    emailController.text =
+        Provider.of<UserData>(context, listen: false).user.email!;
+    phoneNumberController.text =
+        Provider.of<UserData>(context, listen: false).user.phoneNumber!;
+  }
+
+  @override
+  initState() {
+    generateControllers();
+    super.initState();
   }
 
   @override
@@ -54,12 +73,23 @@ class _UpdateInformationState extends State<UpdateInformation> {
               height: 60,
             ),
             BuildTextfield(
-              textEditingController: nameSurnameController,
+              textEditingController: firstNameController,
               icon: Icon(
                 Icons.person,
                 color: Color(0xff728840),
               ),
-              text: 'İsim Soyisim',
+              text: 'İsim',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            BuildTextfield(
+              textEditingController: lastNameController,
+              icon: Icon(
+                Icons.person,
+                color: Color(0xff728840),
+              ),
+              text: 'Soyisim',
             ),
             SizedBox(
               height: 10,
@@ -83,17 +113,21 @@ class _UpdateInformationState extends State<UpdateInformation> {
             SizedBox(
               height: 10,
             ),
-            BuildPassword(
-              textEditingController: passwordController,
-              height: 40,
-              hintText: "Password",
-            ),
             SizedBox(
               height: 10,
             ),
             BuildBtn(
               paddingSynmetric: 25,
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<UserData>(context, listen: false)
+                    .updateUserInformation(
+                        emailController.text,
+                        firstNameController.text,
+                        lastNameController.text,
+                        phoneNumberController.text);
+
+                Navigator.pushNamed(context, 'profile');
+              },
               text: 'Güncelle',
             ),
           ],

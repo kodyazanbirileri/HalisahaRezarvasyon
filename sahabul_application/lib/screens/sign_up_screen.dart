@@ -4,6 +4,7 @@ import 'package:sahabul_application/components/build_email.dart';
 import 'package:sahabul_application/components/build_password.dart';
 import 'package:sahabul_application/components/build_textfield.dart';
 import 'package:sahabul_application/components/reusable_widget.dart';
+import 'package:sahabul_application/services/user_service.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -11,11 +12,8 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  late String email;
-  late String phone;
-  late String password;
-  late String nameSurname;
-  final nameSurnameController = TextEditingController();
+  final nameController = TextEditingController();
+  final surnameController = TextEditingController();
   final phoneNumberController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -28,8 +26,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   void dispose() {
     // TODO: implement dispose
-    nameSurnameController.dispose();
+    nameController.dispose();
+    surnameController.dispose();
     phoneNumberController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -63,12 +64,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
               height: 60,
             ),
             BuildTextfield(
-              textEditingController: nameSurnameController,
+              textEditingController: nameController,
               icon: Icon(
                 Icons.person,
                 color: Color(0xff728840),
               ),
-              text: 'İsim Soyisim',
+              text: 'İsim',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            BuildTextfield(
+              textEditingController: surnameController,
+              icon: Icon(
+                Icons.person,
+                color: Color(0xff728840),
+              ),
+              text: 'Soyisim',
             ),
             SizedBox(
               height: 10,
@@ -103,9 +115,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
             BuildBtn(
               paddingSynmetric: 25,
               onPressed: () {
-                nameSurname = nameSurnameController.text;
-                print(nameSurname);
-                // Navigator.pushNamed(context, 'layout');
+                UserService.addUser(
+                    emailController.text,
+                    nameController.text,
+                    surnameController.text,
+                    passwordController.text,
+                    phoneNumberController.text);
+                Navigator.pushNamed(context, 'login_screen');
               },
               text: 'SIGN UP',
             ),

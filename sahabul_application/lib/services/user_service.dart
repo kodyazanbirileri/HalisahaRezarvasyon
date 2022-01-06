@@ -55,4 +55,48 @@ class UserService {
     bool isUser = jsonDecode(response.body);
     return isUser;
   }
+
+  static Future<UserModel> addUser(String email, String firstName,
+      String lastName, String password, String phoneNumber) async {
+    Map data = {
+      "email": email,
+      "password": password,
+      "firstName": firstName,
+      "lastName": lastName,
+      "phoneNumber": phoneNumber,
+    };
+    var body = json.encode(data);
+    var url = Uri.parse(baseURL + 'user/add');
+
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+
+    UserModel userModel = UserModel.fromMap(jsonDecode(response.body));
+    return userModel;
+  }
+
+  static Future<UserModel> updateUser(int id, String email, String firstName,
+      String lastName, String phoneNumber) async {
+    Map data = {
+      "id": id,
+      "email": email,
+      "firstName": firstName,
+      "lastName": lastName,
+      "phoneNumber": phoneNumber,
+    };
+    var body = json.encode(data);
+    var url = Uri.parse(baseURL + 'user/update');
+
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+
+    UserModel userModel = UserModel.fromMap(jsonDecode(response.body));
+    return userModel;
+  }
 }

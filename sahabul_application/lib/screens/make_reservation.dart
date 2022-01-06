@@ -183,7 +183,7 @@ class _ReservationHoursState extends State<ReservationHours> {
         ),
         child: Center(
           child: Text(
-            '${widget.index.endHour}:00-${widget.index.startHour}:00',
+            '${widget.index.startHour}:00-${widget.index.endHour}:00',
             style: TextStyle(
               color: widget._HourTextColor,
               fontSize: 16,
